@@ -63,12 +63,10 @@ const navStyles = {
 
 const items: [string, string][] = [
   ['quem-somos', 'Quem Somos'],
-  ['projetos', 'Projetos'],
-  ['voluntariado', 'Voluntariado'],
-  ['parceiros', 'Parceiros Empresa'],
-  ['novidades', 'Novidades'],
+  ['programas-e-projetos', 'Projetos'],
+  ['quero-ser-voluntario', 'Voluntariado'],
+  ['quero-ser-parceiro', 'Parceiros'],
   ['transparencia', 'Transparência'],
-  ['espacos', 'Nossos Espaços'],
 ]
 
 export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }) {
