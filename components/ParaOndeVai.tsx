@@ -1,0 +1,80 @@
+const transpStyles = {
+  wrap: { background: 'var(--paper-100)', padding: '88px 0 120px' },
+  inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
+  header: { display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 60, alignItems: 'end', marginBottom: 48 },
+  eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 14 },
+  h2: { fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(2rem, 3.4vw, 2.625rem)', lineHeight: 1.05, letterSpacing: '-0.025em', color: 'var(--ink-900)', margin: 0 },
+  italic: { fontStyle: 'italic' as const, color: 'var(--pine-700)' },
+  lead: { fontSize: 16, lineHeight: 1.65, color: 'var(--fg-2)', margin: 0, maxWidth: 460 },
+  chartWrap: { background: '#fff', border: '1px solid var(--border-soft)', borderRadius: 12, padding: '40px 40px 36px' },
+  bar: { display: 'flex', height: 22, borderRadius: 999, overflow: 'hidden', background: 'var(--paper-300)', marginBottom: 36 },
+  seg: { height: '100%' },
+  legend: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 28 },
+  legendItem: { paddingTop: 18, borderTop: '1px solid var(--border-soft)', display: 'flex', flexDirection: 'column' as const, gap: 6 },
+  legendBarStub: { width: 36, height: 4, borderRadius: 2, marginBottom: 6 },
+  pct: { fontFamily: 'var(--font-serif)', fontSize: 40, fontWeight: 500, color: 'var(--ink-900)', letterSpacing: '-0.025em', lineHeight: 1 },
+  pctSign: { fontSize: 24, color: 'var(--fg-3)', marginLeft: 2 },
+  legendLabel: { fontSize: 14, fontWeight: 600, color: 'var(--ink-900)', marginTop: 4 },
+  legendSub: { fontSize: 13, lineHeight: 1.5, color: 'var(--fg-2)' },
+  footer: { marginTop: 36, paddingTop: 28, borderTop: '1px solid var(--border-soft)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' as const },
+  footerLeft: { fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.55, maxWidth: 460 },
+  footerStrong: { color: 'var(--ink-900)', fontWeight: 600 },
+  reportLink: { display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--ink-900)', background: 'transparent', border: '1px solid var(--border-hard)', borderRadius: 999, padding: '11px 20px', fontSize: 14, fontWeight: 500, textDecoration: 'none', cursor: 'pointer' },
+}
+
+const SEGMENTS = [
+  { pct: 60, label: 'Projetos sociais', sub: 'Judô, vôlei, xadrez, programação, reforço escolar, escuta psicológica.', color: 'var(--pine-500)' },
+  { pct: 20, label: 'Manutenção do espaço', sub: 'Quadra, tatame, biblioteca, refeitório, energia e água.', color: 'var(--pine-300)' },
+  { pct: 15, label: 'Alimentação', sub: 'Lanche reforçado servido todos os dias para 240+ crianças.', color: 'var(--teal-500)' },
+  { pct: 5, label: 'Administrativo', sub: 'Equipe de gestão, contabilidade, prestação de contas.', color: 'var(--ink-300)' },
+]
+
+export default function ParaOndeVai() {
+  return (
+    <section id="transparencia" style={transpStyles.wrap}>
+      <div style={transpStyles.inner}>
+        <div style={transpStyles.header}>
+          <div>
+            <div style={transpStyles.eyebrow}>TRANSPARÊNCIA · ONDE VAI O DINHEIRO</div>
+            <h2 style={transpStyles.h2}>
+              Cada real é rastreado.<br/>
+              <span style={transpStyles.italic}>A gente abre os números.</span>
+            </h2>
+          </div>
+          <p style={transpStyles.lead}>
+            Esta é a destinação média da OSRV nos últimos três anos. Auditoria externa, balanço anual público, e o detalhamento mês a mês fica disponível para download.
+          </p>
+        </div>
+        <div style={transpStyles.chartWrap}>
+          <div style={transpStyles.bar} role="img" aria-label="Destinação dos recursos">
+            {SEGMENTS.map((s) => (
+              <div key={s.label} style={{ ...transpStyles.seg, flex: s.pct, background: s.color }} />
+            ))}
+          </div>
+          <div style={transpStyles.legend}>
+            {SEGMENTS.map((s) => (
+              <div key={s.label} style={transpStyles.legendItem}>
+                <div style={{ ...transpStyles.legendBarStub, background: s.color }} />
+                <div>
+                  <span style={transpStyles.pct}>{s.pct}</span>
+                  <span style={transpStyles.pctSign}>%</span>
+                </div>
+                <div style={transpStyles.legendLabel}>{s.label}</div>
+                <div style={transpStyles.legendSub}>{s.sub}</div>
+              </div>
+            ))}
+          </div>
+          <div style={transpStyles.footer}>
+            <div style={transpStyles.footerLeft}>
+              <span style={transpStyles.footerStrong}>Cada real é rastreado.</span>{' '}
+              Veja nossos relatórios financeiros completos, auditados e publicados todo ano.
+            </div>
+            <a href="/transparencia" style={transpStyles.reportLink}>
+              🛡 Ver relatórios →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

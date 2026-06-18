@@ -1,0 +1,74 @@
+'use client'
+const payStyles = {
+  wrap: { background: 'var(--paper-100)', padding: '110px 0' },
+  inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
+  header: { maxWidth: 720, marginBottom: 48 },
+  eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 14 },
+  h2: { fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(2rem, 3.4vw, 2.5rem)', lineHeight: 1.05, letterSpacing: '-0.025em', color: 'var(--ink-900)', margin: '0 0 14px' },
+  lead: { fontSize: 16, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0, maxWidth: 580 },
+  row: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 32 },
+  card: { background: '#fff', border: '1px solid var(--border-soft)', borderRadius: 12, padding: '32px 24px 28px', display: 'flex', flexDirection: 'column' as const, gap: 14, transition: 'all 0.2s', cursor: 'default' },
+  glyph: { width: 56, height: 56, borderRadius: 12, background: 'var(--paper-200)', color: 'var(--ink-900)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flex: 'none' as const, fontSize: 28 },
+  name: { fontFamily: 'var(--font-serif)', fontWeight: 500, fontSize: 20, color: 'var(--ink-900)', margin: 0, letterSpacing: '-0.01em' },
+  sub: { fontSize: 13, lineHeight: 1.5, color: 'var(--fg-2)', margin: 0 },
+  badge: { marginTop: 'auto' as const, paddingTop: 14, borderTop: '1px solid var(--border-soft)', fontSize: 12, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', display: 'inline-flex', alignItems: 'center', gap: 6 },
+  secureRow: { display: 'flex', alignItems: 'flex-start', gap: 16, padding: '20px 24px', background: 'var(--paper-200)', border: '1px solid var(--border-soft)', borderRadius: 12 },
+  secureIcon: { width: 40, height: 40, borderRadius: '50%', background: 'var(--pine-100)', color: 'var(--pine-700)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flex: 'none' as const },
+  secureText: { fontSize: 14, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0, flex: 1 },
+  secureStrong: { color: 'var(--ink-900)', fontWeight: 600 },
+  secureBadges: { display: 'flex', gap: 8, flexWrap: 'wrap' as const, flex: 'none' as const },
+  secureBadge: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 12px', background: '#fff', border: '1px solid var(--border-soft)', borderRadius: 4, fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: 'var(--ink-700)' },
+}
+
+const METHODS = [
+  { icon: '⚡', name: 'PIX', sub: 'Confirmação imediata. QR Code ou chave CNPJ.', badge: 'Mais usado' },
+  { icon: '💳', name: 'Cartão de Crédito', sub: 'Visa, Mastercard, Elo, Amex. Recorrência mensal disponível.', badge: 'Recorrente' },
+  { icon: '📄', name: 'Boleto Bancário', sub: 'Compensação em até 3 dias úteis. Sem taxa.', badge: null },
+  { icon: '🏦', name: 'Transferência', sub: 'TED ou DOC direto para a conta jurídica da OSRV.', badge: null },
+]
+
+export default function FormasPagamento() {
+  return (
+    <section id="pagamento" style={payStyles.wrap}>
+      <div style={payStyles.inner}>
+        <div style={payStyles.header}>
+          <div style={payStyles.eyebrow}>FORMAS DE PAGAMENTO</div>
+          <h2 style={payStyles.h2}>Pague do jeito que for melhor para você.</h2>
+          <p style={payStyles.lead}>
+            Quatro formas de doar, todas processadas em ambiente seguro fora do nosso site. A OSRV não armazena dados de cartão em nenhum momento.
+          </p>
+        </div>
+        <div style={payStyles.row}>
+          {METHODS.map((m) => (
+            <div key={m.name} style={payStyles.card}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--border-hard)'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.08)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-soft)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
+            >
+              <div style={payStyles.glyph}>{m.icon}</div>
+              <h3 style={payStyles.name}>{m.name}</h3>
+              <p style={payStyles.sub}>{m.sub}</p>
+              {m.badge && (
+                <div style={payStyles.badge}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--pine-500)' }}/>
+                  {m.badge}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div style={payStyles.secureRow}>
+          <div style={payStyles.secureIcon}>🔒</div>
+          <p style={payStyles.secureText}>
+            <span style={payStyles.secureStrong}>Pagamento processado por gateway externo seguro (PCI-DSS).</span>{' '}
+            Você será redirecionado para concluir a doação. A OSRV não armazena dados sensíveis do seu cartão ou conta.
+          </p>
+          <div style={payStyles.secureBadges}>
+            <span style={payStyles.secureBadge}>🛡 PCI-DSS</span>
+            <span style={payStyles.secureBadge}>SSL 256</span>
+            <span style={payStyles.secureBadge}>LGPD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
