@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 const navStyles = {
   wrap: {
@@ -71,7 +72,7 @@ const items: [string, string][] = [
 
 export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }) {
   const [scrolled, setScrolled] = useState(false)
-  const [active, setActive] = useState('quem-somos')
+  const pathname = usePathname()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -98,8 +99,7 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
             <a
               key={id}
               href={`/${id}`}
-              style={{ ...navStyles.link, ...(active === id ? navStyles.linkActive : {}) }}
-              onClick={() => setActive(id)}
+              style={{ ...navStyles.link, ...(pathname === `/${id}` ? navStyles.linkActive : {}) }}
             >
               {label}
             </a>
