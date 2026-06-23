@@ -43,7 +43,7 @@ export default function VolunteerForm() {
 
   const handleSubmit = async () => {
   try {
-    const response = await fetch('/api/voluntario', {
+    const response = await fetch('/api/volunteer', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, phone, area, time, days, about }),
