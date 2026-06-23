@@ -33,6 +33,27 @@ export default function ParceiroFormulario() {
   const [form, setForm] = useState({ nome: '', email: '', tel: '', empresa: '', segmento: '', contrib: '', msg: '' })
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setForm({ ...form, [k]: e.target.value })
 
+  const handleSubmit = async () => {
+  try {
+    const response = await fetch('/api/partner', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form),
+    })
+
+    if (response.ok) {
+      setSubmitted(true)
+    } else {
+      alert('Algo deu errado. Tente novamente.')
+    }
+  } catch (error) {
+    console.error(error)
+    alert('Erro ao enviar. Verifique sua conexão.')
+  }
+}
+
   if (submitted) {
     return (
       <section id="formulario" style={fmStyles.wrap}>
@@ -52,59 +73,132 @@ export default function ParceiroFormulario() {
     )
   }
 
-  return (
-    <section id="formulario" style={fmStyles.wrap}>
-      <div style={fmStyles.inner}>
-        <div style={fmStyles.head}>
-          <div style={fmStyles.eyebrow}>QUERO SER PARCEIRO</div>
-          <h2 style={fmStyles.h2}>Vamos conversar?</h2>
-          <p style={fmStyles.sub}>Preencha e a gente entra em contato em até 24 horas.</p>
+ return (
+  <section id="formulario" style={fmStyles.wrap}>
+    <div style={fmStyles.inner}>
+      <div style={fmStyles.head}>
+        <div style={fmStyles.eyebrow}>QUERO SER PARCEIRO</div>
+        <h2 style={fmStyles.h2}>Vamos conversar?</h2>
+        <p style={fmStyles.sub}>
+          Preencha e a gente entra em contato em até 24 horas.
+        </p>
+      </div>
+
+      <div style={fmStyles.card}>
+        <div style={fmStyles.grid}>
+          <div style={{ ...fmStyles.field, ...fmStyles.full }}>
+            <label style={fmStyles.label}>Nome completo</label>
+            <input
+              style={fmStyles.input}
+              type="text"
+              required
+              value={form.nome}
+              onChange={set('nome')}
+              placeholder="Como devemos te chamar?"
+            />
+          </div>
+
+          <div style={fmStyles.field}>
+            <label style={fmStyles.label}>E-mail corporativo</label>
+            <input
+              style={fmStyles.input}
+              type="email"
+              required
+              value={form.email}
+              onChange={set('email')}
+              placeholder="voce@empresa.com.br"
+            />
+          </div>
+
+          <div style={fmStyles.field}>
+            <label style={fmStyles.label}>Telefone / WhatsApp</label>
+            <input
+              style={fmStyles.input}
+              type="tel"
+              required
+              value={form.tel}
+              onChange={set('tel')}
+              placeholder="(65) 9 0000-0000"
+            />
+          </div>
+
+          <div style={fmStyles.field}>
+            <label style={fmStyles.label}>Nome da empresa</label>
+            <input
+              style={fmStyles.input}
+              type="text"
+              required
+              value={form.empresa}
+              onChange={set('empresa')}
+              placeholder="Razão social ou marca"
+            />
+          </div>
+
+          <div style={fmStyles.field}>
+            <label style={fmStyles.label}>Segmento da empresa</label>
+            <select
+              style={fmStyles.select}
+              required
+              value={form.segmento}
+              onChange={set('segmento')}
+            >
+              <option value="" disabled>
+                Selecione um segmento
+              </option>
+              {SEGMENTOS.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div style={{ ...fmStyles.field, ...fmStyles.full }}>
+            <label style={fmStyles.label}>Como quer contribuir</label>
+            <select
+              style={fmStyles.select}
+              required
+              value={form.contrib}
+              onChange={set('contrib')}
+            >
+              <option value="" disabled>
+                Escolha uma forma de apoio
+              </option>
+              {CONTRIB.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div style={{ ...fmStyles.field, ...fmStyles.full }}>
+            <label style={fmStyles.label}>Mensagem</label>
+            <textarea
+              style={fmStyles.textarea}
+              value={form.msg}
+              onChange={set('msg')}
+              placeholder="Conte um pouco sobre sua empresa e como imagina a parceria"
+            />
+          </div>
         </div>
-        <div style={fmStyles.card}>
-          <div style={fmStyles.grid}>
-            <div style={{ ...fmStyles.field, ...fmStyles.full }}>
-              <label style={fmStyles.label}>Nome completo</label>
-              <input style={fmStyles.input} type="text" required value={form.nome} onChange={set('nome')} placeholder="Como devemos te chamar?" />
-            </div>
-            <div style={fmStyles.field}>
-              <label style={fmStyles.label}>E-mail corporativo</label>
-              <input style={fmStyles.input} type="email" required value={form.email} onChange={set('email')} placeholder="voce@empresa.com.br" />
-            </div>
-            <div style={fmStyles.field}>
-              <label style={fmStyles.label}>Telefone / WhatsApp</label>
-              <input style={fmStyles.input} type="tel" required value={form.tel} onChange={set('tel')} placeholder="(65) 9 0000-0000" />
-            </div>
-            <div style={fmStyles.field}>
-              <label style={fmStyles.label}>Nome da empresa</label>
-              <input style={fmStyles.input} type="text" required value={form.empresa} onChange={set('empresa')} placeholder="Razão social ou marca" />
-            </div>
-            <div style={fmStyles.field}>
-              <label style={fmStyles.label}>Segmento da empresa</label>
-              <select style={fmStyles.select} required value={form.segmento} onChange={set('segmento')}>
-                <option value="" disabled>Selecione um segmento</option>
-                {SEGMENTOS.map((s) => <option key={s} value={s}>{s}</option>)}
-              </select>
-            </div>
-            <div style={{ ...fmStyles.field, ...fmStyles.full }}>
-              <label style={fmStyles.label}>Como quer contribuir</label>
-              <select style={fmStyles.select} required value={form.contrib} onChange={set('contrib')}>
-                <option value="" disabled>Escolha uma forma de apoio</option>
-                {CONTRIB.map((s) => <option key={s} value={s}>{s}</option>)}
-              </select>
-            </div>
-            <div style={{ ...fmStyles.field, ...fmStyles.full }}>
-              <label style={fmStyles.label}>Mensagem</label>
-              <textarea style={fmStyles.textarea} value={form.msg} onChange={set('msg')} placeholder="Conte um pouco sobre sua empresa e como imagina a parceria" />
-            </div>
-          </div>
-          <div style={fmStyles.submitRow}>
-            <button type="button" style={fmStyles.submit} onClick={() => setSubmitted(true)}>
-              Quero ser parceiro →
-            </button>
-            <p style={fmStyles.fine}>🔒 Seus dados são protegidos pela LGPD. Retornamos em até 24 horas úteis.</p>
-          </div>
+
+        <div style={fmStyles.submitRow}>
+          <button
+            type="button"
+            style={fmStyles.submit}
+            onClick={handleSubmit}
+          >
+            Quero ser parceiro →
+          </button>
+
+          <p style={fmStyles.fine}>
+            🔒 Seus dados são protegidos pela LGPD. Retornamos em até 24 horas
+            úteis.
+          </p>
         </div>
       </div>
-    </section>
-  )
+    </div>
+  </section>
+ )
 }
