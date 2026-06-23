@@ -41,6 +41,24 @@ export default function VolunteerForm() {
 
   const toggleDay = (d: string) => setDays((prev) => prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d])
 
+  const handleSubmit = async () => {
+  try {
+    const response = await fetch('/api/voluntario', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, phone, area, time, days, about }),
+    })
+
+    if (response.ok) {
+      setSubmitted(true)
+    } else {
+      alert('Algo deu errado. Tenta novamente.')
+    }
+  } catch (error) {
+    alert('Erro ao enviar. Verifica sua conexão.')
+  }
+}
+
   if (submitted) {
     return (
       <section id="inscricao" style={formStyles.wrap}>
@@ -112,7 +130,7 @@ export default function VolunteerForm() {
           </div>
           <div style={formStyles.footerRow}>
             <span style={formStyles.lgpd}>🔒 Seus dados são protegidos pela LGPD.</span>
-            <button type="button" style={formStyles.submit} onClick={() => setSubmitted(true)}>
+            <button type="button" style={formStyles.submit} onClick={handleSubmit}>
               Quero ser voluntário →
             </button>
           </div>
