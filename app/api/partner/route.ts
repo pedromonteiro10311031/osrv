@@ -1,9 +1,9 @@
 import { Resend } from 'resend'
-
-const resend = new Resend(process.env.RESEND_API_KEY)
+import { appendToSheet } from '@/lib/googleSheets'
 
 export async function POST(request: Request) {
   const data = await request.json()
+  const resend = new Resend(process.env.RESEND_API_KEY)
 
   try {
     await resend.emails.send({
@@ -24,6 +24,17 @@ export async function POST(request: Request) {
         <p>${data.msg}</p>
       `,
     })
+
+    await appendToSheet('Parceiros', [
+      new Date().toLocaleString('pt-BR'),
+      data.nome,
+      data.email,
+      data.tel,
+      data.empresa,
+      data.segmento,
+      data.contrib,
+      data.msg,
+    ])
 
     return Response.json({
       message: 'E-mail enviado com sucesso!',
