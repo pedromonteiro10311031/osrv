@@ -67,9 +67,9 @@ const items: [string, string][] = [
   ['programas-e-projetos', 'Projetos'],
   ['quero-ser-voluntario', 'Voluntariado'],
   ['quero-ser-parceiro', 'Parceiros'],
+  ['venha-nos-conhecer', 'Venha Nos Conhecer'],
   ['transparencia', 'Transparência'],
 ]
-
 export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }) {
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
