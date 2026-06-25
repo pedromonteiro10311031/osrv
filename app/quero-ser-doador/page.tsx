@@ -1,4 +1,3 @@
-import TopNav from '@/components/TopNav'
 import PageHero from '@/components/PageHero'
 import OQueSuaDoacaoFaz from '@/components/OQueSuaDoacaoFaz'
 import ModalidadeDoacao from '@/components/ModalidadeDoacao'
@@ -11,7 +10,6 @@ import Footer from '@/components/Footer'
 export default function QueroSerDoador() {
   return (
     <main>
-      <TopNav />
       <PageHero
         eyebrow="QUERO SER DOADOR · OSRV CUIABÁ"
         title="Sua doação faz uma criança sorrir hoje."

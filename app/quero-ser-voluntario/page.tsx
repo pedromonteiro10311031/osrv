@@ -1,4 +1,3 @@
-import TopNav from '@/components/TopNav'
 import PageHero from '@/components/PageHero'
 import Footer from '@/components/Footer'
 import WhyVolunteer from '@/components/WhyVolunteer'
@@ -12,7 +11,6 @@ import FinalCTA from '@/components/FinalCTA'
 export default function QueroSerVoluntario() {
   return (
     <main>
-      <TopNav />
       <PageHero
         eyebrow="QUERO SER VOLUNTÁRIO · OSRV CUIABÁ"
         title="Doe seu tempo. Multiplique vidas."

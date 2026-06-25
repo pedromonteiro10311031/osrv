@@ -70,8 +70,10 @@ const items: [string, string][] = [
   ['venha-nos-conhecer', 'Venha Nos Conhecer'],
   ['transparencia', 'Transparência'],
 ]
+
 export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }) {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -80,6 +82,11 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  // Fecha o menu mobile automaticamente sempre que o usuário navega pra outra página
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname])
 
   const wrapStyle = {
     ...navStyles.wrap,
@@ -94,7 +101,8 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
         <a href="/" style={navStyles.brand}>
           <span style={navStyles.word}>OSRV</span>
         </a>
-        <div style={navStyles.links}>
+
+        <div className="desktop-links" style={navStyles.links}>
           {items.map(([id, label]) => (
             <a
               key={id}
@@ -105,10 +113,99 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
             </a>
           ))}
         </div>
-        <a href="/quero-ser-doador" style={navStyles.cta}>
+
+        <a href="/quero-ser-doador" className="desktop-cta" style={navStyles.cta}>
           Doar
         </a>
+
+        <button
+          className="hamburger-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Abrir menu"
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
+
+      {menuOpen && (
+        <div className="mobile-menu">
+          {items.map(([id, label]) => (
+            <a
+              key={id}
+              href={`/${id}`}
+              className="mobile-link"
+              style={pathname === `/${id}` ? { color: 'var(--pine-700)', fontWeight: 600 } : {}}
+            >
+              {label}
+            </a>
+          ))}
+          <a href="/quero-ser-doador" className="mobile-cta">
+            Doar
+          </a>
+        </div>
+      )}
+
+      <style jsx>{`
+        .hamburger-btn {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          gap: 5px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+        }
+        .hamburger-btn span {
+          display: block;
+          width: 24px;
+          height: 2px;
+          background: var(--ink-900);
+          border-radius: 2px;
+        }
+        .mobile-menu {
+          display: none;
+        }
+
+        @media (max-width: 860px) {
+          .desktop-links,
+          .desktop-cta {
+            display: none !important;
+          }
+          .hamburger-btn {
+            display: flex;
+          }
+          .mobile-menu {
+            display: flex;
+            flex-direction: column;
+            padding: 16px 32px 24px;
+            background: var(--paper-100);
+            border-bottom: 1px solid var(--border-soft);
+          }
+          .mobile-link {
+            padding: 14px 0;
+            font-size: 16px;
+            color: var(--ink-700);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-soft);
+          }
+          .mobile-cta {
+            margin-top: 16px;
+            display: inline-flex;
+            justify-content: center;
+            background: var(--amber-500);
+            color: #fff;
+            border-radius: 999px;
+            padding: 12px 22px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+          }
+        }
+      `}</style>
     </nav>
   )
 }

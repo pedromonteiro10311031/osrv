@@ -1,4 +1,3 @@
-import TopNav from '@/components/TopNav'
 import PageHero from '@/components/PageHero'
 import ParceiroPorQue from '@/components/ParceiroPorQue'
 import ParceiroComoAjudar from '@/components/ParceiroComoAjudar'
@@ -11,7 +10,6 @@ import Footer from '@/components/Footer'
 export default function QueroSerParceiro() {
   return (
     <main>
-      <TopNav />
       <PageHero
         eyebrow="QUERO SER PARCEIRO · OSRV CUIABÁ"
         title="Sua empresa pode mudar uma geração."

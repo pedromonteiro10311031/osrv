@@ -1,4 +1,3 @@
-import TopNav from '@/components/TopNav'
 import PageHero from '@/components/PageHero'
 import NossaHistoria from '@/components/NossaHistoria'
 import OQueFazemos from '@/components/OQueFazemos'
@@ -10,7 +9,6 @@ import Footer from '@/components/Footer'
 export default function QuemSomos() {
   return (
     <main>
-      <TopNav />
       <PageHero
         eyebrow="OBRAS SOCIAIS RAFAEL VERLANGIERI · JARDIM RENASCER"
         title="Mais que uma instituição."

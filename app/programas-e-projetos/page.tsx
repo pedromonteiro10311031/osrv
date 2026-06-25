@@ -1,4 +1,3 @@
-import TopNav from '@/components/TopNav'
 import PageHero from '@/components/PageHero'
 import Introducao from '@/components/Introducao'
 import ImpactoReal from '@/components/ImpactoReal'
@@ -9,7 +8,6 @@ import Footer from '@/components/Footer'
 export default function ProgramasEProjetos() {
   return (
     <main>
-      <TopNav />
       <PageHero
         eyebrow="PROGRAMAS E PROJETOS · OSRV CUIABÁ"
         title="Tudo que acontece no Jardim Renascer."

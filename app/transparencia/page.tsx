@@ -1,4 +1,3 @@
-import TopNav from '@/components/TopNav'
 import PageHero from '@/components/PageHero'
 import { TranspIntro, TranspIdentificacao, TranspCertificacoes, TranspDemonstracoes } from '@/components/TranspSectionsA'
 import { TranspRecursos, TranspGovernanca, TranspParceiros, TranspOuvidoria } from '@/components/TranspSectionsB'
@@ -8,7 +7,6 @@ import Footer from '@/components/Footer'
 export default function Transparencia() {
   return (
     <main>
-      <TopNav />
       <PageHero
         eyebrow="TRANSPARÊNCIA · OSRV CUIABÁ"
         title="Tudo às claras."
