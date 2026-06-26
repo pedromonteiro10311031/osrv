@@ -26,9 +26,25 @@ const IMPACT_CARDS = [
 
 export default function OQueSuaDoacaoFaz() {
   return (
-    <section id="impacto" style={impactStyles.wrap}>
-      <div style={impactStyles.inner}>
-        <div style={impactStyles.header}>
+    <section id="impacto" style={impactStyles.wrap} className="o-que-doacao">
+      <style>{`
+        @media (max-width: 768px) {
+          .o-que-doacao .oqd-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .o-que-doacao .oqd-header {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
+          .o-que-doacao .oqd-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+      <div style={impactStyles.inner} className="oqd-inner">
+        <div style={impactStyles.header} className="oqd-header">
           <div>
             <div style={impactStyles.eyebrow}>O QUE SUA DOAÇÃO FAZ</div>
             <h2 style={impactStyles.h2}>
@@ -42,7 +58,7 @@ export default function OQueSuaDoacaoFaz() {
             base no custo real médio da OSRV em 2025.
           </p>
         </div>
-        <div style={impactStyles.grid}>
+        <div style={impactStyles.grid} className="oqd-grid">
           {IMPACT_CARDS.map((c) => (
             <article key={c.value} style={impactStyles.card}
               onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.18)'; e.currentTarget.style.transform = 'translateY(-2px)' }}

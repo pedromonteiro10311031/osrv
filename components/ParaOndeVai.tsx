@@ -33,9 +33,33 @@ const SEGMENTS = [
 
 export default function ParaOndeVai() {
   return (
-    <section id="transparencia" style={transpStyles.wrap}>
-      <div style={transpStyles.inner}>
-        <div style={transpStyles.header}>
+    <section id="transparencia" style={transpStyles.wrap} className="para-onde-vai">
+      <style>{`
+        @media (max-width: 768px) {
+          .para-onde-vai .pov-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .para-onde-vai .pov-header {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
+          .para-onde-vai .pov-chart {
+            padding: 28px 20px 24px !important;
+            box-sizing: border-box;
+          }
+          .para-onde-vai .pov-bar {
+            max-width: 100% !important;
+          }
+          .para-onde-vai .pov-legend {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+        }
+      `}</style>
+      <div style={transpStyles.inner} className="pov-inner">
+        <div style={transpStyles.header} className="pov-header">
           <div>
             <div style={transpStyles.eyebrow}>TRANSPARÊNCIA · ONDE VAI O DINHEIRO</div>
             <h2 style={transpStyles.h2}>
@@ -47,13 +71,13 @@ export default function ParaOndeVai() {
             Esta é a destinação média da OSRV nos últimos três anos. Auditoria externa, balanço anual público, e o detalhamento mês a mês fica disponível para download.
           </p>
         </div>
-        <div style={transpStyles.chartWrap}>
-          <div style={transpStyles.bar} role="img" aria-label="Destinação dos recursos">
+        <div style={transpStyles.chartWrap} className="pov-chart">
+          <div style={transpStyles.bar} role="img" aria-label="Destinação dos recursos" className="pov-bar">
             {SEGMENTS.map((s) => (
               <div key={s.label} style={{ ...transpStyles.seg, flex: s.pct, background: s.color }} />
             ))}
           </div>
-          <div style={transpStyles.legend}>
+          <div style={transpStyles.legend} className="pov-legend">
             {SEGMENTS.map((s) => (
               <div key={s.label} style={transpStyles.legendItem}>
                 <div style={{ ...transpStyles.legendBarStub, background: s.color }} />

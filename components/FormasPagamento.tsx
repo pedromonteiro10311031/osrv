@@ -29,8 +29,27 @@ const METHODS = [
 
 export default function FormasPagamento() {
   return (
-    <section id="pagamento" style={payStyles.wrap}>
-      <div style={payStyles.inner}>
+    <section id="pagamento" style={payStyles.wrap} className="formas-pagamento">
+      <style>{`
+        @media (max-width: 768px) {
+          .formas-pagamento .fp-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .formas-pagamento .fp-row {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .formas-pagamento .fp-secure {
+            flex-direction: column !important;
+            gap: 14px !important;
+          }
+          .formas-pagamento .fp-secure-badges {
+            flex-wrap: wrap !important;
+          }
+        }
+      `}</style>
+      <div style={payStyles.inner} className="fp-inner">
         <div style={payStyles.header}>
           <div style={payStyles.eyebrow}>FORMAS DE PAGAMENTO</div>
           <h2 style={payStyles.h2}>Pague do jeito que for melhor para você.</h2>
@@ -38,7 +57,7 @@ export default function FormasPagamento() {
             Quatro formas de doar, todas processadas em ambiente seguro fora do nosso site. A OSRV não armazena dados de cartão em nenhum momento.
           </p>
         </div>
-        <div style={payStyles.row}>
+        <div style={payStyles.row} className="fp-row">
           {METHODS.map((m) => (
             <div key={m.name} style={payStyles.card}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--border-hard)'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.08)' }}
@@ -56,13 +75,13 @@ export default function FormasPagamento() {
             </div>
           ))}
         </div>
-        <div style={payStyles.secureRow}>
+        <div style={payStyles.secureRow} className="fp-secure">
           <div style={payStyles.secureIcon}>🔒</div>
           <p style={payStyles.secureText}>
             <span style={payStyles.secureStrong}>Pagamento processado por gateway externo seguro (PCI-DSS).</span>{' '}
             Você será redirecionado para concluir a doação. A OSRV não armazena dados sensíveis do seu cartão ou conta.
           </p>
-          <div style={payStyles.secureBadges}>
+          <div style={payStyles.secureBadges} className="fp-secure-badges">
             <span style={payStyles.secureBadge}>🛡 PCI-DSS</span>
             <span style={payStyles.secureBadge}>SSL 256</span>
             <span style={payStyles.secureBadge}>LGPD</span>

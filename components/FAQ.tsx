@@ -64,9 +64,20 @@ function FaqItem({ q, a, isOpen, onToggle }: { q: string, a: string, isOpen: boo
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState(0)
   return (
-    <section id="faq" style={faqStyles.wrap}>
-      <div style={faqStyles.inner}>
-        <div style={faqStyles.layout}>
+    <section id="faq" style={faqStyles.wrap} className="faq-section">
+      <style>{`
+        @media (max-width: 768px) {
+          .faq-section .faq-inner {
+            padding: 0 20px !important;
+          }
+          .faq-section .faq-layout {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+        }
+      `}</style>
+      <div style={faqStyles.inner} className="faq-inner">
+        <div style={faqStyles.layout} className="faq-layout">
           <div>
             <div style={faqStyles.eyebrow}>PERGUNTAS FREQUENTES</div>
             <h2 style={faqStyles.h2}>

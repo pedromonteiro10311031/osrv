@@ -73,8 +73,25 @@ function AmountCard({ variant, name, sub, hi, ribbonLabel, freqLabel }: { varian
 
 export default function ModalidadeDoacao() {
   return (
-    <section id="modalidade" style={modStyles.wrap}>
-      <div style={modStyles.inner}>
+    <section id="modalidade" style={modStyles.wrap} className="modalidade-doacao">
+      <style>{`
+        @media (max-width: 768px) {
+          .modalidade-doacao .modalidade-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .modalidade-doacao .modalidade-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .modalidade-doacao article {
+            padding: 40px 24px 32px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
+      <div style={modStyles.inner} className="modalidade-inner">
         <div style={modStyles.header}>
           <div style={modStyles.eyebrow}>ESCOLHA SUA MODALIDADE</div>
           <h2 style={modStyles.h2}>Doe uma vez. Ou esteja com a gente todo mês.</h2>
@@ -82,7 +99,7 @@ export default function ModalidadeDoacao() {
             A doação mensal é o que mantém a quadra aberta, o tatame preparado e o lanche servido sem sobressaltos. Mas qualquer valor, em qualquer formato, chega no Jardim Renascer.
           </p>
         </div>
-        <div style={modStyles.grid}>
+        <div style={modStyles.grid} className="modalidade-grid">
           <AmountCard variant="mensal" name="Doação Mensal" sub="Você passa a ser madrinha ou padrinho de uma criança. Cobrança recorrente automática no cartão." hi ribbonLabel="Mais impacto" freqLabel="/ mês" />
           <AmountCard variant="unica" name="Doação Única" sub="Um gesto pontual — perfeito para campanhas, datas especiais ou para conhecer o trabalho da OSRV antes de assinar." ribbonLabel={null} freqLabel="" />
         </div>

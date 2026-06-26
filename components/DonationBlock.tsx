@@ -95,7 +95,23 @@ const IMPACTS: Record<number, Record<string, string>> = {
   200: { mensal: 'Uma turma de judô inteira, por uma semana.', unica: 'Uma turma de judô, por uma semana.' },
 }
 
-export default function DonationBlock() {
+interface DonationBlockProps {
+  eyebrow?: string
+  subtitle?: string
+  lead?: string
+  bullets?: string[]
+}
+
+export default function DonationBlock({
+  eyebrow = 'COMO AJUDAR',
+  subtitle = 'Escolha como você quer transformar vidas.',
+  lead = 'Você escolhe o valor. A gente mantém o tatame aberto, o tabuleiro de xadrez montado, e a família atendida no Jardim Renascer.',
+  bullets = [
+    '✓ Recibo dedutível do IR (CEBAS · OSCIP)',
+    '✓ Cancele a qualquer momento, 1 clique',
+    '✓ Relatório financeiro anual público',
+  ],
+}: DonationBlockProps) {
   const [freq, setFreq] = useState('mensal')
   const [amount, setAmount] = useState(50)
   const [custom, setCustom] = useState('')
@@ -153,15 +169,10 @@ export default function DonationBlock() {
       `}</style>
       <div style={donStyles.inner} className="donation-inner">
         <div style={donStyles.left} className="donation-left">
-          <div style={donStyles.eyebrow}>COMO AJUDAR</div>
-          <h2 style={donStyles.subtitle}>Escolha como você quer transformar vidas.</h2>
-          <p style={donStyles.lead}>
-            Você escolhe o valor. A gente mantém o tatame aberto, o tabuleiro
-            de xadrez montado, e a família atendida no Jardim Renascer.
-          </p>
-          <p style={donStyles.bullet}>✓ Recibo dedutível do IR (CEBAS · OSCIP)</p>
-          <p style={donStyles.bullet}>✓ Cancele a qualquer momento, 1 clique</p>
-          <p style={donStyles.bullet}>✓ Relatório financeiro anual público</p>
+          <div style={donStyles.eyebrow}>{eyebrow}</div>
+          <h2 style={donStyles.subtitle}>{subtitle}</h2>
+          <p style={donStyles.lead}>{lead}</p>
+          {bullets.map((b, i) => <p key={i} style={donStyles.bullet}>{b}</p>)}
         </div>
         <div style={donStyles.card} className="donation-card">
           <div style={donStyles.toggleRow} className="donation-toggle">
