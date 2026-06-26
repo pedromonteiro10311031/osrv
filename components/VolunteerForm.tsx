@@ -15,7 +15,7 @@ const formStyles = {
   fieldFull: { gridColumn: '1 / -1' },
   label: { fontSize: 13, fontWeight: 600, color: 'var(--ink-700)' },
   input: { fontSize: 15, color: 'var(--ink-900)', background: '#fff', padding: '12px 14px', border: '1px solid var(--ink-200)', borderRadius: 4, outline: 'none', width: '100%', boxSizing: 'border-box' as const },
-  textarea: { fontSize: 15, color: 'var(--ink-900)', background: '#fff', padding: '12px 14px', border: '1px solid var(--ink-200)', borderRadius: 4, outline: 'none', width: '100%', minHeight: 120, boxSizing: 'border-box' as const, resize: 'vertical' as const },
+  textarea: { fontFamily: 'var(--font-sans)', fontSize: 15, color: 'var(--ink-900)', background: '#fff', padding: '12px 14px', border: '1px solid var(--ink-200)', borderRadius: 4, outline: 'none', width: '100%', minHeight: 120, boxSizing: 'border-box' as const, resize: 'vertical' as const },
   daysRow: { display: 'flex', flexWrap: 'wrap' as const, gap: 8 },
   submit: { display: 'inline-flex', alignItems: 'center', gap: 10, background: 'var(--amber-500)', color: '#fff', border: 0, borderRadius: 999, padding: '16px 30px', fontSize: 16, fontWeight: 500, cursor: 'pointer' },
   footerRow: { marginTop: 32, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' as const },
@@ -75,15 +75,48 @@ export default function VolunteerForm() {
   }
 
   return (
-    <section id="inscricao" style={formStyles.wrap}>
-      <div style={formStyles.inner}>
+    <section id="inscricao" style={formStyles.wrap} className="volunteer-form">
+      <style>{`
+        @media (max-width: 768px) {
+          .volunteer-form .vf-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .volunteer-form .vf-card {
+            padding: 32px 20px 28px !important;
+            box-sizing: border-box;
+          }
+          .volunteer-form .vf-grid {
+            grid-template-columns: 1fr !important;
+            gap: 18px !important;
+          }
+          .volunteer-form .vf-grid input,
+          .volunteer-form .vf-grid select,
+          .volunteer-form .vf-grid textarea {
+            padding: 14px !important;
+            font-size: 16px !important;
+          }
+          .volunteer-form .vf-footer {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+            margin-top: 24px !important;
+          }
+          .volunteer-form .vf-submit {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+        }
+      `}</style>
+      <div style={formStyles.inner} className="vf-inner">
         <div style={formStyles.head}>
           <div style={formStyles.eyebrow}>QUERO ME INSCREVER</div>
           <h2 style={formStyles.h2}>Pronto para começar?</h2>
           <p style={formStyles.sub}>A gente entra em contato em até 48 horas.</p>
         </div>
-        <div style={formStyles.card}>
-          <div style={formStyles.grid}>
+        <div style={formStyles.card} className="vf-card">
+          <div style={formStyles.grid} className="vf-grid">
             <div style={{ ...formStyles.field, ...formStyles.fieldFull }}>
               <label style={formStyles.label}>Nome completo</label>
               <input style={formStyles.input} type="text" placeholder="Como você quer ser chamado" value={name} onChange={(e) => setName(e.target.value)} required />
@@ -128,9 +161,9 @@ export default function VolunteerForm() {
               <textarea style={formStyles.textarea} placeholder="Sua formação, o que te trouxe até aqui, o que você gostaria de fazer na OSRV…" value={about} onChange={(e) => setAbout(e.target.value)} />
             </div>
           </div>
-          <div style={formStyles.footerRow}>
+          <div style={formStyles.footerRow} className="vf-footer">
             <span style={formStyles.lgpd}>🔒 Seus dados são protegidos pela LGPD.</span>
-            <button type="button" style={formStyles.submit} onClick={handleSubmit}>
+            <button type="button" style={formStyles.submit} className="vf-submit" onClick={handleSubmit}>
               Quero ser voluntário →
             </button>
           </div>

@@ -39,25 +39,56 @@ function AreaCard({ a }: { a: Area }) {
       onMouseLeave={() => setHover(false)}
     >
       <div style={areasStyles.iconRow}>
-        <span style={areasStyles.iconBubble}>{a.icon}</span>
+        <span style={areasStyles.iconBubble} className="areas-icon-bubble">{a.icon}</span>
         <span style={areasStyles.num}>— {num}</span>
       </div>
-      <h3 style={areasStyles.title}>{a.title}</h3>
-      <p style={areasStyles.desc}>{a.desc}</p>
+      <h3 style={areasStyles.title} className="areas-title">{a.title}</h3>
+      <p style={areasStyles.desc} className="areas-desc">{a.desc}</p>
     </article>
   )
 }
 
 export default function Areas() {
   return (
-    <section id="areas" style={areasStyles.wrap}>
-      <div style={areasStyles.inner}>
-        <div style={areasStyles.head}>
+    <section id="areas" style={areasStyles.wrap} className="areas-section">
+      <style>{`
+        @media (max-width: 768px) {
+          .areas-section .areas-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .areas-section .areas-head {
+            margin-bottom: 40px !important;
+          }
+          .areas-section .areas-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .areas-section .areas-grid article {
+            padding: 22px 20px !important;
+            gap: 10px !important;
+          }
+          .areas-section .areas-icon-bubble {
+            width: 38px !important;
+            height: 38px !important;
+            font-size: 17px !important;
+          }
+          .areas-section .areas-title {
+            font-size: 18px !important;
+          }
+          .areas-section .areas-desc {
+            font-size: 14px !important;
+          }
+        }
+      `}</style>
+      <div style={areasStyles.inner} className="areas-inner">
+        <div style={areasStyles.head} className="areas-head">
           <div style={areasStyles.eyebrow}>ONDE VOCÊ PODE ATUAR</div>
           <h2 style={areasStyles.h2}>Tem espaço para o seu talento.</h2>
           <p style={areasStyles.sub}>Qualquer habilidade é bem-vinda.</p>
         </div>
-        <div style={areasStyles.grid}>
+        <div style={areasStyles.grid} className="areas-grid">
           {AREAS.map((a) => <AreaCard key={a.id} a={a} />)}
         </div>
       </div>

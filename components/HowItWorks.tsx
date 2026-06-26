@@ -24,14 +24,35 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section style={howStyles.wrap}>
-      <div style={howStyles.inner}>
+    <section style={howStyles.wrap} className="how-it-works">
+      <style>{`
+        @media (max-width: 768px) {
+          .how-it-works .hiw-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .how-it-works .hiw-track {
+            grid-template-columns: 1fr !important;
+            border-bottom: none !important;
+          }
+          .how-it-works .hiw-track > div {
+            border-right: none !important;
+            border-bottom: 1px solid var(--border-soft);
+            padding: 28px 0 !important;
+          }
+          .how-it-works .hiw-track > div:last-child {
+            border-bottom: none !important;
+          }
+        }
+      `}</style>
+      <div style={howStyles.inner} className="hiw-inner">
         <div style={howStyles.head}>
           <div style={howStyles.eyebrow}>COMO FUNCIONA</div>
           <h2 style={howStyles.h2}>Simples, humano e sem burocracia.</h2>
           <p style={howStyles.sub}>Do formulário ao tatame em poucos passos.</p>
         </div>
-        <div style={howStyles.track}>
+        <div style={howStyles.track} className="hiw-track">
           {STEPS.map((s, i) => (
             <div key={s.n} style={{ ...howStyles.step, ...(i === STEPS.length - 1 ? howStyles.stepLast : {}) }}>
               <div style={howStyles.numRow}>

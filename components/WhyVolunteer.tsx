@@ -20,14 +20,26 @@ const WHY_CARDS = [
 
 export default function WhyVolunteer() {
   return (
-    <section style={whyStyles.wrap}>
-      <div style={whyStyles.inner}>
+    <section style={whyStyles.wrap} className="why-volunteer">
+      <style>{`
+        @media (max-width: 768px) {
+          .why-volunteer .wv-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .why-volunteer .wv-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+      <div style={whyStyles.inner} className="wv-inner">
         <div style={whyStyles.head}>
           <div style={whyStyles.eyebrow}>POR QUE VOLUNTARIAR</div>
           <h2 style={whyStyles.h2}>Seu tempo vale mais do que você imagina.</h2>
           <p style={whyStyles.sub}>E a gente prova isso todo dia.</p>
         </div>
-        <div style={whyStyles.grid}>
+        <div style={whyStyles.grid} className="wv-grid">
           {WHY_CARDS.map((c) => (
             <article key={c.title} style={whyStyles.card}>
               <span style={whyStyles.iconWrap}>{c.icon}</span>
