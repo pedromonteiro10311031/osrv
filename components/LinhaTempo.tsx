@@ -14,8 +14,25 @@ const trajStyles = {
 
 export default function LinhaTempo() {
   return (
-    <section id="trajetoria" style={trajStyles.wrap}>
-      <div style={trajStyles.content}>
+    <section id="trajetoria" style={trajStyles.wrap} className="linha-tempo">
+      <style>{`
+        @media (max-width: 768px) {
+          .linha-tempo {
+            grid-template-columns: 1fr !important;
+            min-height: unset !important;
+          }
+          .linha-tempo .lt-portrait {
+            min-height: unset !important;
+            aspect-ratio: 16 / 9;
+            order: -1;
+          }
+          .linha-tempo .lt-content {
+            padding: 48px 28px !important;
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
+      <div style={trajStyles.content} className="lt-content">
         <div style={trajStyles.eyebrow}>Nossa Trajetória</div>
         <h2 style={trajStyles.h2}>
           Marcos que nos trouxeram até aqui.
@@ -28,7 +45,7 @@ export default function LinhaTempo() {
           Cada projeto que surgiu veio de uma necessidade real da comunidade. Não planejamos em salas fechadas — ouvimos, experimentamos e construímos junto com as famílias do bairro. Hoje, mais de 250 crianças passam pela OSRV regularmente. E a história continua.
         </p>
       </div>
-      <div style={trajStyles.portrait}>
+      <div style={trajStyles.portrait} className="lt-portrait">
         <div style={trajStyles.portraitImg}></div>
         <div style={trajStyles.portraitOverlay}></div>
         <span style={trajStyles.caption}>JARDIM RENASCER</span>

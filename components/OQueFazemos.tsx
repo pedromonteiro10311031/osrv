@@ -47,9 +47,21 @@ function ProgCard({ p }: { p: Programa }) {
 
 export default function OQueFazemos() {
   return (
-    <section id="o-que-fazemos" style={fazerStyles.wrap}>
+    <section id="o-que-fazemos" style={fazerStyles.wrap} className="o-que-fazemos">
+      <style>{`
+        @media (max-width: 768px) {
+          .o-que-fazemos .oqf-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .o-que-fazemos .oqf-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
       <div style={fazerStyles.glow}></div>
-      <div style={fazerStyles.inner}>
+      <div style={fazerStyles.inner} className="oqf-inner">
         <div style={fazerStyles.head}>
           <div style={fazerStyles.eyebrow}>O que fazemos</div>
           <h2 style={fazerStyles.h2}>
@@ -60,7 +72,7 @@ export default function OQueFazemos() {
             Oferecemos uma gama de atividades que promovem o desenvolvimento integral dos nossos atendidos — da educação básica à formação de cidadãos engajados e conscientes.
           </p>
         </div>
-        <div style={fazerStyles.grid}>
+        <div style={fazerStyles.grid} className="oqf-grid">
           {PROGRAMAS.map((p) => <ProgCard key={p.n} p={p} />)}
         </div>
       </div>

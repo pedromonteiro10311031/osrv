@@ -22,9 +22,27 @@ const VALORES = [
 
 export default function PorQueFazemos() {
   return (
-    <section id="por-que" style={porqueStyles.wrap}>
-      <div style={porqueStyles.inner}>
-        <div style={porqueStyles.head}>
+    <section id="por-que" style={porqueStyles.wrap} className="por-que-fazemos">
+      <style>{`
+        @media (max-width: 768px) {
+          .por-que-fazemos .pqf-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .por-que-fazemos .pqf-head {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
+          .por-que-fazemos .pqf-row {
+            grid-template-columns: 1fr !important;
+            gap: 8px !important;
+            padding: 20px 0 !important;
+          }
+        }
+      `}</style>
+      <div style={porqueStyles.inner} className="pqf-inner">
+        <div style={porqueStyles.head} className="pqf-head">
           <div>
             <div style={porqueStyles.eyebrow}>Por que fazemos</div>
             <h2 style={porqueStyles.h2}>
@@ -38,7 +56,7 @@ export default function PorQueFazemos() {
         </div>
         <div style={porqueStyles.list}>
           {VALORES.map((v) => (
-            <div key={v.n} style={porqueStyles.row}>
+            <div key={v.n} style={porqueStyles.row} className="pqf-row">
               <div style={porqueStyles.num}>{v.n}</div>
               <h3 style={porqueStyles.rowTitle}>{v.title}</h3>
               <p style={porqueStyles.rowDesc}>{v.desc}</p>

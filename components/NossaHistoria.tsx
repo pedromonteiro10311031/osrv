@@ -12,8 +12,15 @@ const histStyles = {
 
 export default function NossaHistoria() {
   return (
-    <section id="historia" style={histStyles.wrap}>
-      <div style={histStyles.inner}>
+    <section id="historia" style={histStyles.wrap} className="nossa-historia">
+      <style>{`
+        @media (max-width: 768px) {
+          .nossa-historia .nh-inner {
+            padding: 0 20px !important;
+          }
+        }
+      `}</style>
+      <div style={histStyles.inner} className="nh-inner">
         <div style={histStyles.eyebrow}>Quem Somos</div>
         <h2 style={histStyles.h2}>
           Em Jardim Renascer, plantamos futuros.
