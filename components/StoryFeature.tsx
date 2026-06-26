@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const storyStyles = {
   wrap: {
     background: '#1A2A1E',
@@ -99,7 +101,7 @@ export default function StoryFeature() {
             <div style={storyStyles.role}>Ação OSRV × Cacau Show</div>
           </div>
         </div>
-        <a href="/quem-somos" style={storyStyles.link}>Ler a história completa →</a>
+        <Link href="/quem-somos" style={storyStyles.link}>Ler a história completa →</Link>
       </div>
     </section>
   )

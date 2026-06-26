@@ -1,5 +1,10 @@
 const WP_API = process.env.WORDPRESS_API_URL || 'http://localhost/OSRV_Prod/wordpress'
 
+export function fixMediaUrl(url: string): string {
+  if (!url) return url
+  return url.replace(/https?:\/\/localhost\/OSRV_Prod\/wordpress/, WP_API)
+}
+
 export type WpCategory = {
   id: number
   name: string

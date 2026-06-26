@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const footStyles = {
   wrap: { background: 'var(--pine-900)', color: 'rgba(250, 248, 244, 0.85)', padding: '80px 0 32px' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
@@ -55,32 +57,32 @@ export default function Footer() {
           <div>
             <div style={footStyles.colH}>A OSRV</div>
             <ul style={footStyles.list}>
-              <li><a href="/quem-somos" style={footStyles.link}>Quem somos</a></li>
-              <li><a href="/nossa-comunidade" style={footStyles.link}>Nossa comunidade</a></li>
-              <li><a href="/venha-nos-conhecer" style={footStyles.link}>Venha nos conhecer</a></li>
+              <li><Link href="/quem-somos" style={footStyles.link}>Quem somos</Link></li>
+              <li><Link href="/nossa-comunidade" style={footStyles.link}>Nossa comunidade</Link></li>
+              <li><Link href="/venha-nos-conhecer" style={footStyles.link}>Venha nos conhecer</Link></li>
             </ul>
           </div>
           <div>
             <div style={footStyles.colH}>Projetos e espaços</div>
             <ul style={footStyles.list}>
-              <li><a href="/programas-e-projetos" style={footStyles.link}>Todos os projetos</a></li>
-              <li><a href="/brecho" style={footStyles.link}>Brechó</a></li>
-              <li><a href="/biblioteca" style={footStyles.link}>Biblioteca</a></li>
-              <li><a href="/quero-ser-voluntario" style={footStyles.link}>Voluntariado</a></li>
+              <li><Link href="/programas-e-projetos" style={footStyles.link}>Todos os projetos</Link></li>
+              <li><Link href="/brecho" style={footStyles.link}>Brechó</Link></li>
+              <li><Link href="/biblioteca" style={footStyles.link}>Biblioteca</Link></li>
+              <li><Link href="/quero-ser-voluntario" style={footStyles.link}>Voluntariado</Link></li>
             </ul>
           </div>
           <div>
             <div style={footStyles.colH}>Apoie</div>
             <ul style={footStyles.list}>
-              <li><a href="/quero-ser-doador" style={footStyles.link}>Doar</a></li>
-              <li><a href="/quero-ser-parceiro" style={footStyles.link}>Ser parceiro empresa</a></li>
+              <li><Link href="/quero-ser-doador" style={footStyles.link}>Doar</Link></li>
+              <li><Link href="/quero-ser-parceiro" style={footStyles.link}>Ser parceiro empresa</Link></li>
             </ul>
           </div>
           <div>
             <div style={footStyles.colH}>Conteúdo e transparência</div>
             <ul style={footStyles.list}>
-              <li><a href="/blog" style={footStyles.link}>Blog</a></li>
-              <li><a href="/transparencia" style={footStyles.link}>Transparência</a></li>
+              <li><Link href="/blog" style={footStyles.link}>Blog</Link></li>
+              <li><Link href="/transparencia" style={footStyles.link}>Transparência</Link></li>
             </ul>
           </div>
         </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 const apStyles = {
   wrap: { background: 'var(--bg-page)', padding: '120px 0 96px' },
@@ -26,7 +27,7 @@ function ApoioCard({ tag, title, desc, cta, ctaStyle, href }: { tag: string, tit
       <span style={apStyles.cardTag}>{tag}</span>
       <h3 style={apStyles.cardTitle}>{title}</h3>
       <p style={apStyles.cardDesc}>{desc}</p>
-      <a href={href} style={ctaStyle === 'primary' ? apStyles.ctaPrimary : apStyles.ctaOutline}>{cta} →</a>
+      <Link href={href} style={ctaStyle === 'primary' ? apStyles.ctaPrimary : apStyles.ctaOutline}>{cta} →</Link>
     </div>
   )
 }

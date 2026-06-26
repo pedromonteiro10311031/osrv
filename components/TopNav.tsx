@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 const navStyles = {
   wrap: {
@@ -99,25 +100,25 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
   return (
     <nav style={wrapStyle}>
       <div style={navStyles.inner}>
-        <a href="/" style={navStyles.brand}>
+        <Link href="/" style={navStyles.brand}>
           <span style={navStyles.word}>OSRV</span>
-        </a>
+        </Link>
 
         <div className="desktop-links" style={navStyles.links}>
           {items.map(([id, label]) => (
-            <a
+            <Link
               key={id}
               href={`/${id}`}
               style={{ ...navStyles.link, ...(pathname === `/${id}` ? navStyles.linkActive : {}) }}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </div>
 
-        <a href="/quero-ser-doador" className="desktop-cta" style={navStyles.cta}>
+        <Link href="/quero-ser-doador" className="desktop-cta" style={navStyles.cta}>
           Doar
-        </a>
+        </Link>
 
         <button
           className="hamburger-btn"
@@ -134,18 +135,18 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
       {menuOpen && (
         <div className="mobile-menu">
           {items.map(([id, label]) => (
-            <a
+            <Link
               key={id}
               href={`/${id}`}
               className="mobile-link"
               style={pathname === `/${id}` ? { color: 'var(--pine-700)', fontWeight: 600 } : {}}
             >
               {label}
-            </a>
+            </Link>
           ))}
-          <a href="/quero-ser-doador" className="mobile-cta">
+          <Link href="/quero-ser-doador" className="mobile-cta">
             Doar
-          </a>
+          </Link>
         </div>
       )}
 

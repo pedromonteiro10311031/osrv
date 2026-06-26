@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const partStyles = {
   wrap: {
     background: 'var(--paper-100)',
@@ -105,9 +107,9 @@ export default function PartnersStrip() {
               </a>
             </div>
           </div>
-          <a href="/quero-ser-parceiro" style={partStyles.btn}>
+          <Link href="/quero-ser-parceiro" style={partStyles.btn}>
             Quero ser parceiro →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

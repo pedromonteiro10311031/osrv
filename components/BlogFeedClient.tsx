@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { BlogPost, WpCategory } from '@/lib/wordpress'
+import Link from 'next/link'
+import { BlogPost, WpCategory, fixMediaUrl } from '@/lib/wordpress'
 
 const s = {
   grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 },
@@ -106,11 +107,11 @@ function stripHtml(html: string) {
 
 function PostCard({ post }: { post: BlogPost }) {
   const [hover, setHover] = useState(false)
-  const featuredImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null
+  const featuredImage = fixMediaUrl(post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '')
   const excerpt = stripHtml(post.excerpt.rendered)
 
   return (
-    <a
+    <Link
       href={`/blog/${post.slug}`}
       style={hover ? { ...s.card, ...s.cardHover } : s.card}
       onMouseEnter={() => setHover(true)}
@@ -131,7 +132,7 @@ function PostCard({ post }: { post: BlogPost }) {
         </p>
         <span style={s.readMore}>Ler mais →</span>
       </div>
-    </a>
+    </Link>
   )
 }
 

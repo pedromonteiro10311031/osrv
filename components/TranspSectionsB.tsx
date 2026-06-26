@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 type Seg = { value: number; label: string; color: string }
 
@@ -366,12 +367,12 @@ export function TranspCTA({ onDonate }: { onDonate?: () => void }) {
             >
               ♥ Quero doar
             </button>
-            <a href="/quero-ser-voluntario" style={{ display: 'inline-flex', alignItems: 'center', padding: '14px 28px', border: '1px solid var(--border-hard)', borderRadius: 999, fontSize: 15, color: 'var(--ink-900)', textDecoration: 'none', fontWeight: 500 }}>
+            <Link href="/quero-ser-voluntario" style={{ display: 'inline-flex', alignItems: 'center', padding: '14px 28px', border: '1px solid var(--border-hard)', borderRadius: 999, fontSize: 15, color: 'var(--ink-900)', textDecoration: 'none', fontWeight: 500 }}>
               Ser voluntário
-            </a>
-            <a href="/quero-ser-parceiro" style={{ display: 'inline-flex', alignItems: 'center', padding: '14px 28px', border: '1px solid var(--border-hard)', borderRadius: 999, fontSize: 15, color: 'var(--ink-900)', textDecoration: 'none', fontWeight: 500 }}>
+            </Link>
+            <Link href="/quero-ser-parceiro" style={{ display: 'inline-flex', alignItems: 'center', padding: '14px 28px', border: '1px solid var(--border-hard)', borderRadius: 999, fontSize: 15, color: 'var(--ink-900)', textDecoration: 'none', fontWeight: 500 }}>
               Parceria empresa
-            </a>
+            </Link>
           </div>
         </div>
       </div>

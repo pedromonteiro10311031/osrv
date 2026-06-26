@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const transpStyles = {
   wrap: { background: 'var(--paper-100)', padding: '88px 0 120px' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
@@ -69,9 +71,9 @@ export default function ParaOndeVai() {
               <span style={transpStyles.footerStrong}>Cada real é rastreado.</span>{' '}
               Veja nossos relatórios financeiros completos, auditados e publicados todo ano.
             </div>
-            <a href="/transparencia" style={transpStyles.reportLink}>
+            <Link href="/transparencia" style={transpStyles.reportLink}>
               🛡 Ver relatórios →
-            </a>
+            </Link>
           </div>
         </div>
       </div>

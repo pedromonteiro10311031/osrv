@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 const projStyles = {
   wrap: { background: 'var(--paper-200)', padding: '96px 0' },
@@ -138,7 +139,7 @@ function ProjectCard({ p }: { p: Project }) {
     : projStyles.tag
 
   return (
-    <a href={`/programas-e-projetos#${p.id}`} style={cardStyle} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <Link href={`/programas-e-projetos#${p.id}`} style={cardStyle} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <div style={{ ...projStyles.band, background: p.bg }}>
         <span style={projStyles.placeholder}>{p.photoHint}</span>
         <div style={projStyles.bandScrim}></div>
@@ -149,7 +150,7 @@ function ProjectCard({ p }: { p: Project }) {
         <p style={projStyles.desc}>{p.desc}</p>
         <span style={projStyles.link}>Conhecer o projeto →</span>
       </div>
-    </a>
+    </Link>
   )
 }
 

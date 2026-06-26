@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const heroStyles = {
   wrap: {
     position: 'relative' as const,
@@ -152,9 +154,9 @@ export default function Hero({ onDonateClick }: { onDonateClick?: () => void }) 
           Há mais de 12 anos transformando vidas em Jardim Renascer, Cuiabá.
         </p>
         <div style={heroStyles.ctas}>
-          <a href="/doador" style={heroStyles.ctaPrimary}>
+          <Link href="/doador" style={heroStyles.ctaPrimary}>
             Doar agora →
-          </a>
+          </Link>
           <a href="#projetos" style={heroStyles.ctaGhost}>
             Conhecer os projetos
           </a>
