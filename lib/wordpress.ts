@@ -5,6 +5,11 @@ export function fixMediaUrl(url: string): string {
   return url.replace(/https?:\/\/localhost\/OSRV_Prod\/wordpress/, WP_API)
 }
 
+export function fixContentUrls(html: string): string {
+  if (!html) return html
+  return html.replace(/https?:\/\/localhost\/OSRV_Prod\/wordpress/g, WP_API)
+}
+
 export type WpCategory = {
   id: number
   name: string
@@ -31,8 +36,9 @@ export type BlogPost = {
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
+    // TODO: trocar para `next: { revalidate: 3600 }` antes de produção (cache: 'no-store' é só pra fase de testes)
     const res = await fetch(`${WP_API}/wp-json/wp/v2/posts?_embed`, {
-      next: { revalidate: 3600 },
+      cache: 'no-store',
     })
 
     if (!res.ok) throw new Error(`WordPress API error: ${res.status}`)
@@ -48,7 +54,8 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
   try {
     const res = await fetch(
       `${WP_API}/wp-json/wp/v2/posts?slug=${slug}&_embed`,
-      { next: { revalidate: 3600 } }
+      // TODO: trocar para `next: { revalidate: 3600 }` antes de produção (cache: 'no-store' é só pra fase de testes)
+      { cache: 'no-store' }
     )
 
     if (!res.ok) throw new Error('Failed to fetch post')
