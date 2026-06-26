@@ -111,7 +111,7 @@ function PostCard({ post }: { post: BlogPost }) {
 
   return (
     <a
-      href={`/eventos-e-noticias/${post.slug}`}
+      href={`/blog/${post.slug}`}
       style={hover ? { ...s.card, ...s.cardHover } : s.card}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}

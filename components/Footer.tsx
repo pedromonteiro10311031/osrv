@@ -79,7 +79,7 @@ export default function Footer() {
           <div>
             <div style={footStyles.colH}>Conteúdo e transparência</div>
             <ul style={footStyles.list}>
-              <li><a href="/eventos-e-noticias" style={footStyles.link}>Eventos & notícias</a></li>
+              <li><a href="/blog" style={footStyles.link}>Blog</a></li>
               <li><a href="/transparencia" style={footStyles.link}>Transparência</a></li>
             </ul>
           </div>

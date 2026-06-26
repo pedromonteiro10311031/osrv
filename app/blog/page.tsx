@@ -3,11 +3,11 @@ import BlogFeed from '@/components/BlogFeed'
 import FinalCTA from '@/components/FinalCTA'
 import Footer from '@/components/Footer'
 
-export default function EventosENoticias() {
+export default function Blog() {
   return (
     <main>
       <PageHero
-        eyebrow="EVENTOS E NOTÍCIAS · OSRV CUIABÁ"
+        eyebrow="BLOG · OSRV CUIABÁ"
         title="Histórias que transformam."
         subtitle="Acompanhe o dia a dia do Jardim Renascer."
       />

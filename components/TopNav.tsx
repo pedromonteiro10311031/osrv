@@ -69,6 +69,7 @@ const items: [string, string][] = [
   ['quero-ser-parceiro', 'Parceiros'],
   ['venha-nos-conhecer', 'Venha Nos Conhecer'],
   ['transparencia', 'Transparência'],
+  ['blog', 'Blog'],
 ]
 
 export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }) {

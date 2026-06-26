@@ -53,13 +53,13 @@ export default async function BlogFeed() {
     <section style={s.wrap}>
       <div style={s.inner}>
         <div style={s.head}>
-          <div style={s.eyebrow}>EVENTOS E NOTÍCIAS</div>
+          <div style={s.eyebrow}>BLOG</div>
           <h2 style={s.h2}>
-            O que está acontecendo
-            <span style={s.italic}> no Jardim Renascer.</span>
+            Histórias que transformam
+            <span style={s.italic}> vidas no Renascer.</span>
           </h2>
           <p style={s.subtitle}>
-            Fique por dentro das novidades, eventos e histórias da comunidade OSRV.
+            Notícias, eventos e histórias do dia a dia da comunidade OSRV.
           </p>
         </div>
 
