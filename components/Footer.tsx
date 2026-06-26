@@ -37,9 +37,24 @@ const footStyles = {
 
 export default function Footer() {
   return (
-    <footer style={footStyles.wrap} id="contato">
-      <div style={footStyles.inner}>
-        <div style={footStyles.top}>
+    <footer style={footStyles.wrap} id="contato" className="site-footer">
+      <style>{`
+        @media (max-width: 768px) {
+          .site-footer .footer-inner {
+            padding: 0 20px !important;
+          }
+          .site-footer .footer-top {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+          .site-footer .footer-bottom {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+        }
+      `}</style>
+      <div style={footStyles.inner} className="footer-inner">
+        <div style={footStyles.top} className="footer-top">
           <div>
             <div style={footStyles.brand}>
               <span style={footStyles.word}>OSRV</span>
@@ -86,7 +101,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div style={footStyles.bottom}>
+        <div style={footStyles.bottom} className="footer-bottom">
           <div style={footStyles.fine}>
             © 2026 OSRV — Obras Sociais Rafael Verlangieri · Cuiabá / MT
           </div>

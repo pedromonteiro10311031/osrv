@@ -34,14 +34,24 @@ function ApoioCard({ tag, title, desc, cta, ctaStyle, href }: { tag: string, tit
 
 export default function FinalCTA() {
   return (
-    <section style={apStyles.wrap} id="apoiar">
-      <div style={apStyles.inner}>
+    <section style={apStyles.wrap} id="apoiar" className="final-cta">
+      <style>{`
+        @media (max-width: 768px) {
+          .final-cta .final-cta-inner {
+            padding: 0 20px !important;
+          }
+          .final-cta .final-cta-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+      <div style={apStyles.inner} className="final-cta-inner">
         <div style={apStyles.head}>
           <div style={apStyles.eyebrow}>VOCÊ TAMBÉM PODE AJUDAR</div>
           <h2 style={apStyles.h2}>Cada projeto precisa de você.</h2>
           <p style={apStyles.sub}>Escolha como fazer parte.</p>
         </div>
-        <div style={apStyles.grid}>
+        <div style={apStyles.grid} className="final-cta-grid">
           <ApoioCard tag="DOAÇÃO" title="Doe" desc="Sua doação financia diretamente as atividades, materiais e equipe dos seis projetos. Doação única ou mensal." cta="Quero doar" ctaStyle="primary" href="/quero-ser-doador" />
           <ApoioCard tag="VOLUNTARIADO" title="Seja voluntário" desc="Tempo, habilidade e presença são tão importantes quanto recursos. Treine, ensine, organize ou apoie nos bastidores." cta="Ser voluntário" ctaStyle="outline" href="/quero-ser-voluntario" />
           <ApoioCard tag="PARCERIA EMPRESA" title="Empresa parceira" desc="Empresas podem patrocinar projetos inteiros, doar material e gerar impacto coletivo. Conheça as modalidades." cta="Parceria empresa" ctaStyle="outline" href="/quero-ser-parceiro" />

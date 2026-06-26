@@ -53,13 +53,31 @@ const statsStyles = {
 
 export default function ImpactStats() {
   return (
-    <section style={statsStyles.wrap}>
+    <section style={statsStyles.wrap} className="impact-stats">
+      <style>{`
+        @media (max-width: 768px) {
+          .impact-stats {
+            padding: 64px 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .impact-stats .impact-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .impact-stats .impact-stat-bordered {
+            border-left: none !important;
+          }
+          .impact-stats .impact-stat-bordered:nth-child(odd) {
+            border-left: 1px solid var(--border-soft) !important;
+          }
+        }
+      `}</style>
       <div style={statsStyles.eyebrow}>NOSSO IMPACTO</div>
       <h2 style={statsStyles.intro}>
         Doze anos atendendo o Jardim Renascer.
         <span style={statsStyles.italic}> Números que têm nome, rosto e terça-feira à tarde.</span>
       </h2>
-      <div style={statsStyles.grid}>
+      <div style={statsStyles.grid} className="impact-grid">
         <div style={statsStyles.stat}>
           <p style={statsStyles.n}>250<span style={statsStyles.sup}>+</span></p>
           <div style={statsStyles.lbl}>
@@ -67,21 +85,21 @@ export default function ImpactStats() {
             atendidos no contraturno escolar
           </div>
         </div>
-        <div style={{ ...statsStyles.stat, ...statsStyles.statBordered }}>
+        <div style={{ ...statsStyles.stat, ...statsStyles.statBordered }} className="impact-stat-bordered">
           <p style={statsStyles.n}>12</p>
           <div style={statsStyles.lbl}>
             <b style={statsStyles.lblStrong}>anos</b> de atuação contínua no
             Jardim Renascer, Cuiabá / MT
           </div>
         </div>
-        <div style={{ ...statsStyles.stat, ...statsStyles.statBordered }}>
+        <div style={{ ...statsStyles.stat, ...statsStyles.statBordered }} className="impact-stat-bordered">
           <p style={statsStyles.n}>6</p>
           <div style={statsStyles.lbl}>
             <b style={statsStyles.lblStrong}>projetos ativos</b> — judô, xadrez,
             esportes radicais, yoga, reforço e psicologia
           </div>
         </div>
-        <div style={{ ...statsStyles.stat, ...statsStyles.statBordered }}>
+        <div style={{ ...statsStyles.stat, ...statsStyles.statBordered }} className="impact-stat-bordered">
           <p style={statsStyles.n}>80<span style={statsStyles.sup}>+</span></p>
           <div style={statsStyles.lbl}>
             <b style={statsStyles.lblStrong}>famílias</b> apoiadas, das casas

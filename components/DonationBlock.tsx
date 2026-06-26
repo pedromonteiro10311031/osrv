@@ -123,9 +123,36 @@ export default function DonationBlock() {
   }
 
   return (
-    <section id="doar" style={donStyles.wrap}>
-      <div style={donStyles.inner}>
-        <div style={donStyles.left}>
+    <section id="doar" style={donStyles.wrap} className="donation-block">
+      <style>{`
+        @media (max-width: 768px) {
+          .donation-block .donation-inner {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+            padding: 0 20px !important;
+          }
+          .donation-block .donation-left {
+            max-width: 100% !important;
+          }
+          .donation-block .donation-card {
+            max-width: 100% !important;
+            box-sizing: border-box;
+            padding: 24px !important;
+          }
+          .donation-block .donation-toggle {
+            width: 100%;
+            display: flex !important;
+          }
+          .donation-block .donation-toggle button {
+            flex: 1;
+          }
+          .donation-block .donation-amounts {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+      `}</style>
+      <div style={donStyles.inner} className="donation-inner">
+        <div style={donStyles.left} className="donation-left">
           <div style={donStyles.eyebrow}>COMO AJUDAR</div>
           <h2 style={donStyles.subtitle}>Escolha como você quer transformar vidas.</h2>
           <p style={donStyles.lead}>
@@ -136,8 +163,8 @@ export default function DonationBlock() {
           <p style={donStyles.bullet}>✓ Cancele a qualquer momento, 1 clique</p>
           <p style={donStyles.bullet}>✓ Relatório financeiro anual público</p>
         </div>
-        <div style={donStyles.card}>
-          <div style={donStyles.toggleRow}>
+        <div style={donStyles.card} className="donation-card">
+          <div style={donStyles.toggleRow} className="donation-toggle">
             <button style={{ ...donStyles.toggleBtn, ...(freq === 'mensal' ? donStyles.toggleActive : {}) }} onClick={() => setFreq('mensal')}>
               Doar todo mês
             </button>
@@ -145,7 +172,7 @@ export default function DonationBlock() {
               Doar uma vez
             </button>
           </div>
-          <div style={donStyles.amounts}>
+          <div style={donStyles.amounts} className="donation-amounts">
             {[30, 50, 100, 200].map((v) => {
               const sel = amount === v && !custom
               return (

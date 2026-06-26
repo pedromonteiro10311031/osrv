@@ -4,7 +4,7 @@ import ImpactStats from '@/components/ImpactStats'
 import ProjectsGrid from '@/components/ProjectsGrid'
 import StoryFeature from '@/components/StoryFeature'
 import DonationBlock from '@/components/DonationBlock'
-import PartnersStrip from '@/components/PartnersStrip'
+import FinalCTA from '@/components/FinalCTA'
 
 
 
@@ -17,7 +17,7 @@ export default function Home() {
       <ProjectsGrid />
       <StoryFeature />
       <DonationBlock />
-      <PartnersStrip />
+      <FinalCTA />
       <Footer />
     </main>
   )

@@ -20,7 +20,7 @@ const projStyles = {
   },
   italic: { fontStyle: 'italic' as const, color: 'var(--pine-700)' },
   intro: { fontSize: 17, lineHeight: 1.55, color: 'var(--fg-2)', maxWidth: 380, margin: 0 },
-  grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 },
+  grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, width: '100%' },
   card: {
     background: 'var(--paper-100)',
     borderRadius: 8,
@@ -141,7 +141,7 @@ function ProjectCard({ p }: { p: Project }) {
   return (
     <Link href={`/programas-e-projetos#${p.id}`} style={cardStyle} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <div style={{ ...projStyles.band, background: p.bg }}>
-        <span style={projStyles.placeholder}>{p.photoHint}</span>
+        <span style={projStyles.placeholder} className="card-placeholder">{p.photoHint}</span>
         <div style={projStyles.bandScrim}></div>
         <span style={eyebrowStyle}>{p.eyebrow}</span>
       </div>
@@ -172,10 +172,20 @@ export default function ProjectsGrid() {
             — fazemos os dois, e o lanche da tarde no meio.
           </p>
         </div>
-        <div style={projStyles.grid}>
+        <div style={projStyles.grid} className="projects-grid">
           {PROJECTS.map((p) => <ProjectCard key={p.id} p={p} />)}
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .projects-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .projects-grid .card-placeholder {
+            display: none;
+          }
+        }
+      `}</style>
     </section>
   )
 }

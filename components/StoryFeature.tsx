@@ -73,13 +73,29 @@ const storyStyles = {
 
 export default function StoryFeature() {
   return (
-    <section style={storyStyles.wrap}>
-      <div style={storyStyles.portrait}>
+    <section style={storyStyles.wrap} className="story-feature">
+      <style>{`
+        @media (max-width: 768px) {
+          .story-feature {
+            grid-template-columns: 1fr !important;
+            min-height: unset !important;
+          }
+          .story-feature .story-portrait {
+            min-height: unset !important;
+            aspect-ratio: 16 / 9;
+          }
+          .story-feature .story-content {
+            padding: 48px 28px !important;
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
+      <div style={storyStyles.portrait} className="story-portrait">
         <div style={storyStyles.portraitImg}></div>
         <div style={storyStyles.portraitOverlay}></div>
         <span style={storyStyles.caption}>MARÇO 2026</span>
       </div>
-      <div style={storyStyles.content}>
+      <div style={storyStyles.content} className="story-content">
         <div style={storyStyles.eyebrow}>UMA HISTÓRIA · JARDIM RENASCER</div>
         <h2 style={storyStyles.quote}>
           Ela nunca havia comido chocolate.
