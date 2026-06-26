@@ -25,14 +25,34 @@ const HELP_OPTIONS = [
 
 export default function ParceiroComoAjudar() {
   return (
-    <section style={caStyles.wrap}>
-      <div style={caStyles.inner}>
+    <section style={caStyles.wrap} className="parceiro-como-ajudar">
+      <style>{`
+        @media (max-width: 768px) {
+          .parceiro-como-ajudar .pca-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .parceiro-como-ajudar .pca-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0 !important;
+          }
+          .parceiro-como-ajudar .pca-grid article {
+            padding: 28px 0 !important;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+          }
+          .parceiro-como-ajudar .pca-grid article:last-child {
+            border-bottom: none;
+          }
+        }
+      `}</style>
+      <div style={caStyles.inner} className="pca-inner">
         <div style={caStyles.head}>
           <div style={caStyles.eyebrow}>FORMAS DE APOIO</div>
           <h2 style={caStyles.h2}>Cada empresa tem um jeito de fazer parte.</h2>
           <p style={caStyles.sub}>Escolha o modelo que faz mais sentido para vocês.</p>
         </div>
-        <div style={caStyles.grid}>
+        <div style={caStyles.grid} className="pca-grid">
           {HELP_OPTIONS.map(([num, title, body], i) => (
             <article key={i} style={caStyles.card}
               onMouseEnter={(e) => e.currentTarget.style.background = '#1A3814'}

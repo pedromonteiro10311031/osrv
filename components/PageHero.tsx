@@ -99,7 +99,26 @@ interface PageHeroProps {
 
 export default function PageHero({ eyebrow, title, subtitle, metaLeft, metaRight, bgImage }: PageHeroProps) {
   return (
-    <header style={phStyles.wrap}>
+    <header style={phStyles.wrap} className="page-hero">
+      <style>{`
+        @media (max-width: 768px) {
+          .page-hero .ph-meta-left,
+          .page-hero .ph-meta-right {
+            position: static !important;
+            font-size: 10px !important;
+          }
+          .page-hero .ph-meta-bar {
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+          }
+        }
+      `}</style>
       <div style={{ ...phStyles.bg, backgroundImage: bgImage ? `url('${bgImage}')` : undefined }}></div>
       <div style={phStyles.overlay}></div>
       <div style={phStyles.inner}>
@@ -111,8 +130,12 @@ export default function PageHero({ eyebrow, title, subtitle, metaLeft, metaRight
         <h1 style={phStyles.h1}>{title}</h1>
         {subtitle && <p style={phStyles.sub}>{subtitle}</p>}
       </div>
-      {metaLeft && <div style={phStyles.meta}>📍 {metaLeft}</div>}
-      {metaRight && <div style={phStyles.metaRight}>{metaRight}</div>}
+      {(metaLeft || metaRight) && (
+        <div className="ph-meta-bar">
+          {metaLeft && <div style={phStyles.meta} className="ph-meta-left">📍 {metaLeft}</div>}
+          {metaRight && <div style={phStyles.metaRight} className="ph-meta-right">{metaRight}</div>}
+        </div>
+      )}
     </header>
   )
 }

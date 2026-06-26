@@ -2,7 +2,6 @@ import PageHero from '@/components/PageHero'
 import ParceiroPorQue from '@/components/ParceiroPorQue'
 import ParceiroComoAjudar from '@/components/ParceiroComoAjudar'
 import ParceiroComoFunciona from '@/components/ParceiroComoFunciona'
-import ParceiroAtuais from '@/components/ParceiroAtuais'
 import ParceiroFormulario from '@/components/ParceiroFormulario'
 import FinalCTA from '@/components/FinalCTA'
 import Footer from '@/components/Footer'
@@ -21,7 +20,6 @@ export default function QueroSerParceiro() {
       <ParceiroPorQue />
       <ParceiroComoAjudar />
       <ParceiroComoFunciona />
-      <ParceiroAtuais />
       <ParceiroFormulario />
       <FinalCTA />
       <Footer />

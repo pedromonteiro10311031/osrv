@@ -23,14 +23,26 @@ const cards = [
 
 export default function ParceiroPorQue() {
   return (
-    <section id="beneficios" style={pqStyles.wrap}>
-      <div style={pqStyles.inner}>
+    <section id="beneficios" style={pqStyles.wrap} className="parceiro-porque">
+      <style>{`
+        @media (max-width: 768px) {
+          .parceiro-porque .ppq-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .parceiro-porque .ppq-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+      <div style={pqStyles.inner} className="ppq-inner">
         <div style={pqStyles.head}>
           <div style={pqStyles.eyebrow}>POR QUE PARCERIA</div>
           <h2 style={pqStyles.h2}>Mais que responsabilidade social.</h2>
           <p style={pqStyles.sub}>Uma parceria que transforma dos dois lados.</p>
         </div>
-        <div style={pqStyles.grid}>
+        <div style={pqStyles.grid} className="ppq-grid">
           {cards.map((c, i) => (
             <article key={i} style={pqStyles.card}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--pine-300)' }}

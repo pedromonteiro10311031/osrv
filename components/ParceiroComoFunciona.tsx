@@ -23,15 +23,34 @@ const STEPS = [
 
 export default function ParceiroComoFunciona() {
   return (
-    <section style={cfStyles.wrap}>
-      <div style={cfStyles.inner}>
+    <section style={cfStyles.wrap} className="parceiro-como-funciona">
+      <style>{`
+        @media (max-width: 768px) {
+          .parceiro-como-funciona .pcf-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .parceiro-como-funciona .pcf-row {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .parceiro-como-funciona .pcf-connector {
+            display: none !important;
+          }
+          .parceiro-como-funciona .pcf-row > div {
+            padding: 0 !important;
+          }
+        }
+      `}</style>
+      <div style={cfStyles.inner} className="pcf-inner">
         <div style={cfStyles.head}>
           <div style={cfStyles.eyebrow}>COMO FUNCIONA</div>
           <h2 style={cfStyles.h2}>Do primeiro contato à parceria ativa.</h2>
           <p style={cfStyles.sub}>Simples, transparente e sem burocracia.</p>
         </div>
-        <div style={cfStyles.row}>
-          <span style={cfStyles.connector}></span>
+        <div style={cfStyles.row} className="pcf-row">
+          <span style={cfStyles.connector} className="pcf-connector"></span>
           {STEPS.map((s, i) => (
             <div key={i} style={cfStyles.step}>
               <span style={{ ...cfStyles.numWrap, ...(i === STEPS.length - 1 ? cfStyles.numLast : {}) }}>
