@@ -61,6 +61,19 @@ const navStyles = {
     whiteSpace: 'nowrap' as const,
     flex: 'none' as const,
   },
+  mobileLink: {
+    display: 'block',
+    padding: '14px 0',
+    fontSize: 16,
+    fontFamily: 'var(--font-sans)',
+    color: 'var(--ink-700)',
+    textDecoration: 'none',
+    borderBottom: '1px solid var(--border-soft)',
+  },
+  mobileLinkActive: {
+    color: 'var(--pine-700)',
+    fontWeight: 600,
+  },
 }
 
 const items: [string, string][] = [
@@ -73,7 +86,7 @@ const items: [string, string][] = [
   ['blog', 'Blog'],
 ]
 
-export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }) {
+export default function TopNav({ onDonateClick: _onDonateClick }: { onDonateClick?: () => void }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
@@ -99,7 +112,7 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
 
   return (
     <nav style={wrapStyle}>
-      <div style={navStyles.inner}>
+      <div className="nav-inner" style={navStyles.inner}>
         <Link href="/" style={navStyles.brand}>
           <span style={navStyles.word}>OSRV</span>
         </Link>
@@ -116,7 +129,7 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
           ))}
         </div>
 
-        <Link href="/quero-ser-doador" className="desktop-cta" style={navStyles.cta}>
+        <Link href="/quero-ser-doador" style={navStyles.cta}>
           Doar
         </Link>
 
@@ -138,15 +151,14 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
             <Link
               key={id}
               href={`/${id}`}
-              className="mobile-link"
-              style={pathname === `/${id}` ? { color: 'var(--pine-700)', fontWeight: 600 } : {}}
+              style={{
+                ...navStyles.mobileLink,
+                ...(pathname === `/${id}` ? navStyles.mobileLinkActive : {}),
+              }}
             >
               {label}
             </Link>
           ))}
-          <Link href="/quero-ser-doador" className="mobile-cta">
-            Doar
-          </Link>
         </div>
       )}
 
@@ -173,9 +185,12 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
         }
 
         @media (max-width: 860px) {
-          .desktop-links,
-          .desktop-cta {
+          .desktop-links {
             display: none !important;
+          }
+          .nav-inner {
+            justify-content: center;
+            gap: 16px;
           }
           .hamburger-btn {
             display: flex;
@@ -186,25 +201,6 @@ export default function TopNav({ onDonateClick }: { onDonateClick?: () => void }
             padding: 16px 32px 24px;
             background: var(--paper-100);
             border-bottom: 1px solid var(--border-soft);
-          }
-          .mobile-link {
-            padding: 14px 0;
-            font-size: 16px;
-            color: var(--ink-700);
-            text-decoration: none;
-            border-bottom: 1px solid var(--border-soft);
-          }
-          .mobile-cta {
-            margin-top: 16px;
-            display: inline-flex;
-            justify-content: center;
-            background: var(--amber-500);
-            color: #fff;
-            border-radius: 999px;
-            padding: 12px 22px;
-            font-size: 15px;
-            font-weight: 500;
-            text-decoration: none;
           }
         }
       `}</style>
