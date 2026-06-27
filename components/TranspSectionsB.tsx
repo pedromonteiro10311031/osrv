@@ -60,7 +60,7 @@ function DonutChart({ data, size = 190 }: { data: Seg[]; size?: number }) {
   const circ = 2 * Math.PI * r
   let acc = 0
   return (
-    <svg viewBox="0 0 120 120" width={size} height={size} style={{ flex: 'none' }}>
+    <svg viewBox="0 0 120 120" width={size} height={size} style={{ flex: 'none', maxWidth: '100%' }} className="donut-svg">
       <circle cx={cx} cy={cy} r={r} fill="none" stroke="var(--paper-300)" strokeWidth={sw} />
       {data.map((seg, i) => {
         const len = (seg.value / 100) * circ
@@ -76,13 +76,13 @@ function DonutChart({ data, size = 190 }: { data: Seg[]; size?: number }) {
   )
 }
 
-function DonutBlock({ title, data }: { title: string; data: Seg[] }) {
+function DonutBlock({ title, data, className }: { title: string; data: Seg[]; className?: string }) {
   return (
-    <div>
-      <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 21, fontWeight: 500, color: 'var(--ink-900)', margin: '0 0 28px' }}>{title}</h3>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 36, flexWrap: 'wrap' }}>
+    <div className={className}>
+      <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 21, fontWeight: 500, color: 'var(--ink-900)', margin: '0 0 28px' }} className="donut-title">{title}</h3>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 36, flexWrap: 'wrap' }} className="donut-row">
         <DonutChart data={data} />
-        <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 13, flex: 1, minWidth: 230 }}>
+        <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 13, flex: 1, minWidth: 230 }} className="donut-legend">
           {data.map((seg, i) => (
             <li key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
               <span style={{ flex: 'none', width: 11, height: 11, borderRadius: 3, background: seg.color, transform: 'translateY(1px)' }} />
@@ -100,15 +100,61 @@ function DonutBlock({ title, data }: { title: string; data: Seg[] }) {
 
 export function TranspRecursos() {
   return (
-    <section id="recursos" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }}>
-      <div style={s.section}>
+    <section id="recursos" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }} className="transp-recursos">
+      <style>{`
+        @media (max-width: 768px) {
+          .transp-recursos .tr-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .transp-recursos .tr-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0 !important;
+          }
+          /* Separador entre os dois blocos */
+          .transp-recursos .donut-block + .donut-block {
+            border-top: 1px solid var(--border-soft);
+            padding-top: 40px;
+            margin-top: 40px;
+          }
+          /* Título do bloco alinhado com o restante da seção */
+          .transp-recursos .donut-title {
+            font-size: 18px !important;
+            margin-bottom: 24px !important;
+          }
+          /* Donut centralizado, tamanho reduzido */
+          .transp-recursos .donut-row {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 24px !important;
+          }
+          .transp-recursos .donut-svg {
+            width: 148px !important;
+            height: 148px !important;
+          }
+          /* Legenda em 1 coluna, empilhada */
+          .transp-recursos .donut-legend {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 14px !important;
+            flex: unset !important;
+            min-width: unset !important;
+            width: 100% !important;
+          }
+          .transp-recursos .donut-legend li {
+            align-items: flex-start !important;
+          }
+        }
+      `}</style>
+      <div style={s.section} className="tr-inner">
         <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 88 }}>
           <div style={s.eyebrow}>Aplicação de recursos</div>
           <h2 style={s.h2}>Cada doação tem destino claro.</h2>
           <span style={s.sub}>Veja como dividimos o que recebemos.</span>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 56 }}>
-            <DonutBlock title="Origem dos recursos" data={ORIGEM} />
-            <DonutBlock title="Aplicação dos recursos" data={APLICACAO} />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 56 }} className="tr-grid">
+            <DonutBlock title="Origem dos recursos" data={ORIGEM} className="donut-block" />
+            <DonutBlock title="Aplicação dos recursos" data={APLICACAO} className="donut-block" />
           </div>
           <p style={{ fontSize: 13, color: 'var(--ink-500)', marginTop: 40, fontStyle: 'italic' }}>
             *Dados referentes ao exercício de 2025, auditados em janeiro de 2026.
@@ -152,8 +198,14 @@ function ReportCard({ year }: { year: number }) {
 
 export function TranspRelatorios() {
   return (
-    <section id="relatorios" style={{ background: 'var(--pine-900)', padding: '120px 0' }}>
-      <div style={s.section}>
+    <section id="relatorios" style={{ background: 'var(--pine-900)', padding: '120px 0' }} className="transp-relatorios">
+      <style>{`
+        @media (max-width: 768px) {
+          .transp-relatorios .trel-inner { padding: 0 20px !important; box-sizing: border-box; max-width: 100% !important; }
+          .transp-relatorios .trel-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+        }
+      `}</style>
+      <div style={s.section} className="trel-inner">
         <div style={s.eyebrowDark}>Atividades e impacto</div>
         <h2 style={s.h2Dark}>Relatórios anuais.</h2>
         <span style={s.sub}>Tudo que fizemos, ano a ano.</span>
@@ -161,7 +213,7 @@ export function TranspRelatorios() {
           Mais do que números financeiros, contamos as histórias por trás de cada projeto. Quantas
           crianças atendemos, quais resultados alcançamos e o que aprendemos no caminho.
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }} className="trel-grid">
           {REPORTS.map((r) => <ReportCard key={r.year} year={r.year} />)}
         </div>
       </div>
@@ -173,13 +225,19 @@ export function TranspRelatorios() {
 
 export function TranspGovernanca() {
   return (
-    <section id="governanca" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }}>
-      <div style={s.section}>
+    <section id="governanca" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }} className="transp-gov">
+      <style>{`
+        @media (max-width: 768px) {
+          .transp-gov .tg-inner { padding: 0 20px !important; box-sizing: border-box; max-width: 100% !important; }
+          .transp-gov .tg-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+        }
+      `}</style>
+      <div style={s.section} className="tg-inner">
         <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 88 }}>
           <div style={s.eyebrow}>Quem toma as decisões</div>
           <h2 style={s.h2}>Estrutura de governança.</h2>
           <span style={s.sub}>Conselho ativo, decisões coletivas.</span>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }} className="tg-grid">
             <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--fg-2)', margin: 0 }}>
               A OSRV é administrada por uma diretoria executiva e supervisionada por um conselho fiscal
               e um conselho consultivo, todos eleitos em assembleia geral e atuando voluntariamente.
@@ -207,13 +265,19 @@ export function TranspGovernanca() {
 
 export function TranspParceiros() {
   return (
-    <section id="parceiros" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }}>
-      <div style={s.section}>
+    <section id="parceiros" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }} className="transp-parceiros">
+      <style>{`
+        @media (max-width: 768px) {
+          .transp-parceiros .tp-inner { padding: 0 20px !important; box-sizing: border-box; max-width: 100% !important; }
+          .transp-parceiros .tp-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+      `}</style>
+      <div style={s.section} className="tp-inner">
         <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 88 }}>
           <div style={s.eyebrow}>Quem caminha conosco</div>
           <h2 style={s.h2}>Empresas e instituições que apoiam.</h2>
           <span style={s.sub}>Cada apoio aqui está documentado.</span>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }} className="tp-grid">
             {Array.from({ length: 8 }).map((_, i) => (
               <div key={i} style={{
                 aspectRatio: '3/2', borderRadius: 8, background: 'var(--paper-200)',
@@ -269,7 +333,7 @@ function OuvidoriaForm() {
       onSubmit={(e) => { e.preventDefault(); setSent(true) }}
       style={{ display: 'grid', gap: 16, padding: 24, background: 'var(--paper-200)', border: '1px solid var(--border-soft)', borderRadius: 8 }}
     >
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }} className="to-form-row">
         <div>
           <label style={label}>Nome <span style={{ color: 'var(--ink-300)', fontWeight: 400 }}>(opcional)</span></label>
           <input style={field} type="text" placeholder="Seu nome" />
@@ -309,13 +373,20 @@ function OuvidoriaForm() {
 
 export function TranspOuvidoria() {
   return (
-    <section id="ouvidoria" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }}>
-      <div style={s.section}>
+    <section id="ouvidoria" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }} className="transp-ouvidoria">
+      <style>{`
+        @media (max-width: 768px) {
+          .transp-ouvidoria .to-inner { padding: 0 20px !important; box-sizing: border-box; max-width: 100% !important; }
+          .transp-ouvidoria .to-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .transp-ouvidoria .to-form-row { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+      <div style={s.section} className="to-inner">
         <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 88 }}>
           <div style={s.eyebrow}>Dúvidas, sugestões ou denúncias</div>
           <h2 style={s.h2}>Fale conosco.</h2>
           <span style={s.sub}>Toda manifestação recebida é respondida em até 7 dias úteis.</span>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }} className="to-grid">
             <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--fg-2)', margin: 0 }}>
               Se você tem dúvidas sobre nossos dados financeiros, quer solicitar informações adicionais ou
               precisa reportar algo, use um dos canais abaixo. Todas as manifestações são tratadas com

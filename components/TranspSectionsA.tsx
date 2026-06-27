@@ -47,8 +47,17 @@ function TranspHero() {
 
 function TranspIntro() {
   return (
-    <section id="compromisso" style={{ background: 'var(--bg-page)', padding: '120px 0' }}>
-      <div style={s.section}>
+    <section id="compromisso" style={{ background: 'var(--bg-page)', padding: '120px 0' }} className="transp-intro">
+      <style>{`
+        @media (max-width: 768px) {
+          .transp-intro .ti-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
+      <div style={s.section} className="ti-inner">
         <div style={s.eyebrow}>Nosso compromisso</div>
         <h2 style={s.h2}>Cada real importa. E você merece saber para onde vai.</h2>
         <p style={{ ...s.sub }}>Transparência não é exceção — é o nosso padrão.</p>
@@ -62,13 +71,36 @@ function TranspIntro() {
 
 function TranspIdentificacao() {
   return (
-    <section id="dados-institucionais" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }}>
-      <div style={s.section}>
+    <section id="dados-institucionais" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }} className="transp-ident">
+      <style>{`
+        @media (max-width: 768px) {
+          .transp-ident .tid-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .transp-ident .tid-data-grid {
+            grid-template-columns: 1fr !important;
+            column-gap: 0 !important;
+          }
+          .transp-ident .tid-docs-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .transp-ident .tid-doc-card {
+            flex-wrap: wrap !important;
+          }
+          .transp-ident .tid-doc-download {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+        }
+      `}</style>
+      <div style={s.section} className="tid-inner">
         <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 88 }}>
           <div style={s.eyebrow}>Quem somos, oficialmente</div>
           <h2 style={s.h2}>Dados institucionais.</h2>
           <p style={s.sub}>Tudo registrado, tudo verificável.</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', columnGap: 56, rowGap: 0, marginBottom: 40 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', columnGap: 56, rowGap: 0, marginBottom: 40 }} className="tid-data-grid">
             {IDENT.map(([label, value], i) => (
               <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 5, padding: '18px 0', borderBottom: '1px solid var(--border-soft)' }}>
                 <span style={{ fontSize: 11.5, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--ink-500)' }}>{label}</span>
@@ -76,14 +108,14 @@ function TranspIdentificacao() {
               </div>
             ))}
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }} className="tid-docs-grid">
             {['Estatuto Social', 'Ata de Fundação'].map((title) => (
-              <div key={title} style={{ display: 'flex', alignItems: 'center', gap: 18, padding: 24, background: 'var(--paper-50)', borderRadius: 8, border: '1px solid var(--border-soft)' }}>
+              <div key={title} style={{ display: 'flex', alignItems: 'center', gap: 18, padding: 24, background: 'var(--paper-50)', borderRadius: 8, border: '1px solid var(--border-soft)' }} className="tid-doc-card">
                 <span style={{ flex: 'none', width: 48, height: 48, borderRadius: 8, background: 'var(--pine-100)', color: 'var(--pine-700)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 24 }}>📄</span>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontFamily: 'var(--font-serif)', fontSize: 19, color: 'var(--ink-900)', lineHeight: 1.2 }}>{title}</div>
                 </div>
-                <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '10px 18px', border: '1px solid var(--border-hard)', borderRadius: 999, fontSize: 14, color: 'var(--ink-900)', textDecoration: 'none' }}>⬇ Baixar PDF</a>
+                <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '10px 18px', border: '1px solid var(--border-hard)', borderRadius: 999, fontSize: 14, color: 'var(--ink-900)', textDecoration: 'none' }} className="tid-doc-download">⬇ Baixar PDF</a>
               </div>
             ))}
           </div>
@@ -95,12 +127,24 @@ function TranspIdentificacao() {
 
 function TranspCertificacoes() {
   return (
-    <section id="certificacoes" style={{ background: 'var(--pine-900)', padding: '120px 0' }}>
-      <div style={s.section}>
+    <section id="certificacoes" style={{ background: 'var(--pine-900)', padding: '120px 0' }} className="transp-certs">
+      <style>{`
+        @media (max-width: 768px) {
+          .transp-certs .tc-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .transp-certs .tc-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+      <div style={s.section} className="tc-inner">
         <div style={s.eyebrowDark}>Reconhecimentos oficiais</div>
         <h2 style={s.h2Dark}>Certificados que validam nosso trabalho.</h2>
         <p style={{ ...s.sub }}>Concedidos por órgãos públicos federais e estaduais.</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }} className="tc-grid">
           {CERTS.map((c) => (
             <div key={c.n} style={{ display: 'flex', flexDirection: 'column', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 8, padding: '40px 30px 30px' }}>
               <div style={{ width: 76, height: 76, borderRadius: '50%', border: '2px solid var(--amber-500)', background: 'rgba(243,156,42,0.12)', color: 'var(--amber-300)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: 24, fontSize: 11, fontWeight: 700, letterSpacing: '0.1em' }}>
@@ -123,15 +167,27 @@ function TranspCertificacoes() {
 
 function TranspDemonstracoes() {
   return (
-    <section id="demonstracoes" style={{ background: 'var(--bg-page)', padding: '120px 0' }}>
-      <div style={s.section}>
+    <section id="demonstracoes" style={{ background: 'var(--bg-page)', padding: '120px 0' }} className="transp-demos">
+      <style>{`
+        @media (max-width: 768px) {
+          .transp-demos .td-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .transp-demos .td-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+      <div style={s.section} className="td-inner">
         <div style={s.eyebrow}>Finanças auditadas</div>
         <h2 style={s.h2}>Demonstrações financeiras anuais.</h2>
         <p style={s.sub}>Auditadas e disponíveis para download.</p>
         <p style={{ maxWidth: 680, fontSize: 16, lineHeight: 1.65, color: 'var(--fg-2)', marginTop: -32, marginBottom: 48 }}>
           Publicamos todas as demonstrações financeiras dos últimos 5 anos. Cada documento foi auditado por contabilidade especializada em terceiro setor.
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }} className="td-grid">
           {FIN_YEARS.map((year, i) => (
             <div key={year} style={{ display: 'flex', flexDirection: 'column', background: 'var(--paper-50)', border: '1px solid var(--border-soft)', borderRadius: 8, padding: 28 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 18 }}>
