@@ -23,14 +23,14 @@ const compStyles = {
 function ComplementoCard({ tag, title, desc, link, photo, fallback }: { tag: string, title: string, desc: string, link: string, photo: string, fallback: string }) {
   const [hover, setHover] = useState(false)
   return (
-    <a href="#" style={{ ...compStyles.row, boxShadow: hover ? '0 8px 24px rgba(0,0,0,0.12)' : 'none', borderColor: hover ? 'var(--amber-500)' : 'var(--border-soft)' }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-      <div style={{ ...compStyles.photo, backgroundImage: `url("${photo}"), ${fallback}` }}>
+    <a href="#" style={{ ...compStyles.row, boxShadow: hover ? '0 8px 24px rgba(0,0,0,0.12)' : 'none', borderColor: hover ? 'var(--amber-500)' : 'var(--border-soft)' }} className="comp-row" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+      <div style={{ ...compStyles.photo, backgroundImage: `url("${photo}"), ${fallback}` }} className="comp-photo">
         <div style={compStyles.photoScrim}></div>
         <span style={compStyles.photoTag}>{tag}</span>
       </div>
-      <div style={compStyles.body}>
-        <h3 style={compStyles.title}>{title}</h3>
-        <p style={compStyles.desc}>{desc}</p>
+      <div style={compStyles.body} className="comp-body">
+        <h3 style={compStyles.title} className="comp-title">{title}</h3>
+        <p style={compStyles.desc} className="comp-desc">{desc}</p>
         <span style={compStyles.link}>{link} →</span>
       </div>
     </a>
@@ -39,8 +39,35 @@ function ComplementoCard({ tag, title, desc, link, photo, fallback }: { tag: str
 
 export default function Complementares() {
   return (
-    <section style={compStyles.wrap} id="complementos">
-      <div style={compStyles.inner}>
+    <section style={compStyles.wrap} id="complementos" className="complementares">
+      <style>{`
+        @media (max-width: 768px) {
+          .complementares .comp-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .complementares .comp-row {
+            grid-template-columns: 1fr !important;
+            min-height: unset !important;
+          }
+          .complementares .comp-photo {
+            min-height: unset !important;
+            aspect-ratio: 16 / 9;
+          }
+          .complementares .comp-body {
+            padding: 28px 24px 32px !important;
+            gap: 12px !important;
+          }
+          .complementares .comp-title {
+            font-size: 1.5rem !important;
+          }
+          .complementares .comp-desc {
+            font-size: 15px !important;
+          }
+        }
+      `}</style>
+      <div style={compStyles.inner} className="comp-inner">
         <div style={compStyles.head}>
           <div style={compStyles.eyebrow}>COMPLEMENTOS</div>
           <h2 style={compStyles.h2}>Outras frentes que sustentam o trabalho.</h2>

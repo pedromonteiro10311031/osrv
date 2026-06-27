@@ -76,8 +76,22 @@ const pillars = [
 
 export default function Introducao() {
   return (
-    <section style={introStyles.wrap} id="abordagem">
-      <div style={introStyles.inner}>
+    <section style={introStyles.wrap} id="abordagem" className="introducao">
+      <style>{`
+        @media (max-width: 768px) {
+          .introducao .intro-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .introducao .intro-pillars {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 24px !important;
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
+      <div style={introStyles.inner} className="intro-inner">
         <div style={introStyles.eyebrow}>NOSSA ABORDAGEM</div>
         <h2 style={introStyles.h2}>Desenvolvimento integral, não atividade isolada.</h2>
         <p style={introStyles.sub}>Cada projeto se conecta com os outros.</p>
@@ -89,7 +103,7 @@ export default function Introducao() {
           formando uma rede de apoio que atende a criança em todas as suas
           dimensões: corpo, mente, emoção e comunidade.
         </p>
-        <div style={introStyles.pullquote}>
+        <div style={introStyles.pullquote} className="intro-pillars">
           {pillars.map(([lbl, sub]) => (
             <div key={lbl} style={introStyles.pillar}>
               <span style={introStyles.pillarIco}>●</span>

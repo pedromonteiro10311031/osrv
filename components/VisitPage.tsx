@@ -179,7 +179,7 @@ function AddressMap() {
     <section id="endereco" style={{ background: 'var(--paper-100)', padding: pad, borderTop: '1px solid var(--border-soft)' }}>
       <div style={wrap}>
         <SectionHead tight eyebrow="ONDE ESTAMOS" title="Fácil de encontrar." subtitle="No coração do Jardim Renascer." />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'center' }} className="vp-address-grid">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
             <InfoBlock icon="📍" label="Endereço">
               Rua Exemplo, 123 · Jardim Renascer<br />Cuiabá / MT · CEP 00000-000
@@ -192,7 +192,7 @@ function AddressMap() {
               <Btn variant="outlineGreen">🧭 Abrir no Waze</Btn>
             </div>
           </div>
-          <div style={{
+          <div className="vp-map" style={{
             position: 'relative', minHeight: 440, borderRadius: 'var(--r-md)', overflow: 'hidden',
             background: 'var(--paper-200)', border: '1px solid var(--border-soft)',
             backgroundImage: 'linear-gradient(var(--paper-300) 1px, transparent 1px), linear-gradient(90deg, var(--paper-300) 1px, transparent 1px)',
@@ -218,7 +218,7 @@ function Hours() {
     <section style={{ background: 'var(--pine-900)', color: 'var(--paper-100)', padding: pad }}>
       <div style={wrap}>
         <SectionHead light eyebrow="QUANDO VISITAR" title="Nossos horários." subtitle="Mas se precisar de outro horário, é só combinar." />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'start' }} className="vp-hours-grid">
           <div>
             {HOURS.map(([day, time], i) => (
               <div key={day} style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 20, padding: '20px 0', borderBottom: i < HOURS.length - 1 ? '1px solid rgba(255,255,255,0.14)' : 'none' }}>
@@ -256,7 +256,7 @@ function Schedule() {
             Preencha o formulário e nossa equipe entra em contato para combinar o melhor dia e horário.
           </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }} className="vp-schedule-grid">
           {CHANNELS.map(([icon, label, value]) => (
             <div key={label} style={{ background: 'var(--paper-50)', border: '1px solid var(--border-soft)', borderRadius: 'var(--r-md)', padding: 30, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span style={{ width: 46, height: 46, borderRadius: 8, background: 'var(--pine-100)', color: 'var(--pine-700)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>{icon}</span>
@@ -277,7 +277,7 @@ function WhatToFind() {
     <section style={{ background: 'var(--paper-100)', padding: pad, borderTop: '1px solid var(--border-soft)' }}>
       <div style={wrap}>
         <SectionHead eyebrow="O QUE ESPERAR" title="Um pouco do que você vai ver por aqui." subtitle="Cada espaço com uma história." />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }} className="vp-finds-grid">
           {FINDS.map(([icon, title, desc]) => (
             <div key={title} style={{ background: 'var(--paper-50)', border: '1px solid var(--border-soft)', borderRadius: 'var(--r-md)', padding: 28, display: 'flex', flexDirection: 'column', gap: 14 }}>
               <span style={{ fontSize: 30 }}>{icon}</span>
@@ -323,7 +323,34 @@ function PageCTA() {
 
 export default function VisitPage() {
   return (
-    <>
+    <div className="visit-page">
+      <style>{`
+        @media (max-width: 768px) {
+          .visit-page section > div {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .visit-page .vp-address-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .visit-page .vp-map {
+            min-height: unset !important;
+            aspect-ratio: 16 / 9;
+          }
+          .visit-page .vp-hours-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .visit-page .vp-schedule-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .visit-page .vp-finds-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
       <Hero />
       <Convite />
       <AddressMap />
@@ -331,6 +358,6 @@ export default function VisitPage() {
       <Schedule />
       <WhatToFind />
       <PageCTA />
-    </>
+    </div>
   )
 }

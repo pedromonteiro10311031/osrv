@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getBlogPostBySlug, fixMediaUrl, fixContentUrls } from '@/lib/wordpress'
+import { getBlogPostBySlug, getPostsByCategory, fixMediaUrl, fixContentUrls } from '@/lib/wordpress'
 import FinalCTA from '@/components/FinalCTA'
 import Footer from '@/components/Footer'
+import RelatedPosts from '@/components/RelatedPosts'
 
 const s = {
   hero: {
@@ -107,8 +108,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound()
 
   const category = post._embedded?.['wp:term']?.[0]?.[0]?.name ?? 'Sem categoria'
+  const categoryId = post._embedded?.['wp:term']?.[0]?.[0]?.id
   const rawImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url
   const featuredImage = rawImage ? fixMediaUrl(rawImage) : null
+
+  const relatedPosts = categoryId ? await getPostsByCategory(categoryId, post.id, 3) : []
 
   return (
     <main>
@@ -143,6 +147,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             style={s.prose}
             dangerouslySetInnerHTML={{ __html: fixContentUrls(post.content.rendered) }}
           />
+          <RelatedPosts posts={relatedPosts} />
         </div>
       </section>
 

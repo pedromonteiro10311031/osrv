@@ -64,12 +64,32 @@ const stats = [
 
 export default function ImpactoReal() {
   return (
-    <section style={impStyles.wrap} id="impacto">
-      <div style={impStyles.inner}>
+    <section style={impStyles.wrap} id="impacto" className="impacto-real">
+      <style>{`
+        @media (max-width: 768px) {
+          .impacto-real .ir-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .impacto-real .ir-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .impacto-real .ir-grid > div {
+            padding: 28px 16px !important;
+            border-left: 1px solid rgba(255,255,255,0.16) !important;
+          }
+          .impacto-real .ir-grid > div:nth-child(odd) {
+            border-left: none !important;
+            padding-left: 0 !important;
+          }
+        }
+      `}</style>
+      <div style={impStyles.inner} className="ir-inner">
         <div style={impStyles.eyebrow}>IMPACTO REAL</div>
         <h2 style={impStyles.h2}>Por trás dos projetos, vidas transformadas.</h2>
         <p style={impStyles.sub}>Cada número é uma história.</p>
-        <div style={impStyles.grid}>
+        <div style={impStyles.grid} className="ir-grid">
           {stats.map(([n, sup, bold, rest], i) => (
             <div key={n + bold} style={i === 0 ? { ...impStyles.stat, ...impStyles.statFirst } : impStyles.stat}>
               <p style={impStyles.n}>{n}{sup && <span style={impStyles.sup}>{sup}</span>}</p>

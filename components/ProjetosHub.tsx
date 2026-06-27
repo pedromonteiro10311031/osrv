@@ -59,14 +59,27 @@ function ProjectHubCard({ p }: { p: Project }) {
 
 export default function ProjetosHub() {
   return (
-    <section style={grStyles.wrap} id="projetos">
-      <div style={grStyles.inner}>
+    <section style={grStyles.wrap} id="projetos" className="projetos-hub">
+      <style>{`
+        @media (max-width: 768px) {
+          .projetos-hub .ph-inner {
+            padding: 0 20px !important;
+            box-sizing: border-box;
+            max-width: 100% !important;
+          }
+          .projetos-hub .ph-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+        }
+      `}</style>
+      <div style={grStyles.inner} className="ph-inner">
         <div style={grStyles.head}>
           <div style={grStyles.eyebrow}>NOSSOS PROJETOS</div>
           <h2 style={grStyles.h2}>Conheça cada um deles.</h2>
           <p style={grStyles.sub}>Clique para mergulhar fundo.</p>
         </div>
-        <div style={grStyles.grid}>
+        <div style={grStyles.grid} className="ph-grid">
           {PROJECTS.map((p) => <ProjectHubCard key={p.id} p={p} />)}
         </div>
       </div>

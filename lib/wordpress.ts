@@ -50,6 +50,21 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   }
 }
 
+// TODO: trocar para `next: { revalidate: 3600 }` antes de produção (cache: 'no-store' é só pra fase de testes)
+export async function getPostsByCategory(categoryId: number, excludePostId: number, limit = 3): Promise<BlogPost[]> {
+  try {
+    const res = await fetch(
+      `${WP_API}/wp-json/wp/v2/posts?categories=${categoryId}&exclude=${excludePostId}&per_page=${limit}&_embed`,
+      { cache: 'no-store' }
+    )
+    if (!res.ok) throw new Error('Failed to fetch posts by category')
+    return res.json()
+  } catch (error) {
+    console.error('Erro ao buscar posts relacionados:', error)
+    return []
+  }
+}
+
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
     const res = await fetch(
