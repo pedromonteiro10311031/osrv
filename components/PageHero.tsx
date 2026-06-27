@@ -95,9 +95,10 @@ interface PageHeroProps {
   metaLeft?: string
   metaRight?: string
   bgImage?: string
+  actions?: React.ReactNode
 }
 
-export default function PageHero({ eyebrow, title, subtitle, metaLeft, metaRight, bgImage }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, subtitle, metaLeft, metaRight, bgImage, actions }: PageHeroProps) {
   return (
     <header style={phStyles.wrap} className="page-hero">
       <style>{`
@@ -129,6 +130,7 @@ export default function PageHero({ eyebrow, title, subtitle, metaLeft, metaRight
         </div>
         <h1 style={phStyles.h1}>{title}</h1>
         {subtitle && <p style={phStyles.sub}>{subtitle}</p>}
+        {actions && <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center', marginTop: 6 }}>{actions}</div>}
       </div>
       {(metaLeft || metaRight) && (
         <div className="ph-meta-bar">

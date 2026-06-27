@@ -2,6 +2,8 @@
 
 // Sections for "Venha Nos Conhecer". TopNav e Footer ficam em page.tsx.
 
+import PageHero from '@/components/PageHero'
+
 const HERO_PHOTO = 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=2200&q=80'
 
 const HOURS: [string, string][] = [
@@ -106,27 +108,12 @@ function scrollTo(id: string) {
 
 /* ------------------------------------------------------------------ Hero */
 
-function Hero() {
+function HeroActions() {
   return (
-    <header style={{ position: 'relative', minHeight: 620, display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url('${HERO_PHOTO}')`, backgroundSize: 'cover', backgroundPosition: 'center 40%' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(30,66,24,0.55) 0%, rgba(26,42,30,0.72) 100%)' }} />
-      <div style={{ position: 'relative', width: '100%', maxWidth: 'var(--container)', margin: '0 auto', padding: 'clamp(72px, 10vw, 120px) 32px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22 }}>
-        <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(250,248,244,0.7)', margin: 0 }}>
-          VENHA NOS CONHECER · OSRV CUIABÁ
-        </p>
-        <h1 style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(2.75rem, 6vw, 5rem)', lineHeight: 1.0, letterSpacing: '-0.03em', color: 'var(--paper-100)', margin: 0, maxWidth: 900 }}>
-          A porta está sempre aberta.
-        </h1>
-        <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 400, fontSize: 'clamp(1.375rem, 2.6vw, 2rem)', lineHeight: 1.2, color: 'var(--amber-500)', margin: 0 }}>
-          Conhecer de perto muda tudo.
-        </p>
-        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center', marginTop: 10 }}>
-          <Btn variant="primary" onClick={scrollTo('endereco')}>Como chegar →</Btn>
-          <Btn variant="outlineDark" onClick={scrollTo('agendar')}>Agendar visita</Btn>
-        </div>
-      </div>
-    </header>
+    <>
+      <Btn variant="primary" onClick={scrollTo('endereco')}>Como chegar →</Btn>
+      <Btn variant="outlineDark" onClick={scrollTo('agendar')}>Agendar visita</Btn>
+    </>
   )
 }
 
@@ -291,34 +278,6 @@ function WhatToFind() {
   )
 }
 
-/* ---------------------------------------------------------------- PageCTA */
-
-function PageCTA() {
-  const rule: React.CSSProperties = { flex: 1, height: 1, background: 'var(--border-hard)', maxWidth: 80 }
-  return (
-    <section style={{ background: 'var(--paper-100)', padding: pad, borderTop: '1px solid var(--border-soft)' }}>
-      <div style={{ ...wrap, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 18 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16, width: '100%', maxWidth: 340, justifyContent: 'center' }}>
-          <span style={rule} />
-          <span style={{ ...ui.eyebrow, whiteSpace: 'nowrap' }}>APOIE A OSRV</span>
-          <span style={rule} />
-        </div>
-        <h2 style={{ fontFamily: 'var(--font-serif)', fontWeight: 500, fontSize: 'clamp(2.25rem, 4vw, 3.25rem)', lineHeight: 1.04, letterSpacing: '-0.025em', color: 'var(--ink-900)', margin: 0 }}>
-          Faça parte dessa história.
-        </h2>
-        <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 400, fontSize: 'clamp(1.375rem, 2.4vw, 1.875rem)', lineHeight: 1.2, color: 'var(--amber-500)', margin: 0 }}>
-          Não importa o tamanho do gesto.
-        </p>
-        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center', marginTop: 14 }}>
-          <Btn variant="primary" href="/quero-ser-doador">♥ Quero doar</Btn>
-          <Btn variant="outlineGreen" href="/quero-ser-voluntario">Ser voluntário</Btn>
-          <Btn variant="outlineGreen" href="/quero-ser-parceiro">Parceria empresa</Btn>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 /* -------------------------------------------------------------- Page root */
 
 export default function VisitPage() {
@@ -351,13 +310,18 @@ export default function VisitPage() {
           }
         }
       `}</style>
-      <Hero />
+      <PageHero
+        eyebrow="VENHA NOS CONHECER · OSRV CUIABÁ"
+        title="A porta está sempre aberta."
+        subtitle="Conhecer de perto muda tudo."
+        bgImage={HERO_PHOTO}
+        actions={<HeroActions />}
+      />
       <Convite />
       <AddressMap />
       <Hours />
       <Schedule />
       <WhatToFind />
-      <PageCTA />
     </div>
   )
 }
