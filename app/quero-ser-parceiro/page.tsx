@@ -14,8 +14,7 @@ export default function QueroSerParceiro() {
         title="Sua empresa pode mudar uma geração."
         subtitle="Impacto real. Reconhecimento genuíno."
         bgImage="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2200&q=80"
-        metaLeft="JARDIM RENASCER · CUIABÁ"
-        metaRight="CEBAS · OSCIP"
+
       />
       <ParceiroPorQue />
       <ParceiroComoAjudar />

@@ -65,61 +65,19 @@ const phStyles = {
     margin: 0,
     maxWidth: 760,
   },
-  meta: {
-    position: 'absolute' as const,
-    left: 48,
-    bottom: 32,
-    fontSize: 11,
-    color: 'rgba(255,255,255,0.55)',
-    letterSpacing: '0.14em',
-    textTransform: 'uppercase' as const,
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 8,
-  },
-  metaRight: {
-    position: 'absolute' as const,
-    right: 48,
-    bottom: 32,
-    fontSize: 11,
-    color: 'rgba(255,255,255,0.55)',
-    letterSpacing: '0.14em',
-    textTransform: 'uppercase' as const,
-  },
 }
 
 interface PageHeroProps {
   eyebrow: string
   title: string
   subtitle?: string
-  metaLeft?: string
-  metaRight?: string
   bgImage?: string
   actions?: React.ReactNode
 }
 
-export default function PageHero({ eyebrow, title, subtitle, metaLeft, metaRight, bgImage, actions }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, subtitle, bgImage, actions }: PageHeroProps) {
   return (
     <header style={phStyles.wrap} className="page-hero">
-      <style>{`
-        @media (max-width: 768px) {
-          .page-hero .ph-meta-left,
-          .page-hero .ph-meta-right {
-            position: static !important;
-            font-size: 10px !important;
-          }
-          .page-hero .ph-meta-bar {
-            position: absolute;
-            left: 20px;
-            right: 20px;
-            bottom: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-          }
-        }
-      `}</style>
       <div style={{ ...phStyles.bg, backgroundImage: bgImage ? `url('${bgImage}')` : undefined }}></div>
       <div style={phStyles.overlay}></div>
       <div style={phStyles.inner}>
@@ -132,12 +90,6 @@ export default function PageHero({ eyebrow, title, subtitle, metaLeft, metaRight
         {subtitle && <p style={phStyles.sub}>{subtitle}</p>}
         {actions && <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center', marginTop: 6 }}>{actions}</div>}
       </div>
-      {(metaLeft || metaRight) && (
-        <div className="ph-meta-bar">
-          {metaLeft && <div style={phStyles.meta} className="ph-meta-left">📍 {metaLeft}</div>}
-          {metaRight && <div style={phStyles.metaRight} className="ph-meta-right">{metaRight}</div>}
-        </div>
-      )}
     </header>
   )
 }

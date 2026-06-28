@@ -12,8 +12,7 @@ export default function ProgramasEProjetos() {
         eyebrow="PROGRAMAS E PROJETOS · OSRV CUIABÁ"
         title="Tudo que acontece no Jardim Renascer."
         subtitle="Esporte, educação, arte e cuidado — todo dia."
-        metaLeft="JARDIM RENASCER · CUIABÁ / MT"
-        metaRight="06 PROJETOS · 250+ CRIANÇAS"
+
       />
       <Introducao />
       <ImpactoReal />
