@@ -82,13 +82,16 @@ interface BtnProps {
   children: React.ReactNode
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
   href?: string
+  target?: string
 }
 
-function Btn({ variant = 'primary', children, onClick, href }: BtnProps) {
+function Btn({ variant = 'primary', children, onClick, href, target }: BtnProps) {
   const [on, off] = hoverBg[variant]
   return (
     <a
       href={href || '#'}
+      target={target}
+      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
       style={{ ...btnBase, ...btnVariants[variant] }}
       onClick={onClick}
       onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = on }}
@@ -169,28 +172,28 @@ function AddressMap() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'center' }} className="vp-address-grid">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
             <InfoBlock icon="📍" label="Endereço">
-              Rua Exemplo, 123 · Jardim Renascer<br />Cuiabá / MT · CEP 00000-000
+              Rua Nova Mutum, 596, sala 2 · Jardim Renascer<br />Cuiabá / MT · CEP 78061-360
             </InfoBlock>
             <p style={{ fontSize: 'clamp(1.0625rem, 1.6vw, 1.25rem)', lineHeight: 1.65, color: 'var(--fg-2)', maxWidth: '40ch', margin: 0 }}>
               Estamos de portas abertas no Jardim Renascer, em Cuiabá. Toque a campainha — tem sempre alguém para te receber e um café passando.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 4 }}>
-              <Btn variant="primary">Abrir no Google Maps →</Btn>
-              <Btn variant="outlineGreen">🧭 Abrir no Waze</Btn>
+              <Btn variant="primary" href="https://www.google.com/maps/search/?api=1&query=Rua+Nova+Mutum%2C+596%2C+Jardim+Renascer%2C+Cuiab%C3%A1+-+MT%2C+78061-360" target="_blank">Abrir no Google Maps →</Btn>
+              <Btn variant="outlineGreen" href="https://waze.com/ul?q=Rua+Nova+Mutum%2C+596%2C+Jardim+Renascer%2C+Cuiab%C3%A1+-+MT%2C+78061-360&navigate=yes" target="_blank">🧭 Abrir no Waze</Btn>
             </div>
           </div>
           <div className="vp-map" style={{
             position: 'relative', minHeight: 440, borderRadius: 'var(--r-md)', overflow: 'hidden',
-            background: 'var(--paper-200)', border: '1px solid var(--border-soft)',
-            backgroundImage: 'linear-gradient(var(--paper-300) 1px, transparent 1px), linear-gradient(90deg, var(--paper-300) 1px, transparent 1px)',
-            backgroundSize: '38px 38px',
+            border: '1px solid var(--border-soft)',
           }}>
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 14, color: 'var(--ink-500)' }}>
-              <div style={{ width: 56, height: 56, borderRadius: '50% 50% 50% 0', background: 'var(--amber-500)', transform: 'rotate(-45deg)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'var(--shadow-2)' }}>
-                <span style={{ transform: 'rotate(45deg)', color: '#fff', fontSize: 24 }}>📍</span>
-              </div>
-              <span style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--ink-500)' }}>Mapa — Google Maps embed</span>
-            </div>
+            <iframe
+              src="https://www.google.com/maps?q=Rua+Nova+Mutum%2C+596%2C+Jardim+Renascer%2C+Cuiab%C3%A1+-+MT%2C+78061-360&output=embed"
+              style={{ border: 0, width: '100%', height: '100%', position: 'absolute', inset: 0, display: 'block' }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              title="Localização da OSRV no mapa"
+            />
           </div>
         </div>
       </div>
