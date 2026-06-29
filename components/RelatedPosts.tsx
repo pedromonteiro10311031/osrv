@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { fixMediaUrl, type BlogPost } from '@/lib/wordpress'
 

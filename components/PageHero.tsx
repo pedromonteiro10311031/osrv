@@ -78,10 +78,38 @@ interface PageHeroProps {
 export default function PageHero({ eyebrow, title, subtitle, bgImage, actions }: PageHeroProps) {
   return (
     <header style={phStyles.wrap} className="page-hero">
+      <style>{`
+        @media (max-width: 768px) {
+          .page-hero {
+            min-height: min(56vh, 460px) !important;
+            aspect-ratio: unset !important;
+          }
+          .page-hero .ph-inner {
+            padding: 32px 20px 28px !important;
+            gap: 10px !important;
+          }
+          .page-hero .ph-inner h1 {
+            font-size: clamp(1.65rem, 8vw, 2rem) !important;
+            line-height: 1.1 !important;
+          }
+          .page-hero .ph-inner p {
+            font-size: 0.95rem !important;
+            line-height: 1.3 !important;
+          }
+          .page-hero .ph-eyebrow {
+            font-size: 9px !important;
+            gap: 6px !important;
+            letter-spacing: 0.12em !important;
+          }
+          .page-hero .ph-eyebrow span {
+            width: 18px !important;
+          }
+        }
+      `}</style>
       <div style={{ ...phStyles.bg, backgroundImage: bgImage ? `url('${bgImage}')` : undefined }}></div>
       <div style={phStyles.overlay}></div>
-      <div style={phStyles.inner}>
-        <div style={phStyles.eyebrow}>
+      <div style={phStyles.inner} className="ph-inner">
+        <div style={phStyles.eyebrow} className="ph-eyebrow">
           <span style={phStyles.rule}></span>
           {eyebrow}
           <span style={phStyles.rule}></span>
