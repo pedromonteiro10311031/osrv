@@ -71,7 +71,7 @@ export default function ImpactStats() {
             border-left: 1px solid var(--border-soft) !important;
           }
           .impact-stats .impact-intro {
-            font-size: clamp(1.25rem, 5.5vw, 1.5rem) !important;
+            font-size: clamp(1.4rem, 6vw, 1.65rem) !important;
             line-height: 1.0 !important;
             margin-bottom: 28px !important;
           }
