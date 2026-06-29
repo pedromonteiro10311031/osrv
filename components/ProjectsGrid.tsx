@@ -139,16 +139,16 @@ function ProjectCard({ p }: { p: Project }) {
     : projStyles.tag
 
   return (
-    <Link href={`/programas-e-projetos#${p.id}`} style={cardStyle} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-      <div style={{ ...projStyles.band, background: p.bg }}>
+    <Link href={`/programas-e-projetos#${p.id}`} style={cardStyle} className="projects-card" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+      <div style={{ ...projStyles.band, background: p.bg }} className="projects-card-band">
         <span style={projStyles.placeholder} className="card-placeholder">{p.photoHint}</span>
         <div style={projStyles.bandScrim}></div>
         <span style={eyebrowStyle}>{p.eyebrow}</span>
       </div>
-      <div style={projStyles.body}>
-        <h3 style={projStyles.title}>{p.title}</h3>
-        <p style={projStyles.desc}>{p.desc}</p>
-        <span style={projStyles.link}>Conhecer o projeto →</span>
+      <div style={projStyles.body} className="projects-card-body">
+        <h3 style={projStyles.title} className="projects-card-title">{p.title}</h3>
+        <p style={projStyles.desc} className="projects-card-desc">{p.desc}</p>
+        <span style={projStyles.link} className="projects-card-link">Conhecer o projeto →</span>
       </div>
     </Link>
   )
@@ -157,16 +157,16 @@ function ProjectCard({ p }: { p: Project }) {
 export default function ProjectsGrid() {
   return (
     <section id="projetos" style={projStyles.wrap}>
-      <div style={projStyles.inner}>
+      <div style={projStyles.inner} className="projects-inner">
         <div style={projStyles.head}>
           <div>
             <div style={projStyles.eyebrow}>OS SEIS PROJETOS</div>
-            <h2 style={projStyles.h2}>
+            <h2 style={projStyles.h2} className="projects-h2">
               Esporte, mente e cuidado
               <span style={projStyles.italic}> caminham junto.</span>
             </h2>
           </div>
-          <p style={projStyles.intro}>
+          <p style={projStyles.intro} className="projects-intro">
             Cada criança que entra na OSRV é atendida por vários projetos ao
             mesmo tempo. Não escolhemos entre o tatame e a aula de matemática
             — fazemos os dois, e o lanche da tarde no meio.
@@ -179,10 +179,36 @@ export default function ProjectsGrid() {
       <style>{`
         @media (max-width: 768px) {
           .projects-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: 1fr 1fr !important;
           }
           .projects-grid .card-placeholder {
             display: none;
+          }
+          .projects-inner {
+            padding: 48px 20px !important;
+          }
+          .projects-h2 {
+            font-size: clamp(1.4rem, 6vw, 1.65rem) !important;
+            line-height: 1.05 !important;
+          }
+          .projects-intro {
+            font-size: 0.9rem !important;
+            line-height: 1.4 !important;
+          }
+          .projects-card-band {
+            aspect-ratio: 4/3 !important;
+          }
+          .projects-card-body {
+            padding: 12px !important;
+          }
+          .projects-card-title {
+            font-size: 0.95rem !important;
+          }
+          .projects-card-desc {
+            font-size: 0.8rem !important;
+          }
+          .projects-card-link {
+            font-size: 0.8rem !important;
           }
         }
       `}</style>

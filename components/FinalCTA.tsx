@@ -25,7 +25,7 @@ function ApoioCard({ tag, title, desc, cta, ctaStyle, href }: { tag: string, tit
   return (
     <div style={{ ...apStyles.card, boxShadow: hover ? '0 8px 24px rgba(0,0,0,0.10)' : 'none', borderColor: hover ? 'var(--amber-500)' : 'var(--border-soft)' }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <span style={apStyles.cardTag}>{tag}</span>
-      <h3 style={apStyles.cardTitle}>{title}</h3>
+      <h3 style={apStyles.cardTitle} className="final-cta-card-title">{title}</h3>
       <p style={apStyles.cardDesc}>{desc}</p>
       <Link href={href} style={ctaStyle === 'primary' ? apStyles.ctaPrimary : apStyles.ctaOutline}>{cta} →</Link>
     </div>
@@ -43,12 +43,23 @@ export default function FinalCTA() {
           .final-cta .final-cta-grid {
             grid-template-columns: 1fr !important;
           }
+          .final-cta {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
+          .final-cta .final-cta-h2 {
+            font-size: clamp(1.4rem, 6vw, 1.65rem) !important;
+            line-height: 1.05 !important;
+          }
+          .final-cta .final-cta-card-title {
+            font-size: 1.1rem !important;
+          }
         }
       `}</style>
       <div style={apStyles.inner} className="final-cta-inner">
         <div style={apStyles.head}>
           <div style={apStyles.eyebrow}>VOCÊ TAMBÉM PODE AJUDAR</div>
-          <h2 style={apStyles.h2}>Cada projeto precisa de você.</h2>
+          <h2 style={apStyles.h2} className="final-cta-h2">Cada projeto precisa de você.</h2>
           <p style={apStyles.sub}>Escolha como fazer parte.</p>
         </div>
         <div style={apStyles.grid} className="final-cta-grid">

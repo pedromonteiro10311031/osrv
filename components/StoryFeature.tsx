@@ -88,6 +88,18 @@ export default function StoryFeature() {
             padding: 48px 28px !important;
             max-width: 100% !important;
           }
+          .story-feature .story-eyebrow {
+            font-size: 9px !important;
+            letter-spacing: 0.12em !important;
+          }
+          .story-feature .story-quote {
+            font-size: clamp(1.3rem, 6vw, 1.55rem) !important;
+            line-height: 1.15 !important;
+          }
+          .story-feature .story-body {
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+          }
         }
       `}</style>
       <div style={storyStyles.portrait} className="story-portrait">
@@ -96,16 +108,16 @@ export default function StoryFeature() {
         <span style={storyStyles.caption}>MARÇO 2026</span>
       </div>
       <div style={storyStyles.content} className="story-content">
-        <div style={storyStyles.eyebrow}>UMA HISTÓRIA · JARDIM RENASCER</div>
-        <h2 style={storyStyles.quote}>
+        <div style={storyStyles.eyebrow} className="story-eyebrow">UMA HISTÓRIA · JARDIM RENASCER</div>
+        <h2 style={storyStyles.quote} className="story-quote">
           Ela nunca havia comido chocolate.
           <span style={storyStyles.italic}> Alguns momentos mudam tudo.</span>
         </h2>
-        <p style={storyStyles.body}>
+        <p style={storyStyles.body} className="story-body">
           Durante uma ação com a Cacau Show, distribuímos chocolates para as
           crianças da OSRV. Uma menina segurou a embalagem sem abrir por um tempo.
         </p>
-        <p style={storyStyles.body}>
+        <p style={storyStyles.body} className="story-body">
           Quando perguntaram o que havia acontecido, ela disse que nunca havia
           comido chocolate antes — e chorou. Momentos assim são o motivo pelo
           qual existimos.

@@ -165,12 +165,20 @@ export default function DonationBlock({
           .donation-block .donation-amounts {
             grid-template-columns: repeat(2, 1fr) !important;
           }
+          .donation-block {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
+          .donation-block .donation-subtitle {
+            font-size: clamp(1.3rem, 6vw, 1.55rem) !important;
+            line-height: 1.15 !important;
+          }
         }
       `}</style>
       <div style={donStyles.inner} className="donation-inner">
         <div style={donStyles.left} className="donation-left">
           <div style={donStyles.eyebrow}>{eyebrow}</div>
-          <h2 style={donStyles.subtitle}>{subtitle}</h2>
+          <h2 style={donStyles.subtitle} className="donation-subtitle">{subtitle}</h2>
           <p style={donStyles.lead}>{lead}</p>
           {bullets.map((b, i) => <p key={i} style={donStyles.bullet}>{b}</p>)}
         </div>
