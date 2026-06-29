@@ -70,10 +70,15 @@ export default function ImpactStats() {
           .impact-stats .impact-stat-bordered:nth-child(odd) {
             border-left: 1px solid var(--border-soft) !important;
           }
+          .impact-stats .impact-intro {
+            font-size: clamp(1.25rem, 5.5vw, 1.5rem) !important;
+            line-height: 1.0 !important;
+            margin-bottom: 28px !important;
+          }
         }
       `}</style>
       <div style={statsStyles.eyebrow}>NOSSO IMPACTO</div>
-      <h2 style={statsStyles.intro}>
+      <h2 style={statsStyles.intro} className="impact-intro">
         Doze anos atendendo o Jardim Renascer.
         <span style={statsStyles.italic}> Números que têm nome, rosto e terça-feira à tarde.</span>
       </h2>

@@ -136,13 +136,48 @@ const heroStyles = {
 
 export default function Hero({ onDonateClick }: { onDonateClick?: () => void }) {
   return (
-    <header style={heroStyles.wrap}>
+    <header style={heroStyles.wrap} className="hero">
+      <style>{`
+        @media (max-width: 768px) {
+          .hero {
+            min-height: min(62vh, 520px) !important;
+          }
+          .hero-inner {
+            padding: 40px 20px 36px !important;
+            gap: 14px !important;
+          }
+          .hero-eyebrow {
+            font-size: 9px !important;
+            letter-spacing: 0.12em !important;
+            gap: 6px !important;
+          }
+          .hero h1 {
+            font-size: clamp(1.75rem, 9vw, 2.2rem) !important;
+            line-height: 0.98 !important;
+          }
+          .hero-lead {
+            font-size: 0.9375rem !important;
+          }
+          .hero-cta-primary,
+          .hero-cta-ghost {
+            font-size: 14px !important;
+            padding: 12px 20px !important;
+            min-height: 44px !important;
+          }
+          .hero-meta {
+            position: static !important;
+            right: unset !important;
+            bottom: unset !important;
+            margin-top: 16px !important;
+          }
+        }
+      `}</style>
       <div style={heroStyles.bg}></div>
       <div style={heroStyles.bgImage}></div>
       <div style={heroStyles.scrim}></div>
       <div style={heroStyles.vignette}></div>
-      <div style={heroStyles.inner}>
-        <div style={heroStyles.eyebrow}>
+      <div style={heroStyles.inner} className="hero-inner">
+        <div style={heroStyles.eyebrow} className="hero-eyebrow">
           <span style={heroStyles.rule}></span>
           OBRAS SOCIAIS RAFAEL VERLANGIERI · CUIABÁ / MT
         </div>
@@ -150,19 +185,19 @@ export default function Hero({ onDonateClick }: { onDonateClick?: () => void }) 
           Tire uma criança das ruas.<br/>
           <span style={heroStyles.italic}>Coloque ela em um lugar seguro.</span>
         </h1>
-        <p style={heroStyles.lead}>
+        <p style={heroStyles.lead} className="hero-lead">
           Há mais de 12 anos transformando vidas em Jardim Renascer, Cuiabá.
         </p>
         <div style={heroStyles.ctas}>
-          <Link href="/doador" style={heroStyles.ctaPrimary}>
+          <Link href="/doador" style={heroStyles.ctaPrimary} className="hero-cta-primary">
             Doar agora →
           </Link>
-          <a href="#projetos" style={heroStyles.ctaGhost}>
+          <a href="#projetos" style={heroStyles.ctaGhost} className="hero-cta-ghost">
             Conhecer os projetos
           </a>
         </div>
       </div>
-      <div style={heroStyles.meta}>
+      <div style={heroStyles.meta} className="hero-meta">
         📍 JARDIM RENASCER
       </div>
     </header>
