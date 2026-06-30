@@ -52,9 +52,42 @@ export default function ParaOndeVai() {
           .para-onde-vai .pov-bar {
             max-width: 100% !important;
           }
+          .para-onde-vai .pov-bar {
+            height: 14px !important;
+          }
           .para-onde-vai .pov-legend {
             grid-template-columns: 1fr !important;
-            gap: 20px !important;
+            gap: 14px !important;
+          }
+          .para-onde-vai .pov-legend-item {
+            flex-direction: row !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+            padding-top: 14px !important;
+          }
+          .para-onde-vai .pov-legend-left {
+            flex-shrink: 0 !important;
+          }
+          .para-onde-vai .pov-bar-stub {
+            width: 24px !important;
+            height: 3px !important;
+          }
+          .para-onde-vai .pov-pct {
+            font-size: 1.75rem !important;
+          }
+          .para-onde-vai .pov-pct-sign {
+            font-size: 1rem !important;
+          }
+          .para-onde-vai .pov-legend-label {
+            font-size: 0.9rem !important;
+          }
+          .para-onde-vai .pov-legend-sub {
+            font-size: 0.8rem !important;
+            line-height: 1.4 !important;
+          }
+          .para-onde-vai .pov-report-link {
+            padding: 10px 18px !important;
+            font-size: 0.875rem !important;
           }
         }
       `}</style>
@@ -79,14 +112,18 @@ export default function ParaOndeVai() {
           </div>
           <div style={transpStyles.legend} className="pov-legend">
             {SEGMENTS.map((s) => (
-              <div key={s.label} style={transpStyles.legendItem}>
-                <div style={{ ...transpStyles.legendBarStub, background: s.color }} />
-                <div>
-                  <span style={transpStyles.pct}>{s.pct}</span>
-                  <span style={transpStyles.pctSign}>%</span>
+              <div key={s.label} style={transpStyles.legendItem} className="pov-legend-item">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }} className="pov-legend-left">
+                  <div style={{ ...transpStyles.legendBarStub, background: s.color }} className="pov-bar-stub" />
+                  <div>
+                    <span style={transpStyles.pct} className="pov-pct">{s.pct}</span>
+                    <span style={transpStyles.pctSign} className="pov-pct-sign">%</span>
+                  </div>
                 </div>
-                <div style={transpStyles.legendLabel}>{s.label}</div>
-                <div style={transpStyles.legendSub}>{s.sub}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }} className="pov-legend-right">
+                  <div style={transpStyles.legendLabel} className="pov-legend-label">{s.label}</div>
+                  <div style={transpStyles.legendSub} className="pov-legend-sub">{s.sub}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -95,7 +132,7 @@ export default function ParaOndeVai() {
               <span style={transpStyles.footerStrong}>Cada real é rastreado.</span>{' '}
               Veja nossos relatórios financeiros completos, auditados e publicados todo ano.
             </div>
-            <Link href="/transparencia" style={transpStyles.reportLink}>
+            <Link href="/transparencia" style={transpStyles.reportLink} className="pov-report-link">
               🛡 Ver relatórios →
             </Link>
           </div>
