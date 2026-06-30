@@ -48,13 +48,13 @@ const FAQS = [
 function FaqItem({ q, a, isOpen, onToggle }: { q: string, a: string, isOpen: boolean, onToggle: () => void }) {
   return (
     <div style={faqStyles.item}>
-      <button style={{ ...faqStyles.trigger, ...(isOpen ? faqStyles.triggerOpen : {}) }} onClick={onToggle} aria-expanded={isOpen}>
+      <button style={{ ...faqStyles.trigger, ...(isOpen ? faqStyles.triggerOpen : {}) }} className="faq-trigger" onClick={onToggle} aria-expanded={isOpen}>
         <span>{q}</span>
-        <span style={{ ...faqStyles.chevron, ...(isOpen ? faqStyles.chevronOpen : {}) }}>▾</span>
+        <span style={{ ...faqStyles.chevron, ...(isOpen ? faqStyles.chevronOpen : {}) }} className="faq-chevron">▾</span>
       </button>
       <div style={{ ...faqStyles.panel, gridTemplateRows: isOpen ? '1fr' : '0fr' }}>
         <div style={faqStyles.body}>
-          <div style={faqStyles.bodyInner}>{a}</div>
+          <div style={faqStyles.bodyInner} className="faq-body-inner">{a}</div>
         </div>
       </div>
     </div>
@@ -73,6 +73,20 @@ export default function FAQ() {
           .faq-section .faq-layout {
             grid-template-columns: 1fr !important;
             gap: 40px !important;
+          }
+          .faq-section .faq-trigger {
+            font-size: 1.05rem !important;
+            padding: 18px 0 !important;
+            line-height: 1.25 !important;
+          }
+          .faq-section .faq-chevron {
+            font-size: 1.05rem !important;
+          }
+          .faq-section .faq-body-inner {
+            font-size: 0.9rem !important;
+            line-height: 1.55 !important;
+            padding-bottom: 18px !important;
+            padding-right: 24px !important;
           }
         }
       `}</style>

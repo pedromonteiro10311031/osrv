@@ -23,11 +23,11 @@ const apStyles = {
 function ApoioCard({ tag, title, desc, cta, ctaStyle, href }: { tag: string, title: string, desc: string, cta: string, ctaStyle: string, href: string }) {
   const [hover, setHover] = useState(false)
   return (
-    <div style={{ ...apStyles.card, boxShadow: hover ? '0 8px 24px rgba(0,0,0,0.10)' : 'none', borderColor: hover ? 'var(--amber-500)' : 'var(--border-soft)' }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-      <span style={apStyles.cardTag}>{tag}</span>
+    <div style={{ ...apStyles.card, boxShadow: hover ? '0 8px 24px rgba(0,0,0,0.10)' : 'none', borderColor: hover ? 'var(--amber-500)' : 'var(--border-soft)' }} className="final-cta-card" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+      <span style={apStyles.cardTag} className="final-cta-card-tag">{tag}</span>
       <h3 style={apStyles.cardTitle} className="final-cta-card-title">{title}</h3>
-      <p style={apStyles.cardDesc}>{desc}</p>
-      <Link href={href} style={ctaStyle === 'primary' ? apStyles.ctaPrimary : apStyles.ctaOutline}>{cta} →</Link>
+      <p style={apStyles.cardDesc} className="final-cta-card-desc">{desc}</p>
+      <Link href={href} style={ctaStyle === 'primary' ? apStyles.ctaPrimary : apStyles.ctaOutline} className={ctaStyle === 'primary' ? 'final-cta-cta-primary' : 'final-cta-cta-outline'}>{cta} →</Link>
     </div>
   )
 }
@@ -37,30 +37,55 @@ export default function FinalCTA() {
     <section style={apStyles.wrap} id="apoiar" className="final-cta">
       <style>{`
         @media (max-width: 768px) {
+          .final-cta {
+            padding-top: 36px !important;
+            padding-bottom: 36px !important;
+          }
           .final-cta .final-cta-inner {
             padding: 0 20px !important;
           }
-          .final-cta .final-cta-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .final-cta {
-            padding-top: 56px !important;
-            padding-bottom: 56px !important;
+          .final-cta .final-cta-head {
+            margin-bottom: 24px !important;
           }
           .final-cta .final-cta-h2 {
             font-size: clamp(1.4rem, 6vw, 1.65rem) !important;
             line-height: 1.05 !important;
           }
+          .final-cta .final-cta-sub {
+            font-size: 0.95rem !important;
+          }
+          .final-cta .final-cta-grid {
+            grid-template-columns: 1fr !important;
+            gap: 8px !important;
+          }
+          .final-cta .final-cta-card {
+            padding: 16px 16px !important;
+            gap: 6px !important;
+          }
+          .final-cta .final-cta-card-tag {
+            font-size: 9px !important;
+            letter-spacing: 0.1em !important;
+          }
           .final-cta .final-cta-card-title {
-            font-size: 1.1rem !important;
+            font-size: 1.15rem !important;
+            font-weight: 500 !important;
+          }
+          .final-cta .final-cta-card-desc {
+            font-size: 0.78rem !important;
+            line-height: 1.35 !important;
+          }
+          .final-cta .final-cta-cta-primary,
+          .final-cta .final-cta-cta-outline {
+            padding: 8px 14px !important;
+            font-size: 0.8rem !important;
           }
         }
       `}</style>
       <div style={apStyles.inner} className="final-cta-inner">
-        <div style={apStyles.head}>
+        <div style={apStyles.head} className="final-cta-head">
           <div style={apStyles.eyebrow}>VOCÊ TAMBÉM PODE AJUDAR</div>
           <h2 style={apStyles.h2} className="final-cta-h2">Cada projeto precisa de você.</h2>
-          <p style={apStyles.sub}>Escolha como fazer parte.</p>
+          <p style={apStyles.sub} className="final-cta-sub">Escolha como fazer parte.</p>
         </div>
         <div style={apStyles.grid} className="final-cta-grid">
           <ApoioCard tag="DOAÇÃO" title="Doe" desc="Sua doação financia diretamente as atividades, materiais e equipe dos seis projetos. Doação única ou mensal." cta="Quero doar" ctaStyle="primary" href="/quero-ser-doador" />
