@@ -56,7 +56,7 @@ export default function FinalCTA() {
           }
           .final-cta .final-cta-grid {
             grid-template-columns: 1fr !important;
-            gap: 8px !important;
+            gap: 20px !important;
           }
           .final-cta .final-cta-card {
             padding: 16px 16px !important;

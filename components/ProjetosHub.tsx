@@ -40,7 +40,7 @@ function ProjectHubCard({ p }: { p: Project }) {
   const cardStyle = { ...grStyles.card, boxShadow: hover ? '0 8px 24px rgba(0,0,0,0.12)' : 'none', transform: hover ? 'translateY(-3px)' : 'translateY(0)', borderColor: hover ? 'var(--amber-500)' : 'var(--border-soft)' }
   const photoStyle = { ...grStyles.bandPhoto, backgroundImage: `url("${p.photo}"), ${p.bg}`, transform: hover ? 'scale(1.04)' : 'scale(1)' }
   return (
-    <a href={`/programas-e-projetos#${p.id}`} style={cardStyle} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <a href={`/programas-e-projetos#${p.id}`} style={cardStyle} className="ph-card" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <div style={grStyles.band}>
         <div style={photoStyle}></div>
         <div style={grStyles.bandScrim}></div>
@@ -50,8 +50,8 @@ function ProjectHubCard({ p }: { p: Project }) {
       </div>
       <div style={grStyles.body}>
         <p style={grStyles.desc}>{p.desc}</p>
-        <div style={grStyles.stats}><span style={grStyles.statsDot}></span>{p.stats}</div>
-        <span style={grStyles.link}>Conhecer o projeto →</span>
+        <div style={grStyles.stats} className="ph-stats"><span style={grStyles.statsDot}></span>{p.stats}</div>
+        <span style={grStyles.link} className="ph-link">Conhecer o projeto →</span>
       </div>
     </a>
   )
@@ -70,6 +70,17 @@ export default function ProjetosHub() {
           .projetos-hub .ph-grid {
             grid-template-columns: 1fr !important;
             gap: 20px !important;
+            align-items: stretch !important;
+          }
+          .projetos-hub .ph-card {
+            height: 100% !important;
+          }
+          .projetos-hub .ph-stats {
+            margin-top: 0 !important;
+          }
+          .projetos-hub .ph-link {
+            margin-top: auto !important;
+            padding-top: 8px !important;
           }
         }
       `}</style>

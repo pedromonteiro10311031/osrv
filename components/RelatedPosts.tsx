@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { fixMediaUrl, type BlogPost } from '@/lib/wordpress'
 
@@ -21,47 +22,131 @@ const s = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
     gap: 32,
+    justifyContent: 'start' as const,
   },
   card: {
     display: 'flex',
     flexDirection: 'column' as const,
     textDecoration: 'none',
     color: 'inherit',
-  },
-  image: {
+    borderRadius: 8,
+    overflow: 'hidden',
+    border: '1px solid var(--border-soft)',
+    background: 'var(--paper-50)',
+    transition: 'box-shadow 0.2s, transform 0.2s',
+    maxWidth: 360,
     width: '100%',
-    aspectRatio: '16/9' as const,
-    objectFit: 'cover' as const,
-    borderRadius: 6,
-    marginBottom: 16,
-    display: 'block',
   },
-  placeholder: {
-    width: '100%',
+  cardHover: {
+    boxShadow: '0 8px 24px rgba(0,0,0,0.09)',
+    transform: 'translateY(-2px)',
+  },
+  imgWrap: {
     aspectRatio: '16/9' as const,
-    borderRadius: 6,
-    marginBottom: 16,
-    background: 'var(--paper-200, #e8dcd0)',
+    background: 'var(--paper-300)',
+    overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: 13,
-    color: 'rgba(30,66,24,0.4)',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover' as const,
+    display: 'block',
+  },
+  placeholder: {
+    fontFamily: 'var(--font-serif)',
+    fontSize: 20,
+    color: 'var(--ink-300)',
+    fontStyle: 'italic' as const,
+  },
+  body: {
+    padding: '22px 24px 26px',
+    display: 'flex',
+    flexDirection: 'column' as const,
+    flex: 1,
+  },
+  date: {
+    fontSize: 12,
+    fontWeight: 600,
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase' as const,
+    color: 'var(--fg-mute)',
+    marginBottom: 10,
   },
   postTitle: {
     fontFamily: 'var(--font-serif)',
-    fontWeight: 400,
-    fontSize: 18,
-    lineHeight: 1.3,
+    fontWeight: 500,
+    fontSize: 20,
+    lineHeight: 1.2,
     letterSpacing: '-0.01em',
-    color: 'var(--pine-900)',
-    margin: '0 0 8px',
+    color: 'var(--ink-900)',
+    margin: '0 0 10px',
   },
-  meta: {
-    fontSize: 13,
-    color: 'rgba(30,66,24,0.55)',
-    letterSpacing: '0.04em',
+  excerpt: {
+    fontSize: 15,
+    lineHeight: 1.55,
+    color: 'var(--fg-2)',
+    margin: 0,
+    flex: 1,
   },
+  readMore: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: 18,
+    fontSize: 14,
+    fontWeight: 500,
+    color: 'var(--teal-700)',
+  },
+}
+
+function stripHtml(html: string) {
+  return html.replace(/<[^>]*>/g, '').trim()
+}
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  })
+}
+
+function RelatedCard({ post }: { post: BlogPost }) {
+  const [hover, setHover] = useState(false)
+  const rawImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url
+  const image = rawImage ? fixMediaUrl(rawImage) : null
+  const excerpt = stripHtml(post.excerpt?.rendered ?? '')
+
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      style={hover ? { ...s.card, ...s.cardHover } : s.card}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <div style={s.imgWrap}>
+        {image ? (
+          <img src={image} alt="" style={s.image} />
+        ) : (
+          <span style={s.placeholder}>sem imagem</span>
+        )}
+      </div>
+      <div style={s.body}>
+        <div style={s.date}>{formatDate(post.date)}</div>
+        <h3
+          style={s.postTitle}
+          dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+        />
+        <p style={s.excerpt}>
+          {excerpt.slice(0, 160)}{excerpt.length > 160 ? '…' : ''}
+        </p>
+        <span style={s.readMore}>Ler mais →</span>
+      </div>
+    </Link>
+  )
 }
 
 export default function RelatedPosts({ posts }: { posts: BlogPost[] }) {
@@ -79,37 +164,9 @@ export default function RelatedPosts({ posts }: { posts: BlogPost[] }) {
       `}</style>
       <h2 style={s.heading}>Veja também</h2>
       <div style={s.grid} className="rp-grid">
-        {posts.map((post) => {
-          const rawImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url
-          const image = rawImage ? fixMediaUrl(rawImage) : null
-
-          return (
-            <Link
-              key={post.id}
-              href={`/blog/${post.slug}`}
-              style={s.card}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.85' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1' }}
-            >
-              {image ? (
-                <img src={image} alt="" style={s.image} />
-              ) : (
-                <div style={s.placeholder}>sem imagem</div>
-              )}
-              <h3
-                style={s.postTitle}
-                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-              />
-              <p style={s.meta}>
-                {new Date(post.date).toLocaleDateString('pt-BR', {
-                  day: 'numeric',
-                  month: 'short',
-                  year: 'numeric',
-                })}
-              </p>
-            </Link>
-          )
-        })}
+        {posts.map((post) => (
+          <RelatedCard key={post.id} post={post} />
+        ))}
       </div>
     </section>
   )

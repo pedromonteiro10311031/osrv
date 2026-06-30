@@ -209,6 +209,15 @@ export default function ProjectsGrid() {
           }
           .projects-card-link {
             font-size: 0.8rem !important;
+            margin-top: auto !important;
+          }
+          .projects-card {
+            height: 100% !important;
+          }
+          .projects-card-body {
+            flex: 1 !important;
+            display: flex !important;
+            flex-direction: column !important;
           }
         }
       `}</style>
