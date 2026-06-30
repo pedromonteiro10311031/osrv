@@ -7,7 +7,7 @@ const payStyles = {
   h2: { fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(2rem, 3.4vw, 2.5rem)', lineHeight: 1.05, letterSpacing: '-0.025em', color: 'var(--ink-900)', margin: '0 0 14px' },
   lead: { fontSize: 16, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0, maxWidth: 580 },
   row: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 32 },
-  card: { background: '#fff', border: '1px solid var(--border-soft)', borderRadius: 12, padding: '32px 24px 28px', display: 'flex', flexDirection: 'column' as const, gap: 14, transition: 'all 0.2s', cursor: 'default' },
+  card: { background: '#fff', border: '1px solid var(--border-soft)', borderRadius: 12, padding: '32px 24px', display: 'flex', flexDirection: 'column' as const, gap: 14, transition: 'all 0.2s', cursor: 'default' },
   glyph: { width: 56, height: 56, borderRadius: 12, background: 'var(--paper-200)', color: 'var(--ink-900)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flex: 'none' as const, fontSize: 28 },
   name: { fontFamily: 'var(--font-serif)', fontWeight: 500, fontSize: 20, color: 'var(--ink-900)', margin: 0, letterSpacing: '-0.01em' },
   sub: { fontSize: 13, lineHeight: 1.5, color: 'var(--fg-2)', margin: 0 },
@@ -39,6 +39,24 @@ export default function FormasPagamento() {
           }
           .formas-pagamento .fp-row {
             grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .formas-pagamento .fp-card {
+            padding: 18px 16px !important;
+            gap: 8px !important;
+          }
+          .formas-pagamento .fp-glyph {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 10px !important;
+            font-size: 20px !important;
+          }
+          .formas-pagamento .fp-name {
+            font-size: 1.05rem !important;
+          }
+          .formas-pagamento .fp-sub {
+            font-size: 0.8rem !important;
+            line-height: 1.4 !important;
           }
           .formas-pagamento .fp-secure {
             flex-direction: column !important;
@@ -59,19 +77,13 @@ export default function FormasPagamento() {
         </div>
         <div style={payStyles.row} className="fp-row">
           {METHODS.map((m) => (
-            <div key={m.name} style={payStyles.card}
+            <div key={m.name} style={payStyles.card} className="fp-card"
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--border-hard)'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.08)' }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-soft)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
             >
-              <div style={payStyles.glyph}>{m.icon}</div>
-              <h3 style={payStyles.name}>{m.name}</h3>
-              <p style={payStyles.sub}>{m.sub}</p>
-              {m.badge && (
-                <div style={payStyles.badge}>
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--pine-500)' }}/>
-                  {m.badge}
-                </div>
-              )}
+              <div style={payStyles.glyph} className="fp-glyph">{m.icon}</div>
+              <h3 style={payStyles.name} className="fp-name">{m.name}</h3>
+              <p style={payStyles.sub} className="fp-sub">{m.sub}</p>
             </div>
           ))}
         </div>
