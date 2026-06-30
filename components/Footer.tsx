@@ -37,19 +37,53 @@ const footStyles = {
 
 export default function Footer() {
   return (
-    <footer style={footStyles.wrap} id="contato" className="site-footer">
+    <footer style={footStyles.wrap} id="contato" className="site-footer footer-wrap">
       <style>{`
         @media (max-width: 768px) {
+          .footer-wrap {
+            padding: 48px 0 24px !important;
+          }
           .site-footer .footer-inner {
             padding: 0 20px !important;
           }
           .site-footer .footer-top {
             grid-template-columns: 1fr !important;
-            gap: 40px !important;
+            gap: 28px !important;
           }
           .site-footer .footer-bottom {
             flex-direction: column !important;
             align-items: flex-start !important;
+          }
+          .site-footer .footer-brand-logo {
+            font-size: 1.4rem !important;
+          }
+          .site-footer .footer-blurb {
+            font-size: 0.85rem !important;
+            line-height: 1.5 !important;
+          }
+          .site-footer .footer-social-btn {
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 0.7rem !important;
+          }
+          .site-footer .footer-col-h {
+            font-size: 0.7rem !important;
+          }
+          .site-footer .footer-list {
+            gap: 8px !important;
+          }
+          .site-footer .footer-link {
+            font-size: 0.875rem !important;
+          }
+          .site-footer .footer-fine {
+            font-size: 0.7rem !important;
+          }
+          .site-footer .footer-badges {
+            gap: 10px !important;
+          }
+          .site-footer .footer-badge {
+            font-size: 0.65rem !important;
+            padding: 4px 8px !important;
           }
         }
       `}</style>
@@ -57,57 +91,57 @@ export default function Footer() {
         <div style={footStyles.top} className="footer-top">
           <div>
             <div style={footStyles.brand}>
-              <span style={footStyles.word}>OSRV</span>
+              <span style={footStyles.word} className="footer-brand-logo">OSRV</span>
             </div>
-            <p style={footStyles.blurb}>
+            <p style={footStyles.blurb} className="footer-blurb">
               Obras Sociais Rafael Verlangieri — ONG sediada em Cuiabá / MT,
               atendendo crianças e adolescentes em situação de vulnerabilidade social.
             </p>
             <div style={footStyles.social}>
-              <a href="#" style={footStyles.socialBtn} aria-label="Instagram">IG</a>
-              <a href="#" style={footStyles.socialBtn} aria-label="YouTube">YT</a>
-              <a href="#" style={footStyles.socialBtn} aria-label="Email">@</a>
+              <a href="#" style={footStyles.socialBtn} className="footer-social-btn" aria-label="Instagram">IG</a>
+              <a href="#" style={footStyles.socialBtn} className="footer-social-btn" aria-label="YouTube">YT</a>
+              <a href="#" style={footStyles.socialBtn} className="footer-social-btn" aria-label="Email">@</a>
             </div>
           </div>
           <div>
-            <div style={footStyles.colH}>A OSRV</div>
-            <ul style={footStyles.list}>
-              <li><Link href="/quem-somos" style={footStyles.link}>Quem somos</Link></li>
-              <li><Link href="/nossa-comunidade" style={footStyles.link}>Nossa comunidade</Link></li>
-              <li><Link href="/venha-nos-conhecer" style={footStyles.link}>Venha nos conhecer</Link></li>
+            <div style={footStyles.colH} className="footer-col-h">A OSRV</div>
+            <ul style={footStyles.list} className="footer-list">
+              <li><Link href="/quem-somos" style={footStyles.link} className="footer-link">Quem somos</Link></li>
+              <li><Link href="/nossa-comunidade" style={footStyles.link} className="footer-link">Nossa comunidade</Link></li>
+              <li><Link href="/venha-nos-conhecer" style={footStyles.link} className="footer-link">Venha nos conhecer</Link></li>
             </ul>
           </div>
           <div>
-            <div style={footStyles.colH}>Projetos e espaços</div>
-            <ul style={footStyles.list}>
-              <li><Link href="/programas-e-projetos" style={footStyles.link}>Todos os projetos</Link></li>
-              <li><Link href="/brecho" style={footStyles.link}>Brechó</Link></li>
-              <li><Link href="/biblioteca" style={footStyles.link}>Biblioteca</Link></li>
-              <li><Link href="/quero-ser-voluntario" style={footStyles.link}>Voluntariado</Link></li>
+            <div style={footStyles.colH} className="footer-col-h">Projetos e espaços</div>
+            <ul style={footStyles.list} className="footer-list">
+              <li><Link href="/programas-e-projetos" style={footStyles.link} className="footer-link">Todos os projetos</Link></li>
+              <li><Link href="/brecho" style={footStyles.link} className="footer-link">Brechó</Link></li>
+              <li><Link href="/biblioteca" style={footStyles.link} className="footer-link">Biblioteca</Link></li>
+              <li><Link href="/quero-ser-voluntario" style={footStyles.link} className="footer-link">Voluntariado</Link></li>
             </ul>
           </div>
           <div>
-            <div style={footStyles.colH}>Apoie</div>
-            <ul style={footStyles.list}>
-              <li><Link href="/quero-ser-doador" style={footStyles.link}>Doar</Link></li>
-              <li><Link href="/quero-ser-parceiro" style={footStyles.link}>Ser parceiro empresa</Link></li>
+            <div style={footStyles.colH} className="footer-col-h">Apoie</div>
+            <ul style={footStyles.list} className="footer-list">
+              <li><Link href="/quero-ser-doador" style={footStyles.link} className="footer-link">Doar</Link></li>
+              <li><Link href="/quero-ser-parceiro" style={footStyles.link} className="footer-link">Ser parceiro empresa</Link></li>
             </ul>
           </div>
           <div>
-            <div style={footStyles.colH}>Conteúdo e transparência</div>
-            <ul style={footStyles.list}>
-              <li><Link href="/blog" style={footStyles.link}>Blog</Link></li>
-              <li><Link href="/transparencia" style={footStyles.link}>Transparência</Link></li>
+            <div style={footStyles.colH} className="footer-col-h">Conteúdo e transparência</div>
+            <ul style={footStyles.list} className="footer-list">
+              <li><Link href="/blog" style={footStyles.link} className="footer-link">Blog</Link></li>
+              <li><Link href="/transparencia" style={footStyles.link} className="footer-link">Transparência</Link></li>
             </ul>
           </div>
         </div>
         <div style={footStyles.bottom} className="footer-bottom">
-          <div style={footStyles.fine}>
+          <div style={footStyles.fine} className="footer-fine">
             © 2026 OSRV — Obras Sociais Rafael Verlangieri · Cuiabá / MT
           </div>
-          <div style={footStyles.badges}>
-            <span style={footStyles.badge}>CEBAS</span>
-            <span style={footStyles.badge}>OSCIP</span>
+          <div style={footStyles.badges} className="footer-badges">
+            <span style={footStyles.badge} className="footer-badge">CEBAS</span>
+            <span style={footStyles.badge} className="footer-badge">OSCIP</span>
           </div>
         </div>
       </div>
