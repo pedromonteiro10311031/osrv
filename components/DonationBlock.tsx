@@ -142,6 +142,10 @@ export default function DonationBlock({
     <section id="doar" style={donStyles.wrap} className="donation-block">
       <style>{`
         @media (max-width: 768px) {
+          .donation-block {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .donation-block .donation-inner {
             grid-template-columns: 1fr !important;
             gap: 40px !important;
@@ -150,28 +154,61 @@ export default function DonationBlock({
           .donation-block .donation-left {
             max-width: 100% !important;
           }
-          .donation-block .donation-card {
-            max-width: 100% !important;
-            box-sizing: border-box;
-            padding: 24px !important;
-          }
-          .donation-block .donation-toggle {
-            width: 100%;
-            display: flex !important;
-          }
-          .donation-block .donation-toggle button {
-            flex: 1;
-          }
-          .donation-block .donation-amounts {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .donation-block {
-            padding-top: 56px !important;
-            padding-bottom: 56px !important;
-          }
           .donation-block .donation-subtitle {
             font-size: clamp(1.3rem, 6vw, 1.55rem) !important;
             line-height: 1.15 !important;
+          }
+          .donation-block .donation-card {
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            padding: 16px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 18px !important;
+          }
+          .donation-block .donation-toggle {
+            width: 100% !important;
+            display: flex !important;
+            margin-bottom: 0 !important;
+          }
+          .donation-block .donation-toggle button {
+            flex: 1 !important;
+          }
+          .donation-block .donation-toggle-btn {
+            padding: 8px 12px !important;
+            font-size: 0.9rem !important;
+          }
+          .donation-block .donation-amounts {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+            margin-bottom: 0 !important;
+          }
+          .donation-block .donation-amt-btn {
+            padding: 14px !important;
+            font-size: 1.25rem !important;
+          }
+          .donation-block .donation-amt-meta {
+            font-size: 0.8rem !important;
+          }
+          .donation-block .donation-custom-row {
+            margin-bottom: 0 !important;
+            gap: 10px !important;
+            align-items: center !important;
+          }
+          .donation-block .donation-input {
+            padding: 10px 14px !important;
+            font-size: 0.95rem !important;
+          }
+          .donation-block .donation-impact {
+            display: none !important;
+          }
+          .donation-block .donation-cta {
+            padding: 12px !important;
+            font-size: 1rem !important;
+          }
+          .donation-block .donation-secure {
+            font-size: 0.75rem !important;
+            margin-top: 8px !important;
           }
         }
       `}</style>
@@ -184,10 +221,10 @@ export default function DonationBlock({
         </div>
         <div style={donStyles.card} className="donation-card">
           <div style={donStyles.toggleRow} className="donation-toggle">
-            <button style={{ ...donStyles.toggleBtn, ...(freq === 'mensal' ? donStyles.toggleActive : {}) }} onClick={() => setFreq('mensal')}>
+            <button style={{ ...donStyles.toggleBtn, ...(freq === 'mensal' ? donStyles.toggleActive : {}) }} className="donation-toggle-btn" onClick={() => setFreq('mensal')}>
               Doar todo mês
             </button>
-            <button style={{ ...donStyles.toggleBtn, ...(freq === 'unica' ? donStyles.toggleActive : {}) }} onClick={() => setFreq('unica')}>
+            <button style={{ ...donStyles.toggleBtn, ...(freq === 'unica' ? donStyles.toggleActive : {}) }} className="donation-toggle-btn" onClick={() => setFreq('unica')}>
               Doar uma vez
             </button>
           </div>
@@ -195,26 +232,26 @@ export default function DonationBlock({
             {[30, 50, 100, 200].map((v) => {
               const sel = amount === v && !custom
               return (
-                <button key={v} style={{ ...donStyles.amt, ...(sel ? donStyles.amtSelected : {}) }} onClick={() => { setAmount(v); setCustom('') }}>
+                <button key={v} style={{ ...donStyles.amt, ...(sel ? donStyles.amtSelected : {}) }} className="donation-amt-btn" onClick={() => { setAmount(v); setCustom('') }}>
                   R${v}
-                  <span style={{ ...donStyles.amtMeta, ...(sel ? donStyles.amtMetaSel : {}) }}>
+                  <span style={{ ...donStyles.amtMeta, ...(sel ? donStyles.amtMetaSel : {}) }} className="donation-amt-meta">
                     {v === 30 ? 'apoio' : v === 50 ? 'frequente' : v === 100 ? 'guardião' : 'pilar'}
                   </span>
                 </button>
               )
             })}
           </div>
-          <div style={donStyles.customRow}>
+          <div style={donStyles.customRow} className="donation-custom-row">
             <span style={donStyles.prefix}>R$</span>
-            <input style={donStyles.input} type="number" placeholder="Outro valor" value={custom} onChange={(e) => setCustom(e.target.value)} />
+            <input style={donStyles.input} className="donation-input" type="number" placeholder="Outro valor" value={custom} onChange={(e) => setCustom(e.target.value)} />
           </div>
-          <div style={donStyles.impact}>
+          <div style={donStyles.impact} className="donation-impact">
             <div><b style={donStyles.impactStrong}>R$ {finalAmount} {freq === 'mensal' ? '/ mês' : 'única'}</b> — {impactText}</div>
           </div>
-          <button style={donStyles.cta} onClick={() => setSubmitted(true)}>
+          <button style={donStyles.cta} className="donation-cta" onClick={() => setSubmitted(true)}>
             Doar R$ {finalAmount} {freq === 'mensal' ? '/ mês' : 'agora'} →
           </button>
-          <div style={donStyles.secure}>
+          <div style={donStyles.secure} className="donation-secure">
             🔒 Pagamento seguro · Pix, cartão, boleto · SSL 256-bit
           </div>
         </div>
