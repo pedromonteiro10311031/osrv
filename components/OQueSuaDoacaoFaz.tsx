@@ -40,6 +40,38 @@ export default function OQueSuaDoacaoFaz() {
           }
           .o-que-doacao .oqd-grid {
             grid-template-columns: 1fr !important;
+            gap: 10px !important;
+          }
+          .o-que-doacao .oqd-card {
+            flex-direction: row !important;
+            align-items: center !important;
+            padding: 16px !important;
+            gap: 14px !important;
+          }
+          .o-que-doacao .oqd-icon {
+            width: 40px !important;
+            height: 40px !important;
+            flex-shrink: 0 !important;
+          }
+          .o-que-doacao .oqd-content {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 2px !important;
+            flex: 1 !important;
+            min-width: 0 !important;
+          }
+          .o-que-doacao .oqd-amount {
+            font-size: 1.5rem !important;
+          }
+          .o-que-doacao .oqd-equals {
+            font-size: 9px !important;
+          }
+          .o-que-doacao .oqd-impact-text {
+            font-size: 0.9rem !important;
+            margin-top: 2px !important;
+          }
+          .o-que-doacao .oqd-foot {
+            display: none !important;
           }
         }
       `}</style>
@@ -60,17 +92,19 @@ export default function OQueSuaDoacaoFaz() {
         </div>
         <div style={impactStyles.grid} className="oqd-grid">
           {IMPACT_CARDS.map((c) => (
-            <article key={c.value} style={impactStyles.card}
+            <article key={c.value} style={impactStyles.card} className="oqd-card"
               onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.18)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
               onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              <div style={impactStyles.iconRing}>●</div>
-              <div>
-                <div style={impactStyles.amount}>R$ {c.value}</div>
-                <span style={impactStyles.equals}>equivale a</span>
+              <div style={impactStyles.iconRing} className="oqd-icon">●</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }} className="oqd-content">
+                <div>
+                  <div style={impactStyles.amount} className="oqd-amount">R$ {c.value}</div>
+                  <span style={impactStyles.equals} className="oqd-equals">equivale a</span>
+                </div>
+                <p style={impactStyles.impactText} className="oqd-impact-text">{c.text}</p>
               </div>
-              <p style={impactStyles.impactText}>{c.text}</p>
-              <div style={impactStyles.cardFoot}>{c.foot}</div>
+              <div style={impactStyles.cardFoot} className="oqd-foot">{c.foot}</div>
             </article>
           ))}
         </div>
