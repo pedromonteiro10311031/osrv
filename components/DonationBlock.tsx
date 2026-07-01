@@ -117,27 +117,32 @@ export default function DonationBlock({
   const [freq, setFreq] = useState('mensal')
   const [amount, setAmount] = useState(50)
   const [custom, setCustom] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const finalAmount = custom ? Number(custom) : amount
   const impactText = IMPACTS[amount]?.[freq] || 'Sua doação mantém crianças nos projetos OSRV.'
 
-  if (submitted) {
-    return (
-      <section id="doar" style={donStyles.wrap}>
-        <div style={{ ...donStyles.inner, gridTemplateColumns: '1fr', justifyItems: 'center' }}>
-          <div style={{ ...donStyles.success, maxWidth: 520 }}>
-            <h3 style={donStyles.successH3}>Obrigado, de verdade.</h3>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--fg-2)', margin: '0 auto', maxWidth: 380 }}>
-              Sua doação de <b style={{ color: 'var(--ink-900)' }}>R$ {finalAmount}</b> {freq === 'mensal' ? 'por mês' : 'única'} foi recebida.
-            </p>
-            <button style={{ ...donStyles.cta, width: 'auto', padding: '12px 24px', marginTop: 24 }} onClick={() => setSubmitted(false)}>
-              Voltar
-            </button>
-          </div>
-        </div>
-      </section>
-    )
+  const handleDonate = async () => {
+    setLoading(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/donation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          value: custom ? Number(custom) : amount,
+          billingType: freq === 'mensal' ? 'RECURRENT' : 'DETACHED',
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Erro desconhecido')
+      window.location.href = data.url
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Algo deu errado. Tente novamente.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -250,9 +255,19 @@ export default function DonationBlock({
           <div style={donStyles.impact} className="donation-impact">
             <div><b style={donStyles.impactStrong}>R$ {finalAmount} {freq === 'mensal' ? '/ mês' : 'única'}</b> — {impactText}</div>
           </div>
-          <button style={donStyles.cta} className="donation-cta" onClick={() => setSubmitted(true)}>
-            Doar R$ {finalAmount} {freq === 'mensal' ? '/ mês' : 'agora'} →
+          <button
+            style={{ ...donStyles.cta, ...(loading ? { opacity: 0.7 } : {}) }}
+            className="donation-cta"
+            onClick={handleDonate}
+            disabled={loading}
+          >
+            {loading ? 'Processando...' : `Doar R$ ${finalAmount} ${freq === 'mensal' ? '/ mês' : 'agora'} →`}
           </button>
+          {error && (
+            <p style={{ color: 'var(--terracota-600)', fontSize: 14, marginTop: 12 }}>
+              {error}
+            </p>
+          )}
           <div style={donStyles.secure} className="donation-secure">
             🔒 Pagamento seguro · Pix, cartão, boleto · SSL 256-bit
           </div>
