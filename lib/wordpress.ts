@@ -1,4 +1,6 @@
-const WP_API = process.env.WORDPRESS_API_URL || 'http://localhost/OSRV_Prod/wordpress'
+const WP_API = process.env.NEXT_PUBLIC_WORDPRESS_API_URL
+  || process.env.WORDPRESS_API_URL
+  || 'http://localhost/OSRV_Prod/wordpress'
 
 export function fixMediaUrl(url: string): string {
   if (!url) return ''
