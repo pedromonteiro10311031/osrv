@@ -116,8 +116,8 @@ function formatDate(iso: string) {
 
 function RelatedCard({ post }: { post: BlogPost }) {
   const [hover, setHover] = useState(false)
-  const rawImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url
-  const image = rawImage ? fixMediaUrl(rawImage) : null
+  const rawImage = fixMediaUrl(post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '')
+  const image = rawImage.startsWith('http') ? rawImage : ''
   const excerpt = stripHtml(post.excerpt?.rendered ?? '')
 
   return (

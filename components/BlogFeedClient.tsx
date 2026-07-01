@@ -107,7 +107,8 @@ function stripHtml(html: string) {
 
 function PostCard({ post }: { post: BlogPost }) {
   const [hover, setHover] = useState(false)
-  const featuredImage = fixMediaUrl(post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '')
+  const rawImage = fixMediaUrl(post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '')
+  const featuredImage = rawImage.startsWith('http') ? rawImage : ''
   const excerpt = stripHtml(post.excerpt.rendered)
 
   return (

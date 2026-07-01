@@ -109,8 +109,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const category = post._embedded?.['wp:term']?.[0]?.[0]?.name ?? 'Sem categoria'
   const categoryId = post._embedded?.['wp:term']?.[0]?.[0]?.id
-  const rawImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url
-  const featuredImage = rawImage ? fixMediaUrl(rawImage) : null
+  const rawImage = fixMediaUrl(post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '')
+  const featuredImage = rawImage.startsWith('http') ? rawImage : null
 
   const relatedPosts = categoryId ? await getPostsByCategory(categoryId, post.id, 3) : []
 

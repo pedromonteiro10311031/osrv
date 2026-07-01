@@ -1,13 +1,19 @@
 const WP_API = process.env.WORDPRESS_API_URL || 'http://localhost/OSRV_Prod/wordpress'
 
 export function fixMediaUrl(url: string): string {
-  if (!url) return url
-  return url.replace(/https?:\/\/localhost\/OSRV_Prod\/wordpress/, WP_API)
+  if (!url) return ''
+  if (url.startsWith(WP_API)) return url
+  const match = url.match(/\/wp-content\/uploads\/.+/)
+  if (match) return `${WP_API}${match[0]}`
+  return ''
 }
 
 export function fixContentUrls(html: string): string {
   if (!html) return html
-  return html.replace(/https?:\/\/localhost\/OSRV_Prod\/wordpress/g, WP_API)
+  return html.replace(
+    /https?:\/\/[^"'\s]+\/wp-content\/uploads\//g,
+    `${WP_API}/wp-content/uploads/`
+  )
 }
 
 export type WpCategory = {
