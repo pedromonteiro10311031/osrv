@@ -42,19 +42,22 @@ export type BlogPost = {
   acf?: Record<string, unknown>
 }
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
+export async function getBlogPosts(page: number = 1, perPage: number = 6, categoryId?: number | null) {
   try {
-    // TODO: trocar para `next: { revalidate: 3600 }` antes de produção (cache: 'no-store' é só pra fase de testes)
-    const res = await fetch(`${WP_API}/wp-json/wp/v2/posts?_embed`, {
-      cache: 'no-store',
-    })
-
+    // TODO: trocar para `next: { revalidate: 3600 }` antes de produção
+    const categoryParam = categoryId ? `&categories=${categoryId}` : ''
+    const res = await fetch(
+      `${WP_API}/wp-json/wp/v2/posts?page=${page}&per_page=${perPage}&_embed${categoryParam}`,
+      { cache: 'no-store' }
+    )
     if (!res.ok) throw new Error(`WordPress API error: ${res.status}`)
-
-    return res.json()
+    const posts: BlogPost[] = await res.json()
+    const totalPages = parseInt(res.headers.get('X-WP-TotalPages') || '1')
+    const totalPosts = parseInt(res.headers.get('X-WP-Total') || '0')
+    return { posts, totalPages, totalPosts }
   } catch (error) {
-    console.error('Erro ao buscar posts do blog:', error)
-    return []
+    console.error('Erro ao buscar posts:', error)
+    return { posts: [], totalPages: 1, totalPosts: 0 }
   }
 }
 

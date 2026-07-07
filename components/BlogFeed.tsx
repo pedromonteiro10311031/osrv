@@ -35,7 +35,7 @@ const s = {
 }
 
 export default async function BlogFeed() {
-  const posts = await getBlogPosts()
+  const { posts, totalPages } = await getBlogPosts(1, 6)
 
   // Extrai categorias únicas dos posts já embutidos — sem chamada extra à API
   const categoriesMap = new Map<number, WpCategory>()
@@ -66,7 +66,7 @@ export default async function BlogFeed() {
         {posts.length === 0 ? (
           <p style={s.empty}>Nenhuma publicação encontrada. Em breve, novidades por aqui.</p>
         ) : (
-          <BlogFeedClient posts={posts} categories={categories} />
+          <BlogFeedClient posts={posts} categories={categories} initialTotalPages={totalPages} />
         )}
       </div>
     </section>

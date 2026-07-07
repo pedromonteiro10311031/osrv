@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { BlogPost, WpCategory, fixMediaUrl } from '@/lib/wordpress'
 
@@ -91,6 +91,47 @@ const s = {
     fontFamily: 'var(--font-serif)',
     fontStyle: 'italic' as const,
   },
+  pagination: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 8,
+    marginTop: 48,
+    paddingBottom: 64,
+  },
+  pageBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: '50%',
+    border: '1px solid var(--pine-700)',
+    background: 'transparent',
+    color: 'var(--pine-900)',
+    fontSize: 14,
+    fontWeight: 500,
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'all 0.2s ease',
+  },
+  pageBtnActive: {
+    background: 'var(--pine-700)',
+    color: '#FAF8F4',
+    border: '1px solid var(--pine-700)',
+  },
+  arrowBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: '50%',
+    border: '1px solid rgba(30,66,24,0.3)',
+    background: 'transparent',
+    color: 'var(--pine-900)',
+    fontSize: 16,
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 }
 
 function formatDate(iso: string) {
@@ -140,14 +181,38 @@ function PostCard({ post }: { post: BlogPost }) {
 type Props = {
   posts: BlogPost[]
   categories: WpCategory[]
+  initialTotalPages?: number
 }
 
-export default function BlogFeedClient({ posts, categories }: Props) {
+export default function BlogFeedClient({ posts: initialPosts, categories, initialTotalPages = 1 }: Props) {
   const [activeCategory, setActiveCategory] = useState<number | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(initialTotalPages)
+  const [posts, setPosts] = useState<BlogPost[]>(initialPosts)
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    async function fetchPage() {
+      setLoading(true)
+      try {
+        const params = new URLSearchParams({
+          page: String(currentPage),
+          perPage: '6',
+          ...(activeCategory ? { categoryId: String(activeCategory) } : {}),
+        })
+        const res = await fetch(`/api/blog?${params}`)
+        const data = await res.json()
+        setPosts(data.posts)
+        setTotalPages(data.totalPages)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchPage()
+  }, [currentPage, activeCategory])
 
-  const filtered = activeCategory === null
-    ? posts
-    : posts.filter((p) => p.categories?.includes(activeCategory))
+  const paginationDisabledStyle = loading
+    ? { opacity: 0.5, cursor: 'not-allowed' as const, pointerEvents: 'none' as const }
+    : {}
 
   return (
     <>
@@ -155,7 +220,7 @@ export default function BlogFeedClient({ posts, categories }: Props) {
         <div style={s.pills}>
           <button
             style={activeCategory === null ? { ...s.pill, ...s.pillActive } : s.pill}
-            onClick={() => setActiveCategory(null)}
+            onClick={() => { setActiveCategory(null); setCurrentPage(1) }}
           >
             Todos
           </button>
@@ -163,7 +228,7 @@ export default function BlogFeedClient({ posts, categories }: Props) {
             <button
               key={cat.id}
               style={activeCategory === cat.id ? { ...s.pill, ...s.pillActive } : s.pill}
-              onClick={() => setActiveCategory(cat.id)}
+              onClick={() => { setActiveCategory(cat.id); setCurrentPage(1) }}
             >
               {cat.name}
             </button>
@@ -171,13 +236,59 @@ export default function BlogFeedClient({ posts, categories }: Props) {
         </div>
       )}
 
-      {filtered.length === 0 ? (
-        <p style={s.empty}>Nenhuma publicação encontrada nessa categoria.</p>
+      {loading ? (
+        <div style={{ minHeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <p style={{ color: 'var(--ink-400)', fontSize: 16 }}>Carregando...</p>
+        </div>
       ) : (
-        <div style={s.grid}>
-          {filtered.map((post) => (
-            <PostCard key={post.id} post={post} />
+        <div style={{ minHeight: 600 }}>
+          {posts.length === 0 ? (
+            <p style={s.empty}>Nenhuma publicação encontrada nessa categoria.</p>
+          ) : (
+            <div style={s.grid}>
+              {posts.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {totalPages > 1 && (
+        <div style={{ ...s.pagination, ...paginationDisabledStyle }}>
+          <button
+            style={{
+              ...s.arrowBtn,
+              opacity: currentPage === 1 ? 0.4 : 1,
+              cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+            }}
+            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            disabled={currentPage === 1 || loading}
+          >
+            ←
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+            <button
+              key={page}
+              style={currentPage === page ? { ...s.pageBtn, ...s.pageBtnActive } : s.pageBtn}
+              onClick={() => setCurrentPage(page)}
+            >
+              {page}
+            </button>
           ))}
+
+          <button
+            style={{
+              ...s.arrowBtn,
+              opacity: currentPage === totalPages ? 0.4 : 1,
+              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+            }}
+            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages || loading}
+          >
+            →
+          </button>
         </div>
       )}
     </>
