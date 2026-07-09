@@ -3,7 +3,7 @@ import Link from 'next/link'
 const footStyles = {
   wrap: { background: 'var(--pine-900)', color: 'rgba(250, 248, 244, 0.85)', padding: '80px 0 32px' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
-  top: { display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr 1.1fr', gap: 40, paddingBottom: 56, borderBottom: '1px solid rgba(255,255,255,0.12)' },
+  top: { display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1fr', gap: 48, paddingBottom: 56, borderBottom: '1px solid rgba(255,255,255,0.12)' },
   brand: { display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 },
   word: {
     fontFamily: 'var(--font-serif)',
@@ -104,24 +104,18 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <div style={footStyles.colH} className="footer-col-h">A OSRV</div>
-            <ul style={footStyles.list} className="footer-list">
-              <li><Link href="/quem-somos" style={footStyles.link} className="footer-link">Quem somos</Link></li>
-            </ul>
-          </div>
-          <div>
             <div style={footStyles.colH} className="footer-col-h">Projetos e espaços</div>
             <ul style={footStyles.list} className="footer-list">
               <li><Link href="/programas-e-projetos" style={footStyles.link} className="footer-link">Todos os projetos</Link></li>
               <li><Link href="/brecho" style={footStyles.link} className="footer-link">Brechó</Link></li>
               <li><Link href="/biblioteca" style={footStyles.link} className="footer-link">Biblioteca</Link></li>
-              <li><Link href="/quero-ser-voluntario" style={footStyles.link} className="footer-link">Voluntariado</Link></li>
             </ul>
           </div>
           <div>
             <div style={footStyles.colH} className="footer-col-h">Apoie</div>
             <ul style={footStyles.list} className="footer-list">
               <li><Link href="/quero-ser-doador" style={footStyles.link} className="footer-link">Doar</Link></li>
+              <li><Link href="/quero-ser-voluntario" style={footStyles.link} className="footer-link">Voluntariado</Link></li>
               <li><Link href="/quero-ser-parceiro" style={footStyles.link} className="footer-link">Ser parceiro empresa</Link></li>
             </ul>
           </div>
