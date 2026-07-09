@@ -345,7 +345,7 @@ function OuvidoriaForm() {
       </div>
       <div>
         <label style={label}>Tipo de manifestação</label>
-        <select style={{ ...field, appearance: 'none' }} defaultValue="">
+        <select style={{ ...field, appearance: 'none' }} defaultValue="" required>
           <option value="" disabled>Selecione uma opção</option>
           <option>Dúvida</option>
           <option>Sugestão</option>
@@ -356,7 +356,7 @@ function OuvidoriaForm() {
       </div>
       <div>
         <label style={label}>Mensagem</label>
-        <textarea style={{ ...field, minHeight: 110, resize: 'vertical', lineHeight: 1.5 }} placeholder="Escreva sua manifestação" />
+        <textarea style={{ ...field, minHeight: 110, resize: 'vertical', lineHeight: 1.5 }} placeholder="Escreva sua manifestação" required />
       </div>
       <label style={{ display: 'flex', alignItems: 'flex-start', gap: 10, cursor: 'pointer', fontSize: 14, color: 'var(--ink-700)', lineHeight: 1.45 }}>
         <input type="checkbox" style={{ width: 16, height: 16, marginTop: 2, accentColor: 'var(--pine-500)', flex: 'none' }} />

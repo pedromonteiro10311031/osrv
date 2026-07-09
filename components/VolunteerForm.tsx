@@ -31,26 +31,61 @@ export default function VolunteerForm() {
   const [days, setDays] = useState<string[]>([])
   const [about, setAbout] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [formError, setFormError] = useState<string | null>(null)
 
   const toggleDay = (d: string) => setDays((prev) => prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d])
 
-  const handleSubmit = async () => {
-  try {
-    const response = await fetch('/api/volunteer', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, phone, area, time, days, about }),
-    })
-
-    if (response.ok) {
-      setSubmitted(true)
-    } else {
-      alert('Algo deu errado. Tenta novamente.')
-    }
-  } catch (error) {
-    alert('Erro ao enviar. Verifica sua conexão.')
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(e.target.value.replace(/[^\d\s()\-+]/g, ''))
   }
-}
+
+  const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+
+  const handleSubmit = async () => {
+    setFormError(null)
+    if (!name.trim()) {
+      setFormError('Informe seu nome completo.')
+      return
+    }
+    if (!isValidEmail(email)) {
+      setFormError('Informe um e-mail válido (ex: voce@exemplo.com).')
+      return
+    }
+    if (!phone.trim()) {
+      setFormError('Informe seu telefone.')
+      return
+    }
+    if (!area) {
+      setFormError('Selecione uma área de interesse.')
+      return
+    }
+    if (!time) {
+      setFormError('Selecione um horário preferido.')
+      return
+    }
+    if (days.length === 0) {
+      setFormError('Selecione pelo menos um dia de disponibilidade.')
+      return
+    }
+    if (!about.trim()) {
+      setFormError('Conte um pouco sobre você antes de enviar.')
+      return
+    }
+    try {
+      const response = await fetch('/api/volunteer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, area, time, days, about }),
+      })
+      if (response.ok) {
+        setSubmitted(true)
+      } else {
+        setFormError('Algo deu errado. Tenta novamente.')
+      }
+    } catch {
+      setFormError('Erro ao enviar. Verifica sua conexão.')
+    }
+  }
 
   if (submitted) {
     return (
@@ -88,7 +123,7 @@ export default function VolunteerForm() {
             </div>
             <div style={sharedFormStyles.field}>
               <label style={sharedFormStyles.label}>Telefone / WhatsApp</label>
-              <input style={sharedFormStyles.input} type="tel" placeholder="(65) 9 0000-0000" value={phone} onChange={(e) => setPhone(e.target.value)} required />
+              <input style={sharedFormStyles.input} type="tel" placeholder="(65) 9 0000-0000" value={phone} onChange={handlePhoneChange} required />
             </div>
             <div style={sharedFormStyles.field}>
               <label style={sharedFormStyles.label}>Área de interesse</label>
@@ -110,16 +145,19 @@ export default function VolunteerForm() {
                 {DAYS.map((d) => {
                   const active = days.includes(d)
                   return (
-                    <button type="button" key={d} onClick={() => toggleDay(d)} style={{ padding: '9px 14px', border: `1px solid ${active ? 'var(--pine-500)' : 'var(--ink-200)'}`, background: active ? 'var(--pine-100)' : '#fff', color: active ? 'var(--pine-900)' : 'var(--ink-700)', fontSize: 14, fontWeight: 500, borderRadius: 999, cursor: 'pointer' }}>
+                    <button type="button" key={d} onClick={() => { toggleDay(d); setFormError(null) }} style={{ padding: '9px 14px', border: `1px solid ${active ? 'var(--pine-500)' : 'var(--ink-200)'}`, background: active ? 'var(--pine-100)' : '#fff', color: active ? 'var(--pine-900)' : 'var(--ink-700)', fontSize: 14, fontWeight: 500, borderRadius: 999, cursor: 'pointer' }}>
                       {active ? '✓ ' : ''}{d}
                     </button>
                   )
                 })}
               </div>
+              {formError?.includes('dia') && (
+                <p style={{ margin: '8px 0 0', fontSize: 14, color: '#DC2626' }}>{formError}</p>
+              )}
             </div>
             <div style={{ ...sharedFormStyles.field, ...sharedFormStyles.fieldFull }}>
               <label style={sharedFormStyles.label}>Conte um pouco sobre você</label>
-              <textarea style={sharedFormStyles.textarea} placeholder="Sua formação, o que te trouxe até aqui, o que você gostaria de fazer na OSRV…" value={about} onChange={(e) => setAbout(e.target.value)} />
+              <textarea style={sharedFormStyles.textarea} placeholder="Sua formação, o que te trouxe até aqui, o que você gostaria de fazer na OSRV…" value={about} onChange={(e) => setAbout(e.target.value)} required />
             </div>
           </div>
           <div style={s.footerRow} className="vf-footer">
@@ -127,6 +165,9 @@ export default function VolunteerForm() {
             <button type="button" style={sharedFormStyles.submit} className="vf-submit" onClick={handleSubmit}>
               Quero ser voluntário →
             </button>
+            {formError && !formError.includes('dia') && (
+              <p style={{ margin: '8px 0 0', fontSize: 14, color: '#DC2626' }}>{formError}</p>
+            )}
           </div>
         </div>
       </div>

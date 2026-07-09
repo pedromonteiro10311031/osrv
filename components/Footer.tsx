@@ -107,8 +107,6 @@ export default function Footer() {
             <div style={footStyles.colH} className="footer-col-h">A OSRV</div>
             <ul style={footStyles.list} className="footer-list">
               <li><Link href="/quem-somos" style={footStyles.link} className="footer-link">Quem somos</Link></li>
-              <li><Link href="/nossa-comunidade" style={footStyles.link} className="footer-link">Nossa comunidade</Link></li>
-              <li><Link href="/venha-nos-conhecer" style={footStyles.link} className="footer-link">Venha nos conhecer</Link></li>
             </ul>
           </div>
           <div>

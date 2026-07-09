@@ -22,29 +22,61 @@ const CONTRIB = ['Doação financeira', 'Patrocínio de projeto', 'Materiais', '
 
 export default function ParceiroFormulario() {
   const [submitted, setSubmitted] = useState(false)
+  const [formError, setFormError] = useState<string | null>(null)
   const [form, setForm] = useState({ nome: '', email: '', tel: '', empresa: '', segmento: '', contrib: '', msg: '' })
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setForm({ ...form, [k]: e.target.value })
 
-  const handleSubmit = async () => {
-  try {
-    const response = await fetch('/api/partner', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(form),
-    })
-
-    if (response.ok) {
-      setSubmitted(true)
-    } else {
-      alert('Algo deu errado. Tente novamente.')
-    }
-  } catch (error) {
-    console.error(error)
-    alert('Erro ao enviar. Verifique sua conexão.')
+  const handleTelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, tel: e.target.value.replace(/[^\d\s()\-+]/g, '') })
   }
-}
+
+  const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+
+  const handleSubmit = async () => {
+    setFormError(null)
+    if (!form.nome.trim()) {
+      setFormError('Informe seu nome completo.')
+      return
+    }
+    if (!isValidEmail(form.email)) {
+      setFormError('Informe um e-mail válido (ex: voce@empresa.com.br).')
+      return
+    }
+    if (!form.tel.trim()) {
+      setFormError('Informe seu telefone.')
+      return
+    }
+    if (!form.empresa.trim()) {
+      setFormError('Informe o nome da empresa.')
+      return
+    }
+    if (!form.segmento) {
+      setFormError('Selecione o segmento da empresa.')
+      return
+    }
+    if (!form.contrib) {
+      setFormError('Selecione como quer contribuir.')
+      return
+    }
+    if (!form.msg.trim()) {
+      setFormError('Escreva uma mensagem antes de enviar.')
+      return
+    }
+    try {
+      const response = await fetch('/api/partner', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (response.ok) {
+        setSubmitted(true)
+      } else {
+        setFormError('Algo deu errado. Tente novamente.')
+      }
+    } catch {
+      setFormError('Erro ao enviar. Verifique sua conexão.')
+    }
+  }
 
   if (submitted) {
     return (
@@ -110,7 +142,7 @@ export default function ParceiroFormulario() {
               type="tel"
               required
               value={form.tel}
-              onChange={set('tel')}
+              onChange={handleTelChange}
               placeholder="(65) 9 0000-0000"
             />
           </div>
@@ -172,6 +204,7 @@ export default function ParceiroFormulario() {
               value={form.msg}
               onChange={set('msg')}
               placeholder="Conte um pouco sobre sua empresa e como imagina a parceria"
+              required
             />
           </div>
         </div>
@@ -185,6 +218,9 @@ export default function ParceiroFormulario() {
           >
             Quero ser parceiro →
           </button>
+          {formError && (
+            <p style={{ margin: '8px 0 0', fontSize: 14, color: '#DC2626' }}>{formError}</p>
+          )}
 
           <p style={s.fine}>
             🔒 Seus dados são protegidos pela LGPD. Retornamos em até 24 horas

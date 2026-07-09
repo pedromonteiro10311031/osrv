@@ -120,10 +120,16 @@ export default function DonationBlock({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const finalAmount = custom ? Number(custom) : amount
+  const customValid = custom !== '' && Number(custom) >= 1
+  const finalAmount = custom !== '' ? Number(custom) : amount
+  const donateDisabled = loading || (custom !== '' && !customValid)
   const impactText = IMPACTS[amount]?.[freq] || 'Sua doação mantém crianças nos projetos OSRV.'
 
   const handleDonate = async () => {
+    if (finalAmount <= 0) {
+      setError('Informe um valor maior que zero para continuar.')
+      return
+    }
     setLoading(true)
     setError(null)
     try {
@@ -250,16 +256,28 @@ export default function DonationBlock({
           </div>
           <div style={donStyles.customRow} className="donation-custom-row">
             <span style={donStyles.prefix}>R$</span>
-            <input style={donStyles.input} className="donation-input" type="number" placeholder="Outro valor" value={custom} onChange={(e) => setCustom(e.target.value)} />
+            <input
+              style={donStyles.input}
+              className="donation-input"
+              type="number"
+              min="1"
+              step="1"
+              placeholder="Outro valor"
+              value={custom}
+              onChange={(e) => {
+                const digits = e.target.value.replace(/[^0-9]/g, '')
+                setCustom(digits === '0' ? '' : digits)
+              }}
+            />
           </div>
           <div style={donStyles.impact} className="donation-impact">
             <div><b style={donStyles.impactStrong}>R$ {finalAmount} {freq === 'mensal' ? '/ mês' : 'única'}</b> — {impactText}</div>
           </div>
           <button
-            style={{ ...donStyles.cta, ...(loading ? { opacity: 0.7 } : {}) }}
+            style={{ ...donStyles.cta, ...(donateDisabled ? { opacity: 0.5, cursor: 'not-allowed' } : {}) }}
             className="donation-cta"
             onClick={handleDonate}
-            disabled={loading}
+            disabled={donateDisabled}
           >
             {loading ? 'Processando...' : `Doar R$ ${finalAmount} ${freq === 'mensal' ? '/ mês' : 'agora'} →`}
           </button>
