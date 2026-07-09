@@ -318,7 +318,6 @@ export default function VisitPage() {
         title="A porta está sempre aberta."
         subtitle="Conhecer de perto muda tudo."
         bgImage={HERO_PHOTO}
-        actions={<HeroActions />}
       />
       <Convite />
       <AddressMap />

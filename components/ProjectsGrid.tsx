@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { projetos } from '@/lib/projetos'
 
 const projStyles = {
   wrap: { background: 'var(--paper-200)', padding: '96px 0' },
@@ -68,66 +69,9 @@ const projStyles = {
   link: { display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 18, fontSize: 14, fontWeight: 500, color: 'var(--teal-700)' },
 }
 
-const PROJECTS = [
-  {
-    id: 'judo',
-    eyebrow: 'PROJETO CARRO-CHEFE',
-    title: 'Judô — disciplina, equilíbrio e respeito.',
-    desc: 'O programa principal da OSRV. Treinos três vezes por semana, da faixa branca à amarela, com preparação física, ukemi e valores do tatame para a vida.',
-    bg: 'linear-gradient(160deg, #4A9B3E 0%, #1E4218 100%)',
-    photoHint: 'foto · treino de judô',
-    featured: true,
-  },
-  {
-    id: 'xadrez',
-    eyebrow: 'PROJETO XADREZ',
-    title: 'Xadrez — pensar antes de mover.',
-    desc: 'Aulas semanais, torneios internos e participação em campeonatos municipais. Foco em concentração, raciocínio lógico e paciência.',
-    bg: 'linear-gradient(160deg, #2E86AB 0%, #15445A 100%)',
-    photoHint: 'foto · partida de xadrez',
-    featured: false,
-  },
-  {
-    id: 'radicais',
-    eyebrow: 'PROJETO ESPORTES RADICAIS',
-    title: 'Esportes radicais — coragem com segurança.',
-    desc: 'Slackline, escalada e parkour adaptados. Cada salto começa com conferência de equipamento e respiração.',
-    bg: 'linear-gradient(160deg, #BC7715 0%, #7A4A0F 100%)',
-    photoHint: 'foto · slackline',
-    featured: false,
-  },
-  {
-    id: 'yoga',
-    eyebrow: 'PROJETO YOGA',
-    title: 'Yoga — respirar antes de reagir.',
-    desc: 'Prática semanal de yoga infantil com pilares de respiração, alongamento e meditação curta.',
-    bg: 'linear-gradient(160deg, #7B5EA7 0%, #3F2E5C 100%)',
-    photoHint: 'foto · aula de yoga',
-    featured: false,
-  },
-  {
-    id: 'educacao',
-    eyebrow: 'APOIO EDUCACIONAL',
-    title: 'Reforço escolar, biblioteca e estudo dirigido.',
-    desc: 'Acompanhamento pedagógico de matemática e português no contraturno. Três professoras, biblioteca aberta.',
-    bg: 'linear-gradient(160deg, #D85A8B 0%, #5C2440 100%)',
-    photoHint: 'foto · sala de estudo',
-    featured: false,
-  },
-  {
-    id: 'psicologia',
-    eyebrow: 'ACOMPANHAMENTO PSICOLÓGICO',
-    title: 'Escuta cuidada — toda semana, sem fila.',
-    desc: 'Atendimento psicológico individual e em grupo, em parceria com a UFMT.',
-    bg: 'linear-gradient(160deg, #E66060 0%, #5A1F1F 100%)',
-    photoHint: 'foto · sala de escuta',
-    featured: false,
-  },
-]
+import { Projeto } from '@/lib/projetos'
 
-type Project = typeof PROJECTS[0]
-
-function ProjectCard({ p }: { p: Project }) {
+function ProjectCard({ p }: { p: Projeto }) {
   const [hover, setHover] = useState(false)
   const cardStyle = {
     ...projStyles.card,
@@ -137,16 +81,17 @@ function ProjectCard({ p }: { p: Project }) {
   const eyebrowStyle = p.featured
     ? { ...projStyles.tag, color: 'var(--amber-300)' }
     : projStyles.tag
+  const eyebrowLabel = p.featured ? `PROJETO CARRO-CHEFE` : `PROJETO ${p.tag}`
 
   return (
-    <Link href={`/programas-e-projetos#${p.id}`} style={cardStyle} className="projects-card" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <Link href={`/programas-e-projetos/${p.slug}`} style={cardStyle} className="projects-card" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <div style={{ ...projStyles.band, background: p.bg }} className="projects-card-band">
-        <span style={projStyles.placeholder} className="card-placeholder">{p.photoHint}</span>
+        <span style={projStyles.placeholder} className="card-placeholder">foto · {p.title.toLowerCase()}</span>
         <div style={projStyles.bandScrim}></div>
-        <span style={eyebrowStyle}>{p.eyebrow}</span>
+        <span style={eyebrowStyle}>{eyebrowLabel}</span>
       </div>
       <div style={projStyles.body} className="projects-card-body">
-        <h3 style={projStyles.title} className="projects-card-title">{p.title}</h3>
+        <h3 style={projStyles.title} className="projects-card-title">{p.titleLong}</h3>
         <p style={projStyles.desc} className="projects-card-desc">{p.desc}</p>
         <span style={projStyles.link} className="projects-card-link">Conhecer o projeto →</span>
       </div>
@@ -173,7 +118,7 @@ export default function ProjectsGrid() {
           </p>
         </div>
         <div style={projStyles.grid} className="projects-grid">
-          {PROJECTS.map((p) => <ProjectCard key={p.id} p={p} />)}
+          {projetos.map((p) => <ProjectCard key={p.id} p={p} />)}
         </div>
       </div>
       <style>{`
