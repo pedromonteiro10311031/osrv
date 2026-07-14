@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 const donStyles = {
-  wrap: { background: 'var(--paper-100)', padding: '120px 0' },
+  wrap: { background: 'var(--paper-100)', padding: '120px 0 60px' },
   inner: {
     maxWidth: 'var(--container)',
     margin: '0 auto',
@@ -157,7 +157,7 @@ export default function DonationBlock({
         @media (max-width: 768px) {
           .donation-block {
             padding-top: 56px !important;
-            padding-bottom: 56px !important;
+            padding-bottom: 28px !important;
           }
           .donation-block .donation-inner {
             grid-template-columns: 1fr !important;

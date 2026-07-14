@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { projetos, Projeto } from '@/lib/projetos'
 
 const grStyles = {
-  wrap: { background: '#F3EFE7', padding: '120px 0' },
+  wrap: { background: '#F3EFE7', padding: '120px 0 60px' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   head: { marginBottom: 64 },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 16 },
@@ -15,8 +15,7 @@ const grStyles = {
   band: { aspectRatio: '5/4', position: 'relative' as const, overflow: 'hidden', display: 'block' },
   bandPhoto: { position: 'absolute' as const, inset: 0, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.78, mixBlendMode: 'multiply' as const, transition: 'transform 600ms' },
   bandScrim: { position: 'absolute' as const, inset: 0, background: 'linear-gradient(180deg, rgba(31,42,46,0.05) 0%, rgba(31,42,46,0.55) 100%)' },
-  cardNumber: { position: 'absolute' as const, top: 18, left: 22, fontFamily: 'var(--font-serif)', fontStyle: 'italic' as const, fontSize: 14, color: 'rgba(255,255,255,0.7)' },
-  cardTag: { position: 'absolute' as const, top: 18, right: 22, fontSize: 10, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#fff', background: 'rgba(0,0,0,0.28)', padding: '5px 9px', borderRadius: 4 },
+cardTag: { position: 'absolute' as const, top: 18, right: 22, fontSize: 10, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#fff', background: 'rgba(0,0,0,0.28)', padding: '5px 9px', borderRadius: 4 },
   cardBandTitle: { position: 'absolute' as const, left: 22, right: 22, bottom: 20, fontFamily: 'var(--font-serif)', fontWeight: 500, fontSize: 32, lineHeight: 1.05, letterSpacing: '-0.018em', color: '#FAF8F4', margin: 0 },
   body: { padding: '26px 26px 28px', display: 'flex', flexDirection: 'column' as const, gap: 14, flex: 1 },
   desc: { fontSize: 15.5, lineHeight: 1.55, color: 'var(--fg-2)', margin: 0 },
@@ -34,7 +33,7 @@ function ProjectHubCard({ p }: { p: Projeto }) {
       <div style={grStyles.band}>
         <div style={photoStyle}></div>
         <div style={grStyles.bandScrim}></div>
-        <span style={grStyles.cardNumber}>· {p.n}</span>
+
         <span style={grStyles.cardTag}>{p.tag}</span>
         <h3 style={grStyles.cardBandTitle}>{p.title}</h3>
       </div>
@@ -54,7 +53,7 @@ export default function ProjetosHub() {
         @media (max-width: 768px) {
           .projetos-hub {
             padding-top: 56px !important;
-            padding-bottom: 56px !important;
+            padding-bottom: 28px !important;
           }
           .projetos-hub .ph-inner {
             padding: 0 20px !important;

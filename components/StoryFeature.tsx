@@ -28,19 +28,6 @@ const storyStyles = {
     background: 'rgba(0, 0, 0, 0.25)',
     pointerEvents: 'none' as const,
   },
-  caption: {
-    position: 'absolute' as const,
-    top: 24,
-    right: 24,
-    background: 'rgba(0,0,0,0.4)',
-    color: 'rgba(255,255,255,0.9)',
-    fontSize: 11,
-    fontWeight: 600,
-    letterSpacing: '0.14em',
-    textTransform: 'uppercase' as const,
-    padding: '6px 10px',
-    borderRadius: 4,
-  },
   content: {
     padding: '120px 64px 120px 80px',
     maxWidth: 620,
@@ -58,16 +45,6 @@ const storyStyles = {
   },
   italic: { fontFamily: 'var(--font-serif)', fontStyle: 'italic' as const, color: '#F39C2A' },
   body: { fontSize: 17, lineHeight: 1.65, color: 'rgba(250, 248, 244, 0.9)', margin: '0 0 24px', maxWidth: 540 },
-  attrib: { display: 'flex', alignItems: 'center', gap: 14, marginTop: 28 },
-  avatar: {
-    width: 44,
-    height: 44,
-    borderRadius: '50%',
-    background: 'linear-gradient(140deg, var(--amber-300), var(--amber-700))',
-    flex: 'none' as const,
-  },
-  name: { fontSize: 15, fontWeight: 600, color: 'var(--paper-100)' },
-  role: { fontSize: 13, color: 'rgba(250,248,244,0.7)' },
   link: { display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 28, color: '#F8C175', fontSize: 14, fontWeight: 500, textDecoration: 'underline' },
 }
 
@@ -105,7 +82,7 @@ export default function StoryFeature() {
       <div style={storyStyles.portrait} className="story-portrait">
         <div style={storyStyles.portraitImg}></div>
         <div style={storyStyles.portraitOverlay}></div>
-        <span style={storyStyles.caption}>MARÇO 2026</span>
+
       </div>
       <div style={storyStyles.content} className="story-content">
         <div style={storyStyles.eyebrow} className="story-eyebrow">UMA HISTÓRIA · JARDIM RENASCER</div>
@@ -122,13 +99,7 @@ export default function StoryFeature() {
           comido chocolate antes — e chorou. Momentos assim são o motivo pelo
           qual existimos.
         </p>
-        <div style={storyStyles.attrib}>
-          <div style={storyStyles.avatar}></div>
-          <div>
-            <div style={storyStyles.name}>Uma criança do Jardim Renascer</div>
-            <div style={storyStyles.role}>Ação OSRV × Cacau Show</div>
-          </div>
-        </div>
+
         <Link href="/quem-somos" style={storyStyles.link}>Ler a história completa →</Link>
       </div>
     </section>

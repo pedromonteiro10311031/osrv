@@ -2,7 +2,7 @@ import { getBlogPosts, WpCategory } from '@/lib/wordpress'
 import BlogFeedClient from './BlogFeedClient'
 
 const s = {
-  wrap: { background: 'var(--paper-100)', padding: '120px 0' },
+  wrap: { background: 'var(--paper-100)', padding: '120px 0 60px' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   head: { marginBottom: 48 },
   eyebrow: {
@@ -55,7 +55,7 @@ export default async function BlogFeed() {
         @media (max-width: 768px) {
           .blog-feed {
             padding-top: 56px !important;
-            padding-bottom: 56px !important;
+            padding-bottom: 28px !important;
           }
         }
       `}</style>

@@ -1,5 +1,5 @@
 const cfStyles = {
-  wrap: { background: 'var(--paper-100)', padding: '120px 0' },
+  wrap: { background: 'var(--paper-100)', padding: '120px 0 60px' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   head: { maxWidth: 780, marginBottom: 72 },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 18 },
@@ -28,7 +28,7 @@ export default function ParceiroComoFunciona() {
         @media (max-width: 768px) {
           .parceiro-como-funciona {
             padding-top: 56px !important;
-            padding-bottom: 56px !important;
+            padding-bottom: 28px !important;
           }
           .parceiro-como-funciona .pcf-inner {
             padding: 0 20px !important;

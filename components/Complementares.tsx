@@ -13,7 +13,6 @@ const compStyles = {
   row: { display: 'grid', gridTemplateColumns: '1fr 1.1fr', background: 'var(--paper-100)', border: '1px solid var(--border-soft)', borderRadius: 8, overflow: 'hidden', minHeight: 320, transition: 'box-shadow 0.2s, border-color 0.2s', textDecoration: 'none', color: 'inherit' },
   photo: { position: 'relative' as const, minHeight: 320, backgroundSize: 'cover', backgroundPosition: 'center' },
   photoScrim: { position: 'absolute' as const, inset: 0, background: 'linear-gradient(180deg, rgba(31,42,46,0) 50%, rgba(31,42,46,0.35) 100%)' },
-  photoTag: { position: 'absolute' as const, top: 22, left: 22, fontSize: 10, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: '#FAF8F4', background: 'rgba(0,0,0,0.32)', padding: '6px 10px', borderRadius: 4 },
   body: { padding: '48px 56px', display: 'flex', flexDirection: 'column' as const, gap: 18, justifyContent: 'center' },
   title: { fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(1.75rem, 2.6vw, 2.25rem)', lineHeight: 1.1, letterSpacing: '-0.018em', color: 'var(--ink-900)', margin: 0 },
   desc: { fontSize: 16.5, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0, maxWidth: 480 },
@@ -26,7 +25,7 @@ function ComplementoCard({ tag, title, desc, link, photo, fallback }: { tag: str
     <a href="#" style={{ ...compStyles.row, boxShadow: hover ? '0 8px 24px rgba(0,0,0,0.12)' : 'none', borderColor: hover ? 'var(--amber-500)' : 'var(--border-soft)' }} className="comp-row" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <div style={{ ...compStyles.photo, backgroundImage: `url("${photo}"), ${fallback}` }} className="comp-photo">
         <div style={compStyles.photoScrim}></div>
-        <span style={compStyles.photoTag}>{tag}</span>
+
       </div>
       <div style={compStyles.body} className="comp-body">
         <h3 style={compStyles.title} className="comp-title">{title}</h3>

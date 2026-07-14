@@ -1,5 +1,5 @@
 const howStyles = {
-  wrap: { background: 'var(--paper-200)', padding: '120px 0' },
+  wrap: { background: 'var(--paper-200)', padding: '120px 0 60px' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   head: { textAlign: 'left' as const, marginBottom: 72, display: 'flex', flexDirection: 'column' as const, alignItems: 'flex-start', gap: 16 },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'var(--pine-700)' },
@@ -29,7 +29,7 @@ export default function HowItWorks() {
         @media (max-width: 768px) {
           .how-it-works {
             padding-top: 56px !important;
-            padding-bottom: 56px !important;
+            padding-bottom: 28px !important;
           }
           .how-it-works .hiw-inner {
             padding: 0 20px !important;
