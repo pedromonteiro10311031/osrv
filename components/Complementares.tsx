@@ -23,7 +23,7 @@ function ComplementoCard({ tag, title, desc, link, photo }: { tag: string, title
   const [hover, setHover] = useState(false)
   return (
     <a href="#" style={{ ...compStyles.row, boxShadow: hover ? '0 8px 24px rgba(0,0,0,0.12)' : 'none', borderColor: hover ? 'var(--amber-500)' : 'var(--border-soft)' }} className="comp-row" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-      <div style={{ ...compStyles.photo, backgroundImage: `url('${photo}'), #1E4218` }} className="comp-photo">
+      <div style={{ ...compStyles.photo, backgroundImage: `url('${photo}'), linear-gradient(#1E4218, #1E4218)` }} className="comp-photo">
         <div style={compStyles.photoScrim}></div>
 
       </div>
