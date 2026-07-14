@@ -141,10 +141,10 @@ export default function ProjectsGrid() {
             line-height: 1.4 !important;
           }
           .projects-card-band {
-            aspect-ratio: 4/3 !important;
+            aspect-ratio: 16/9 !important;
           }
           .projects-card-body {
-            padding: 12px !important;
+            padding: 18px 18px 20px !important;
           }
           .projects-card-title {
             font-size: 0.95rem !important;
