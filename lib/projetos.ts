@@ -2,7 +2,7 @@ export interface Projeto {
   id: string
   slug: string
   n: string
-  tag: 'ESPORTE' | 'EDUCAÇÃO' | 'CUIDADO' | 'COMUNIDADE'
+  tag: 'ESPORTE' | 'EDUCAÇÃO' | 'CUIDADO'
   title: string
   titleLong: string
   desc: string
@@ -220,50 +220,6 @@ A escuta não para na criança. O projeto inclui orientação a famílias — en
       {
         titulo: 'Caso João Pedro: do silêncio à voz',
         descricao: 'João Pedro, 11 anos, chegou à OSRV encaminhado pela escola após meses sem falar em aula. Após seis meses de acompanhamento individual e participação nos grupos temáticos, voltou a se comunicar, fez amizades e hoje é um dos alunos mais ativos do projeto de xadrez. A história foi compartilhada (com autorização da família) em seminário de psicologia social em Cuiabá.',
-      },
-    ],
-  },
-  {
-    id: 'brecho',
-    slug: 'brecho',
-    n: '07',
-    tag: 'EDUCAÇÃO',
-    title: 'Brechó Solidário',
-    titleLong: 'Brechó Solidário — moda que transforma.',
-    desc: 'Roupas acessíveis e geração de renda para a comunidade.',
-    descLonga: '[PLACEHOLDER — aguardando conteúdo da Ryta]',
-    stats: 'Funcionamento semanal',
-    photo: '/images/brecho.jpg',
-    bg: 'linear-gradient(160deg, #8B4513 0%, #5c2d0a 100%)',
-    comoFunciona: '[PLACEHOLDER — aguardando conteúdo da Ryta]',
-    faixaEtaria: 'Comunidade em geral',
-    diasHorarios: '[PLACEHOLDER — aguardando confirmação da Ryta]',
-    conquistas: [
-      {
-        titulo: '[PLACEHOLDER]',
-        descricao: '[PLACEHOLDER] Aguardando conteúdo da Ryta.',
-      },
-    ],
-  },
-  {
-    id: 'biblioteca',
-    slug: 'biblioteca',
-    n: '08',
-    tag: 'EDUCAÇÃO',
-    title: 'Biblioteca',
-    titleLong: 'Biblioteca — o mundo cabe num livro.',
-    desc: 'Acesso a livros e incentivo à leitura para crianças e adolescentes.',
-    descLonga: '[PLACEHOLDER — aguardando conteúdo da Ryta]',
-    stats: 'Acervo em crescimento',
-    photo: '/images/biblioteca.jpg',
-    bg: 'linear-gradient(160deg, #2A5C8A 0%, #1a3a5c 100%)',
-    comoFunciona: '[PLACEHOLDER — aguardando conteúdo da Ryta]',
-    faixaEtaria: '5 a 17 anos',
-    diasHorarios: '[PLACEHOLDER — aguardando confirmação da Ryta]',
-    conquistas: [
-      {
-        titulo: '[PLACEHOLDER]',
-        descricao: '[PLACEHOLDER] Aguardando conteúdo da Ryta.',
       },
     ],
   },

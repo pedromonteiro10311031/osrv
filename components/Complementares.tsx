@@ -11,19 +11,19 @@ const compStyles = {
   sub: { fontFamily: 'var(--font-serif)', fontStyle: 'italic' as const, color: 'var(--amber-500)', fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)', marginTop: 12, maxWidth: 640 },
   list: { display: 'flex', flexDirection: 'column' as const, gap: 28 },
   row: { display: 'grid', gridTemplateColumns: '1fr 1.1fr', background: 'var(--paper-100)', border: '1px solid var(--border-soft)', borderRadius: 8, overflow: 'hidden', minHeight: 320, transition: 'box-shadow 0.2s, border-color 0.2s', textDecoration: 'none', color: 'inherit' },
-  photo: { position: 'relative' as const, minHeight: 320, backgroundSize: 'cover', backgroundPosition: 'center' },
-  photoScrim: { position: 'absolute' as const, inset: 0, background: 'linear-gradient(180deg, rgba(31,42,46,0) 50%, rgba(31,42,46,0.35) 100%)' },
+  photo: { position: 'relative' as const, minHeight: 320, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.78, mixBlendMode: 'multiply' as const },
+  photoScrim: { position: 'absolute' as const, inset: 0, background: 'linear-gradient(180deg, rgba(31,42,46,0.05) 0%, rgba(31,42,46,0.55) 100%)' },
   body: { padding: '48px 56px', display: 'flex', flexDirection: 'column' as const, gap: 18, justifyContent: 'center' },
   title: { fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(1.75rem, 2.6vw, 2.25rem)', lineHeight: 1.1, letterSpacing: '-0.018em', color: 'var(--ink-900)', margin: 0 },
   desc: { fontSize: 16.5, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0, maxWidth: 480 },
   link: { display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: 'var(--teal-700)', marginTop: 8 },
 }
 
-function ComplementoCard({ tag, title, desc, link, photo, fallback }: { tag: string, title: string, desc: string, link: string, photo: string, fallback: string }) {
+function ComplementoCard({ tag, title, desc, link, photo }: { tag: string, title: string, desc: string, link: string, photo: string }) {
   const [hover, setHover] = useState(false)
   return (
     <a href="#" style={{ ...compStyles.row, boxShadow: hover ? '0 8px 24px rgba(0,0,0,0.12)' : 'none', borderColor: hover ? 'var(--amber-500)' : 'var(--border-soft)' }} className="comp-row" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-      <div style={{ ...compStyles.photo, backgroundImage: `url("${photo}"), ${fallback}` }} className="comp-photo">
+      <div style={{ ...compStyles.photo, backgroundImage: `url('${photo}'), #1E4218` }} className="comp-photo">
         <div style={compStyles.photoScrim}></div>
 
       </div>
@@ -77,8 +77,8 @@ export default function Complementares() {
           <p style={compStyles.sub}>Espaços que vivem junto com os projetos.</p>
         </div>
         <div style={compStyles.list}>
-          <ComplementoCard tag="ECONOMIA SOLIDÁRIA" title="Brechó Solidário" desc="Vendas de roupas e itens doados que geram renda para os projetos e oferecem produtos acessíveis para a comunidade." link="Conhecer o Brechó" photo="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1400&q=80" fallback="linear-gradient(160deg, #BC7715 0%, #7A4A0F 100%)" />
-          <ComplementoCard tag="CULTURA" title="Biblioteca Comunitária" desc="Acervo aberto para crianças, jovens e famílias. Lugar de leitura, estudo e descoberta para todo o bairro." link="Conhecer a Biblioteca" photo="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1400&q=80" fallback="linear-gradient(160deg, #2E86AB 0%, #15445A 100%)" />
+          <ComplementoCard tag="ECONOMIA SOLIDÁRIA" title="Brechó Solidário" desc="Vendas de roupas e itens doados que geram renda para os projetos e oferecem produtos acessíveis para a comunidade." link="Conhecer o Brechó" photo="/images/brecho.jpg" />
+          <ComplementoCard tag="CULTURA" title="Biblioteca Comunitária" desc="Acervo aberto para crianças, jovens e famílias. Lugar de leitura, estudo e descoberta para todo o bairro." link="Conhecer a Biblioteca" photo="/images/biblioteca.jpg" />
         </div>
       </div>
     </section>
