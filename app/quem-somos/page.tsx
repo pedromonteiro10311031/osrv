@@ -13,7 +13,7 @@ export default function QuemSomos() {
         eyebrow="OBRAS SOCIAIS RAFAEL VERLANGIERI · JARDIM RENASCER"
         title="Mais que uma instituição."
         subtitle="Uma comunidade que se transforma junto."
-
+        bgImage="/images/quem-somos.jpg"
       />
       <NossaHistoria />
       <OQueFazemos />

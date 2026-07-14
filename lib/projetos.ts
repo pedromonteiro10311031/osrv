@@ -32,7 +32,7 @@ O judô ensina muito mais do que golpes. Cada aula começa e termina com uma rev
 
 O projeto funciona em parceria com a Federação Mato-grossense de Judô, que cede materiais e apoia a participação dos alunos em competições regionais. Para muitas dessas crianças, o primeiro campeonato foi também a primeira vez que saíram de Cuiabá.`,
     stats: '60+ crianças · 3x por semana',
-    photo: 'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1200&q=80',
+    photo: '/images/judo.jpg',
     bg: 'linear-gradient(160deg, #4A9B3E 0%, #1E4218 100%)',
     featured: true,
     comoFunciona: `As aulas acontecem três vezes por semana, em turmas separadas por faixa etária e nível de experiência — iniciantes, intermediários e avançados. Cada sessão tem duração de 1h30 e segue uma estrutura fixa: aquecimento coletivo, treino técnico de posições e quedas, sparring supervisionado e, nos últimos dez minutos, uma roda de conversa onde os alunos refletem sobre o tema do dia — respeito, esforço, perder com dignidade. A equipe é formada por dois professores faixa-preta e um monitor voluntário, todos com formação em trabalho com crianças em vulnerabilidade social.`,
@@ -135,7 +135,7 @@ O projeto atende crianças em dois eixos principais: alfabetização para as que
 
 O impacto é mensurável. Em parceria com as escolas, fazemos acompanhamento semestral do desempenho de cada criança. Os dados mostram que alunos acompanhados pela OSRV têm taxa de reprovação 60% menor do que a média do bairro.`,
     stats: '70+ crianças · 4x por semana',
-    photo: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80',
+    photo: '/images/alfabetizacao.jpg',
     bg: 'linear-gradient(160deg, #D4A017 0%, #8B6914 100%)',
     comoFunciona: `O projeto funciona de segunda a quinta-feira, com turmas de no máximo oito crianças por monitor. A separação das turmas é feita por nível de aprendizagem, não por idade — uma criança de dez anos pode estar na mesma turma que uma de oito se os dois têm o mesmo ponto de partida. Cada sessão dura 1h30 e combina atividades estruturadas (leitura em voz alta, exercícios de interpretação, problemas matemáticos contextualizados) com momentos de jogo e criação. Uma vez por mês, cada criança recebe uma avaliação informal que permite ajustar o ritmo e o conteúdo ao progresso individual.`,
     faixaEtaria: '6 a 14 anos',
@@ -169,7 +169,7 @@ As aulas são conduzidas por uma instrutora formada em yoga infantil e adolescen
 
 O que mais surpreende os coordenadores é o quanto as técnicas de respiração e atenção plena se espalham para fora das aulas. Crianças que aprenderam a respirar antes de reagir em uma situação de raiva estão levando isso para casa, para a escola, para o tatame. A yoga virou ferramenta de regulação emocional que atravessa todos os outros projetos da OSRV.`,
     stats: '30+ crianças · 2x por semana',
-    photo: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=1200&q=80',
+    photo: '/images/yoga.jpg',
     bg: 'linear-gradient(160deg, #6B4C9A 0%, #3d2a5c 100%)',
     comoFunciona: `As aulas acontecem duas vezes por semana, em turmas separadas por faixa etária — crianças de 7 a 11 anos e adolescentes de 12 a 17 anos, porque as abordagens são bem distintas. Cada aula tem 50 minutos e segue uma sequência: chegada e escuta (como cada um está chegando hoje), prática de posturas adaptadas, exercício de respiração consciente e encerramento em silêncio. Os materiais — tapetes, blocos e faixas — foram doados por estúdios de yoga de Cuiabá que se tornaram parceiros do projeto. Não é necessário ter roupas específicas nem experiência anterior.`,
     faixaEtaria: '7 a 17 anos',
@@ -203,7 +203,7 @@ O projeto funciona com psicólogas voluntárias e estagiárias supervisionadas d
 
 A escuta não para na criança. O projeto inclui orientação a famílias — encontros mensais onde pais e responsáveis recebem suporte para lidar com situações de conflito, comunicação e limites em casa. Acreditamos que cuidar da criança sem cuidar do ambiente onde ela vive tem alcance limitado.`,
     stats: '50+ crianças · agendamento contínuo',
-    photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&q=80',
+    photo: '/images/psicologia.jpg',
     bg: 'linear-gradient(160deg, #2A8A6B 0%, #1a5c44 100%)',
     comoFunciona: `Os atendimentos individuais são agendados mediante encaminhamento interno (de outros projetos ou da coordenação) ou por solicitação direta da família. Cada criança tem de quatro a oito sessões iniciais, com reavaliação ao final para decidir continuidade. Os grupos terapêuticos acontecem às sextas-feiras com turmas fixas de oito adolescentes, seguindo um ciclo temático de doze semanas. A equipe é formada por duas psicólogas supervisoras e quatro estagiárias do último ano de psicologia de universidades parceiras. Todos os atendimentos são sigilosos e registrados em prontuário próprio da OSRV.`,
     faixaEtaria: '6 a 17 anos',
