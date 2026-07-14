@@ -568,7 +568,7 @@ export default function ProjetoPage({ projeto, projetos }: Props) {
         @media (max-width: 768px) {
           .pj-hero { min-height: 440px; }
           .pj-hero-inner { padding: 40px 20px 44px; }
-          .pj-hero-title { font-size: clamp(2.1rem, 9vw, 2.8rem); }
+          .pj-hero-title { font-size: clamp(1.65rem, 8vw, 2rem) !important; }
           .pj-hero-subtitle { font-size: 1.05rem; }
 
           .pj-back-bar { padding: 0 20px; }
@@ -582,9 +582,11 @@ export default function ProjetoPage({ projeto, projetos }: Props) {
           .pj-prevnext-section { padding: 0 20px; }
           .pj-prevnext-inner { padding: 32px 0; flex-direction: column; gap: 0; }
 
-          .pj-stats-grid { grid-template-columns: 1fr; gap: 16px; }
-          .pj-stat-card { padding: 28px 24px; }
-          .pj-stat-value { font-size: 3rem; }
+          .pj-stats-grid { grid-template-columns: 1fr; gap: 10px !important; }
+          .pj-stat-card { padding: 16px 18px !important; }
+          .pj-stat-value { font-size: 2rem !important; }
+          .pj-stat-label { font-size: 0.85rem !important; }
+          .pj-stat-sub { font-size: 0.8rem !important; }
 
           .pj-how-grid { grid-template-columns: 1fr; gap: 32px; }
           .pj-schedule-box { padding: 28px 24px; }
@@ -681,8 +683,8 @@ export default function ProjetoPage({ projeto, projetos }: Props) {
             {statCards.map((card, i) => (
               <div key={i} className="pj-stat-card" style={s.statCard}>
                 <div className="pj-stat-value" style={s.statValue}>{card.value}</div>
-                <div style={s.statLabel}>{card.label}</div>
-                <div style={s.statSub}>{card.sub}</div>
+                <div className="pj-stat-label" style={s.statLabel}>{card.label}</div>
+                <div className="pj-stat-sub" style={s.statSub}>{card.sub}</div>
               </div>
             ))}
           </div>

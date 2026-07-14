@@ -71,7 +71,7 @@ export default function FinalCTA() {
             font-weight: 500 !important;
           }
           .final-cta .final-cta-card-desc {
-            font-size: 0.78rem !important;
+            font-size: 0.82rem !important;
             line-height: 1.35 !important;
           }
           .final-cta .final-cta-cta-primary,

@@ -44,11 +44,15 @@ export default function ParceiroComoAjudar() {
           .parceiro-como-ajudar .pca-grid article:last-child {
             border-bottom: none;
           }
+          .parceiro-como-ajudar .pca-eyebrow {
+            font-size: 9px !important;
+            letter-spacing: 0.12em !important;
+          }
         }
       `}</style>
       <div style={caStyles.inner} className="pca-inner">
         <div style={caStyles.head}>
-          <div style={caStyles.eyebrow}>FORMAS DE APOIO</div>
+          <div style={caStyles.eyebrow} className="pca-eyebrow">FORMAS DE APOIO</div>
           <h2 style={caStyles.h2}>Cada empresa tem um jeito de fazer parte.</h2>
           <p style={caStyles.sub}>Escolha o modelo que faz mais sentido para vocês.</p>
         </div>

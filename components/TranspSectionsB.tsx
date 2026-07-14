@@ -230,6 +230,7 @@ export function TranspGovernanca() {
         @media (max-width: 768px) {
           .transp-gov .tg-inner { padding: 0 20px !important; box-sizing: border-box; max-width: 100% !important; }
           .transp-gov .tg-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .transp-gov .tg-body { font-size: 0.9rem !important; line-height: 1.5 !important; }
         }
       `}</style>
       <div style={s.section} className="tg-inner">
@@ -238,7 +239,7 @@ export function TranspGovernanca() {
           <h2 style={s.h2}>Estrutura de governança.</h2>
           <span style={s.sub}>Conselho ativo, decisões coletivas.</span>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }} className="tg-grid">
-            <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--fg-2)', margin: 0 }}>
+            <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--fg-2)', margin: 0 }} className="tg-body">
               A OSRV é administrada por uma diretoria executiva e supervisionada por um conselho fiscal
               e um conselho consultivo, todos eleitos em assembleia geral e atuando voluntariamente.
             </p>
@@ -379,6 +380,7 @@ export function TranspOuvidoria() {
           .transp-ouvidoria .to-inner { padding: 0 20px !important; box-sizing: border-box; max-width: 100% !important; }
           .transp-ouvidoria .to-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .transp-ouvidoria .to-form-row { grid-template-columns: 1fr !important; }
+          .transp-ouvidoria .to-body { font-size: 0.9rem !important; line-height: 1.5 !important; }
         }
       `}</style>
       <div style={s.section} className="to-inner">
@@ -387,7 +389,7 @@ export function TranspOuvidoria() {
           <h2 style={s.h2}>Fale conosco.</h2>
           <span style={s.sub}>Toda manifestação recebida é respondida em até 7 dias úteis.</span>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }} className="to-grid">
-            <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--fg-2)', margin: 0 }}>
+            <p style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--fg-2)', margin: 0 }} className="to-body">
               Se você tem dúvidas sobre nossos dados financeiros, quer solicitar informações adicionais ou
               precisa reportar algo, use um dos canais abaixo. Todas as manifestações são tratadas com
               confidencialidade quando solicitado.

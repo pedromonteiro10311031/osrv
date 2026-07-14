@@ -41,11 +41,15 @@ export default function ParceiroComoFunciona() {
           .parceiro-como-funciona .pcf-row > div {
             padding: 0 !important;
           }
+          .parceiro-como-funciona .pcf-eyebrow {
+            font-size: 9px !important;
+            letter-spacing: 0.12em !important;
+          }
         }
       `}</style>
       <div style={cfStyles.inner} className="pcf-inner">
         <div style={cfStyles.head}>
-          <div style={cfStyles.eyebrow}>COMO FUNCIONA</div>
+          <div style={cfStyles.eyebrow} className="pcf-eyebrow">COMO FUNCIONA</div>
           <h2 style={cfStyles.h2}>Do primeiro contato à parceria ativa.</h2>
           <p style={cfStyles.sub}>Simples, transparente e sem burocracia.</p>
         </div>

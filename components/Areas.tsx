@@ -78,7 +78,8 @@ export default function Areas() {
             font-size: 18px !important;
           }
           .areas-section .areas-desc {
-            font-size: 14px !important;
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
           }
         }
       `}</style>

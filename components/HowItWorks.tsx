@@ -44,11 +44,15 @@ export default function HowItWorks() {
           .how-it-works .hiw-track > div:last-child {
             border-bottom: none !important;
           }
+          .how-it-works .hiw-eyebrow {
+            font-size: 9px !important;
+            letter-spacing: 0.12em !important;
+          }
         }
       `}</style>
       <div style={howStyles.inner} className="hiw-inner">
         <div style={howStyles.head}>
-          <div style={howStyles.eyebrow}>COMO FUNCIONA</div>
+          <div style={howStyles.eyebrow} className="hiw-eyebrow">COMO FUNCIONA</div>
           <h2 style={howStyles.h2}>Simples, humano e sem burocracia.</h2>
           <p style={howStyles.sub}>Do formulário ao tatame em poucos passos.</p>
         </div>

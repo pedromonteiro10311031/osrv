@@ -58,12 +58,16 @@ export default function OQueFazemos() {
           .o-que-fazemos .oqf-grid {
             grid-template-columns: 1fr !important;
           }
+          .o-que-fazemos .oqf-eyebrow {
+            font-size: 9px !important;
+            letter-spacing: 0.12em !important;
+          }
         }
       `}</style>
       <div style={fazerStyles.glow}></div>
       <div style={fazerStyles.inner} className="oqf-inner">
         <div style={fazerStyles.head}>
-          <div style={fazerStyles.eyebrow}>O que fazemos</div>
+          <div style={fazerStyles.eyebrow} className="oqf-eyebrow">O que fazemos</div>
           <h2 style={fazerStyles.h2}>
             Educação, esporte, arte e cuidado.
             <span style={fazerStyles.italic}>Tudo junto, todo dia.</span>

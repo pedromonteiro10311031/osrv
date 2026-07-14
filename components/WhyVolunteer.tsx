@@ -31,11 +31,15 @@ export default function WhyVolunteer() {
           .why-volunteer .wv-grid {
             grid-template-columns: 1fr !important;
           }
+          .why-volunteer .wv-eyebrow {
+            font-size: 9px !important;
+            letter-spacing: 0.12em !important;
+          }
         }
       `}</style>
       <div style={whyStyles.inner} className="wv-inner">
         <div style={whyStyles.head}>
-          <div style={whyStyles.eyebrow}>POR QUE VOLUNTARIAR</div>
+          <div style={whyStyles.eyebrow} className="wv-eyebrow">POR QUE VOLUNTARIAR</div>
           <h2 style={whyStyles.h2}>Seu tempo vale mais do que você imagina.</h2>
           <p style={whyStyles.sub}>E a gente prova isso todo dia.</p>
         </div>

@@ -34,11 +34,15 @@ export default function ParceiroPorQue() {
           .parceiro-porque .ppq-grid {
             grid-template-columns: 1fr !important;
           }
+          .parceiro-porque .ppq-eyebrow {
+            font-size: 9px !important;
+            letter-spacing: 0.12em !important;
+          }
         }
       `}</style>
       <div style={pqStyles.inner} className="ppq-inner">
         <div style={pqStyles.head}>
-          <div style={pqStyles.eyebrow}>POR QUE PARCERIA</div>
+          <div style={pqStyles.eyebrow} className="ppq-eyebrow">POR QUE PARCERIA</div>
           <h2 style={pqStyles.h2}>Mais que responsabilidade social.</h2>
           <p style={pqStyles.sub}>Uma parceria que transforma dos dois lados.</p>
         </div>

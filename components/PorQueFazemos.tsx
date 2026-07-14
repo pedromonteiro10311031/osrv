@@ -39,12 +39,16 @@ export default function PorQueFazemos() {
             gap: 8px !important;
             padding: 20px 0 !important;
           }
+          .por-que-fazemos .pqf-eyebrow {
+            font-size: 9px !important;
+            letter-spacing: 0.12em !important;
+          }
         }
       `}</style>
       <div style={porqueStyles.inner} className="pqf-inner">
         <div style={porqueStyles.head} className="pqf-head">
           <div>
-            <div style={porqueStyles.eyebrow}>Por que fazemos</div>
+            <div style={porqueStyles.eyebrow} className="pqf-eyebrow">Por que fazemos</div>
             <h2 style={porqueStyles.h2}>
               Comunidade não é palavra.
               <span style={porqueStyles.italic}>É método.</span>
