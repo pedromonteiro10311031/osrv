@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 const compStyles = {
-  wrap: { background: 'var(--bg-page)', padding: '24px 0 120px' },
+  wrap: { background: 'var(--bg-page)', padding: '120px 0' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   head: { marginBottom: 56 },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 16 },
@@ -42,6 +42,10 @@ export default function Complementares() {
     <section style={compStyles.wrap} id="complementos" className="complementares">
       <style>{`
         @media (max-width: 768px) {
+          .complementares {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .complementares .comp-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

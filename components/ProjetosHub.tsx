@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { projetos, Projeto } from '@/lib/projetos'
 
 const grStyles = {
-  wrap: { background: '#F3EFE7', padding: '24px 0 120px' },
+  wrap: { background: '#F3EFE7', padding: '120px 0' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   head: { marginBottom: 64 },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 16 },
@@ -52,6 +52,10 @@ export default function ProjetosHub() {
     <section style={grStyles.wrap} id="projetos" className="projetos-hub">
       <style>{`
         @media (max-width: 768px) {
+          .projetos-hub {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .projetos-hub .ph-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

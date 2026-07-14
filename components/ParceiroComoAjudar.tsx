@@ -28,6 +28,10 @@ export default function ParceiroComoAjudar() {
     <section style={caStyles.wrap} className="parceiro-como-ajudar">
       <style>{`
         @media (max-width: 768px) {
+          .parceiro-como-ajudar {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .parceiro-como-ajudar .pca-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

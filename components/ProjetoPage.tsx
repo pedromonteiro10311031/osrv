@@ -526,9 +526,9 @@ export default function ProjetoPage({ projeto, projetos }: Props) {
         .pj-section-sobre,
         .pj-section-stats,
         .pj-section-conquistas,
-        .pj-section-final-cta { padding: 96px 48px; }
-        .pj-section-como { padding: 96px 48px; }
-        .pj-section-ajudar { padding: 96px 48px; }
+        .pj-section-final-cta { padding: 120px 48px; }
+        .pj-section-como { padding: 120px 48px; }
+        .pj-section-ajudar { padding: 120px 48px; }
         .pj-prevnext-section { padding: 0 48px; }
         .pj-prevnext-inner { padding: 48px 0; }
 

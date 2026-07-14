@@ -1,5 +1,5 @@
 const introStyles = {
-  wrap: { background: 'var(--bg-page)', padding: '120px 0 160px' },
+  wrap: { background: 'var(--bg-page)', padding: '120px 0' },
   inner: {
     maxWidth: 'var(--container)',
     margin: '0 auto',
@@ -79,6 +79,10 @@ export default function Introducao() {
     <section style={introStyles.wrap} id="abordagem" className="introducao">
       <style>{`
         @media (max-width: 768px) {
+          .introducao {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .introducao .intro-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

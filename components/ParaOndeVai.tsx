@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 const transpStyles = {
-  wrap: { background: 'var(--paper-100)', padding: '88px 0 120px' },
+  wrap: { background: 'var(--paper-100)', padding: '120px 0' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   header: { display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 60, alignItems: 'end', marginBottom: 48 },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 14 },
@@ -36,6 +36,10 @@ export default function ParaOndeVai() {
     <section id="transparencia" style={transpStyles.wrap} className="para-onde-vai">
       <style>{`
         @media (max-width: 768px) {
+          .para-onde-vai {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .para-onde-vai .pov-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

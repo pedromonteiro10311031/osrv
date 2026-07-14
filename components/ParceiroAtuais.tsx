@@ -19,7 +19,15 @@ const paStyles = {
 
 export default function ParceiroAtuais() {
   return (
-    <section id="parceiros-atuais" style={paStyles.wrap}>
+    <section id="parceiros-atuais" style={paStyles.wrap} className="parceiro-atuais">
+      <style>{`
+        @media (max-width: 768px) {
+          .parceiro-atuais {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
+        }
+      `}</style>
       <div style={paStyles.inner}>
         <div style={paStyles.head}>
           <div style={paStyles.eyebrow}>QUEM JÁ FAZ PARTE</div>

@@ -27,6 +27,10 @@ export default function HowItWorks() {
     <section style={howStyles.wrap} className="how-it-works">
       <style>{`
         @media (max-width: 768px) {
+          .how-it-works {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .how-it-works .hiw-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

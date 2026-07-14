@@ -53,6 +53,10 @@ export default function Areas() {
     <section id="areas" style={areasStyles.wrap} className="areas-section">
       <style>{`
         @media (max-width: 768px) {
+          .areas-section {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .areas-section .areas-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

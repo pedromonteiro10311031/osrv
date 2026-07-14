@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 const fazerStyles = {
-  wrap: { background: 'var(--pine-900)', color: '#FAF8F4', padding: '112px 0', position: 'relative' as const, overflow: 'hidden' },
+  wrap: { background: 'var(--pine-900)', color: '#FAF8F4', padding: '120px 0', position: 'relative' as const, overflow: 'hidden' },
   glow: { position: 'absolute' as const, right: '-20%', bottom: '-30%', width: 720, height: 720, borderRadius: '50%', background: 'radial-gradient(circle, rgba(243,156,42,0.12) 0%, transparent 60%)', pointerEvents: 'none' as const },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px', position: 'relative' as const },
   head: { marginBottom: 56, maxWidth: 920 },
@@ -50,6 +50,10 @@ export default function OQueFazemos() {
     <section id="o-que-fazemos" style={fazerStyles.wrap} className="o-que-fazemos">
       <style>{`
         @media (max-width: 768px) {
+          .o-que-fazemos {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .o-que-fazemos .oqf-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

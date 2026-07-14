@@ -50,6 +50,10 @@ function TranspIntro() {
     <section id="compromisso" style={{ background: 'var(--bg-page)', padding: '120px 0' }} className="transp-intro">
       <style>{`
         @media (max-width: 768px) {
+          .transp-intro {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .transp-intro .ti-inner {
             padding: 0 20px !important;
             box-sizing: border-box;
@@ -71,9 +75,13 @@ function TranspIntro() {
 
 function TranspIdentificacao() {
   return (
-    <section id="dados-institucionais" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }} className="transp-ident">
+    <section id="dados-institucionais" style={{ background: 'var(--bg-page)', padding: '120px 0' }} className="transp-ident">
       <style>{`
         @media (max-width: 768px) {
+          .transp-ident {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .transp-ident .tid-inner {
             padding: 0 20px !important;
             box-sizing: border-box;
@@ -96,7 +104,7 @@ function TranspIdentificacao() {
         }
       `}</style>
       <div style={s.section} className="tid-inner">
-        <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 88 }}>
+        <div style={{ borderTop: '1px solid var(--border-soft)' }}>
           <div style={s.eyebrow}>Quem somos, oficialmente</div>
           <h2 style={s.h2}>Dados institucionais.</h2>
           <p style={s.sub}>Tudo registrado, tudo verificável.</p>
@@ -130,6 +138,10 @@ function TranspCertificacoes() {
     <section id="certificacoes" style={{ background: 'var(--pine-900)', padding: '120px 0' }} className="transp-certs">
       <style>{`
         @media (max-width: 768px) {
+          .transp-certs {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .transp-certs .tc-inner {
             padding: 0 20px !important;
             box-sizing: border-box;
@@ -170,6 +182,10 @@ function TranspDemonstracoes() {
     <section id="demonstracoes" style={{ background: 'var(--bg-page)', padding: '120px 0' }} className="transp-demos">
       <style>{`
         @media (max-width: 768px) {
+          .transp-demos {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .transp-demos .td-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

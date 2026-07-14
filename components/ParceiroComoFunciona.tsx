@@ -26,6 +26,10 @@ export default function ParceiroComoFunciona() {
     <section style={cfStyles.wrap} className="parceiro-como-funciona">
       <style>{`
         @media (max-width: 768px) {
+          .parceiro-como-funciona {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .parceiro-como-funciona .pcf-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 const modStyles = {
-  wrap: { background: 'var(--paper-100)', padding: '120px 0 80px' },
+  wrap: { background: 'var(--paper-100)', padding: '120px 0' },
   inner: { maxWidth: 'var(--container-wide)', margin: '0 auto', padding: '0 32px' },
   header: { maxWidth: 720, marginBottom: 56 },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 14 },
@@ -76,6 +76,10 @@ export default function ModalidadeDoacao() {
     <section id="modalidade" style={modStyles.wrap} className="modalidade-doacao">
       <style>{`
         @media (max-width: 768px) {
+          .modalidade-doacao {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .modalidade-doacao .modalidade-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

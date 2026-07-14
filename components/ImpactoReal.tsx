@@ -67,6 +67,10 @@ export default function ImpactoReal() {
     <section style={impStyles.wrap} id="impacto" className="impacto-real">
       <style>{`
         @media (max-width: 768px) {
+          .impacto-real {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .impacto-real .ir-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

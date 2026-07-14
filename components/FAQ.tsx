@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 const faqStyles = {
-  wrap: { background: 'var(--paper-100)', padding: '40px 0 140px' },
+  wrap: { background: 'var(--paper-100)', padding: '120px 0' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   layout: { display: 'grid', gridTemplateColumns: '0.9fr 1.2fr', gap: 80, alignItems: 'start' },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 14 },
@@ -67,6 +67,10 @@ export default function FAQ() {
     <section id="faq" style={faqStyles.wrap} className="faq-section">
       <style>{`
         @media (max-width: 768px) {
+          .faq-section {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .faq-section .faq-inner {
             padding: 0 20px !important;
           }

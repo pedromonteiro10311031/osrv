@@ -120,18 +120,6 @@ const heroStyles = {
     cursor: 'pointer',
     textDecoration: 'none',
   },
-  meta: {
-    position: 'absolute' as const,
-    right: 48,
-    bottom: 56,
-    fontSize: 12,
-    color: 'rgba(255,255,255,0.7)',
-    letterSpacing: '0.08em',
-    textTransform: 'uppercase' as const,
-    display: 'flex',
-    alignItems: 'center',
-    gap: 8,
-  },
 };
 
 export default function Hero({ onDonateClick }: { onDonateClick?: () => void }) {
@@ -164,12 +152,7 @@ export default function Hero({ onDonateClick }: { onDonateClick?: () => void }) 
             padding: 12px 20px !important;
             min-height: 44px !important;
           }
-          .hero-meta {
-            position: static !important;
-            right: unset !important;
-            bottom: unset !important;
-            margin-top: 16px !important;
-          }
+
         }
       `}</style>
       <div style={heroStyles.bg}></div>
@@ -197,9 +180,7 @@ export default function Hero({ onDonateClick }: { onDonateClick?: () => void }) 
           </a>
         </div>
       </div>
-      <div style={heroStyles.meta} className="hero-meta">
-        📍 JARDIM RENASCER
-      </div>
+
     </header>
   );
 }

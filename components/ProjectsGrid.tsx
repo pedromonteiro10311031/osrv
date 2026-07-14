@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { projetos } from '@/lib/projetos'
 
 const projStyles = {
-  wrap: { background: 'var(--paper-200)', padding: '96px 0' },
+  wrap: { background: 'var(--paper-200)', padding: '120px 0' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   head: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 56, gap: 32, flexWrap: 'wrap' as const },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 12 },

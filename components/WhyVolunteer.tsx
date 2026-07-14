@@ -23,6 +23,10 @@ export default function WhyVolunteer() {
     <section style={whyStyles.wrap} className="why-volunteer">
       <style>{`
         @media (max-width: 768px) {
+          .why-volunteer {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .why-volunteer .wv-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

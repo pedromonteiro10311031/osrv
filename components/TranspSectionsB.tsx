@@ -100,9 +100,13 @@ function DonutBlock({ title, data, className }: { title: string; data: Seg[]; cl
 
 export function TranspRecursos() {
   return (
-    <section id="recursos" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }} className="transp-recursos">
+    <section id="recursos" style={{ background: 'var(--bg-page)', padding: '120px 0' }} className="transp-recursos">
       <style>{`
         @media (max-width: 768px) {
+          .transp-recursos {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .transp-recursos .tr-inner {
             padding: 0 20px !important;
             box-sizing: border-box;
@@ -148,7 +152,7 @@ export function TranspRecursos() {
         }
       `}</style>
       <div style={s.section} className="tr-inner">
-        <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 88 }}>
+        <div style={{ borderTop: '1px solid var(--border-soft)' }}>
           <div style={s.eyebrow}>Aplicação de recursos</div>
           <h2 style={s.h2}>Cada doação tem destino claro.</h2>
           <span style={s.sub}>Veja como dividimos o que recebemos.</span>
@@ -201,6 +205,7 @@ export function TranspRelatorios() {
     <section id="relatorios" style={{ background: 'var(--pine-900)', padding: '120px 0' }} className="transp-relatorios">
       <style>{`
         @media (max-width: 768px) {
+          .transp-relatorios { padding-top: 56px !important; padding-bottom: 56px !important; }
           .transp-relatorios .trel-inner { padding: 0 20px !important; box-sizing: border-box; max-width: 100% !important; }
           .transp-relatorios .trel-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
         }
@@ -225,16 +230,17 @@ export function TranspRelatorios() {
 
 export function TranspGovernanca() {
   return (
-    <section id="governanca" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }} className="transp-gov">
+    <section id="governanca" style={{ background: 'var(--bg-page)', padding: '120px 0' }} className="transp-gov">
       <style>{`
         @media (max-width: 768px) {
+          .transp-gov { padding-top: 56px !important; padding-bottom: 56px !important; }
           .transp-gov .tg-inner { padding: 0 20px !important; box-sizing: border-box; max-width: 100% !important; }
           .transp-gov .tg-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .transp-gov .tg-body { font-size: 0.9rem !important; line-height: 1.5 !important; }
         }
       `}</style>
       <div style={s.section} className="tg-inner">
-        <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 88 }}>
+        <div style={{ borderTop: '1px solid var(--border-soft)' }}>
           <div style={s.eyebrow}>Quem toma as decisões</div>
           <h2 style={s.h2}>Estrutura de governança.</h2>
           <span style={s.sub}>Conselho ativo, decisões coletivas.</span>
@@ -266,15 +272,16 @@ export function TranspGovernanca() {
 
 export function TranspParceiros() {
   return (
-    <section id="parceiros" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }} className="transp-parceiros">
+    <section id="parceiros" style={{ background: 'var(--bg-page)', padding: '120px 0' }} className="transp-parceiros">
       <style>{`
         @media (max-width: 768px) {
+          .transp-parceiros { padding-top: 56px !important; padding-bottom: 56px !important; }
           .transp-parceiros .tp-inner { padding: 0 20px !important; box-sizing: border-box; max-width: 100% !important; }
           .transp-parceiros .tp-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
       <div style={s.section} className="tp-inner">
-        <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 88 }}>
+        <div style={{ borderTop: '1px solid var(--border-soft)' }}>
           <div style={s.eyebrow}>Quem caminha conosco</div>
           <h2 style={s.h2}>Empresas e instituições que apoiam.</h2>
           <span style={s.sub}>Cada apoio aqui está documentado.</span>
@@ -374,9 +381,10 @@ function OuvidoriaForm() {
 
 export function TranspOuvidoria() {
   return (
-    <section id="ouvidoria" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }} className="transp-ouvidoria">
+    <section id="ouvidoria" style={{ background: 'var(--bg-page)', padding: '120px 0' }} className="transp-ouvidoria">
       <style>{`
         @media (max-width: 768px) {
+          .transp-ouvidoria { padding-top: 56px !important; padding-bottom: 56px !important; }
           .transp-ouvidoria .to-inner { padding: 0 20px !important; box-sizing: border-box; max-width: 100% !important; }
           .transp-ouvidoria .to-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .transp-ouvidoria .to-form-row { grid-template-columns: 1fr !important; }
@@ -384,7 +392,7 @@ export function TranspOuvidoria() {
         }
       `}</style>
       <div style={s.section} className="to-inner">
-        <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 88 }}>
+        <div style={{ borderTop: '1px solid var(--border-soft)' }}>
           <div style={s.eyebrow}>Dúvidas, sugestões ou denúncias</div>
           <h2 style={s.h2}>Fale conosco.</h2>
           <span style={s.sub}>Toda manifestação recebida é respondida em até 7 dias úteis.</span>
@@ -419,9 +427,17 @@ export function TranspOuvidoria() {
 
 export function TranspCTA({ onDonate }: { onDonate?: () => void }) {
   return (
-    <section id="apoie" style={{ background: 'var(--bg-page)', padding: '0 0 120px' }}>
+    <section id="apoie" style={{ background: 'var(--bg-page)', padding: '120px 0' }} className="transp-cta">
+      <style>{`
+        @media (max-width: 768px) {
+          .transp-cta {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
+        }
+      `}</style>
       <div style={s.section}>
-        <div style={{ borderTop: '1px solid var(--border-soft)', paddingTop: 104, textAlign: 'center' }}>
+        <div style={{ borderTop: '1px solid var(--border-soft)', textAlign: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 22 }}>
             <span style={{ width: 48, height: 1, background: 'var(--border-hard)', display: 'block' }} />
             <span style={{ fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--pine-700)' }}>Apoie a OSRV</span>

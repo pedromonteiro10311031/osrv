@@ -1,6 +1,6 @@
 'use client'
 const payStyles = {
-  wrap: { background: 'var(--paper-100)', padding: '110px 0' },
+  wrap: { background: 'var(--paper-100)', padding: '120px 0' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   header: { maxWidth: 720, marginBottom: 48 },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 14 },
@@ -32,6 +32,10 @@ export default function FormasPagamento() {
     <section id="pagamento" style={payStyles.wrap} className="formas-pagamento">
       <style>{`
         @media (max-width: 768px) {
+          .formas-pagamento {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .formas-pagamento .fp-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

@@ -70,6 +70,10 @@ export const sharedFormStyles = {
 export function formMobileCSS(sectionClass: string, prefix: string): string {
   return `
     @media (max-width: 768px) {
+      .${sectionClass} {
+        padding-top: 56px !important;
+        padding-bottom: 56px !important;
+      }
       .${sectionClass} .${prefix}-inner {
         padding: 0 20px !important;
         box-sizing: border-box;

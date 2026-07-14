@@ -2,7 +2,7 @@ const statsStyles = {
   wrap: {
     maxWidth: 'var(--container)',
     margin: '0 auto',
-    padding: '96px 32px',
+    padding: '120px 32px',
   },
   eyebrow: {
     fontSize: 12,

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 const apStyles = {
-  wrap: { background: 'var(--bg-page)', padding: '120px 0 96px' },
+  wrap: { background: 'var(--bg-page)', padding: '120px 0' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   head: { marginBottom: 64 },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 16 },

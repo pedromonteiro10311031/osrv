@@ -1,5 +1,5 @@
 const histStyles = {
-  wrap: { background: 'var(--paper-100)', padding: '128px 0 136px' },
+  wrap: { background: 'var(--paper-100)', padding: '120px 0' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 24 },
   h2: { fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(2.25rem, 4.2vw, 3.75rem)', lineHeight: 1.04, letterSpacing: '-0.03em', color: 'var(--ink-900)', margin: 0 },
@@ -15,6 +15,10 @@ export default function NossaHistoria() {
     <section id="historia" style={histStyles.wrap} className="nossa-historia">
       <style>{`
         @media (max-width: 768px) {
+          .nossa-historia {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .nossa-historia .nh-inner {
             padding: 0 20px !important;
           }

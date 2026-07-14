@@ -1,5 +1,5 @@
 const porqueStyles = {
-  wrap: { background: 'var(--paper-100)', padding: '128px 0 136px' },
+  wrap: { background: 'var(--paper-100)', padding: '120px 0' },
   inner: { maxWidth: 'var(--container)', margin: '0 auto', padding: '0 32px' },
   head: { display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 128, alignItems: 'end', marginBottom: 56 },
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--pine-700)', marginBottom: 14 },
@@ -25,6 +25,10 @@ export default function PorQueFazemos() {
     <section id="por-que" style={porqueStyles.wrap} className="por-que-fazemos">
       <style>{`
         @media (max-width: 768px) {
+          .por-que-fazemos {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .por-que-fazemos .pqf-inner {
             padding: 0 20px !important;
             box-sizing: border-box;

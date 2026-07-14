@@ -29,6 +29,10 @@ export default function OQueSuaDoacaoFaz() {
     <section id="impacto" style={impactStyles.wrap} className="o-que-doacao">
       <style>{`
         @media (max-width: 768px) {
+          .o-que-doacao {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+          }
           .o-que-doacao .oqd-inner {
             padding: 0 20px !important;
             box-sizing: border-box;
