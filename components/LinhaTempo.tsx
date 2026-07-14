@@ -9,7 +9,6 @@ const trajStyles = {
   portrait: { position: 'relative' as const, width: '100%', minHeight: 640, overflow: 'hidden' },
   portraitImg: { position: 'absolute' as const, inset: 0, backgroundSize: 'cover', backgroundPosition: 'center 38%', backgroundImage: "url('https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=1600&q=80')" },
   portraitOverlay: { position: 'absolute' as const, inset: 0, background: 'rgba(0,0,0,0.25)', pointerEvents: 'none' as const },
-  caption: { position: 'absolute' as const, top: 24, right: 24, background: 'rgba(0,0,0,0.4)', color: 'rgba(255,255,255,0.9)', fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, padding: '6px 10px', borderRadius: 4 },
 }
 
 export default function LinhaTempo() {
@@ -48,7 +47,7 @@ export default function LinhaTempo() {
       <div style={trajStyles.portrait} className="lt-portrait">
         <div style={trajStyles.portraitImg}></div>
         <div style={trajStyles.portraitOverlay}></div>
-        <span style={trajStyles.caption}>JARDIM RENASCER</span>
+
       </div>
     </section>
   )

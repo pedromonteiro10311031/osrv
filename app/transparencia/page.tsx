@@ -11,6 +11,7 @@ export default function Transparencia() {
         eyebrow="TRANSPARÊNCIA · OSRV CUIABÁ"
         title="Tudo às claras."
         subtitle="Porque confiança se constrói com dados."
+        bgImage="/images/hero-transparencia.jpg"
       />
       <TranspIntro />
       <TranspIdentificacao />

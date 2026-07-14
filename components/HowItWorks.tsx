@@ -5,12 +5,11 @@ const howStyles = {
   eyebrow: { fontSize: 12, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'var(--pine-700)' },
   h2: { fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', lineHeight: 1.04, letterSpacing: '-0.028em', color: 'var(--ink-900)', margin: 0, maxWidth: 760 },
   sub: { fontFamily: 'var(--font-serif)', fontStyle: 'italic' as const, color: 'var(--amber-500)', fontSize: 'clamp(1.05rem, 1.7vw, 1.35rem)', margin: 0, maxWidth: 620 },
-  track: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, borderTop: '1px solid var(--border-soft)', borderBottom: '1px solid var(--border-soft)' },
-  step: { padding: '40px 32px 44px', borderRight: '1px solid var(--border-soft)', display: 'flex', flexDirection: 'column' as const, gap: 14 },
-  stepLast: { borderRight: 0 },
-  numRow: { display: 'flex', alignItems: 'baseline', gap: 12 },
-  num: { fontFamily: 'var(--font-serif)', fontWeight: 500, fontSize: 44, lineHeight: 1, letterSpacing: '-0.03em', color: 'rgb(45, 104, 38)' },
-  dot: { width: 6, height: 6, borderRadius: 999, background: 'var(--amber-500)', display: 'inline-block', transform: 'translateY(-6px)' },
+  row: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, position: 'relative' as const },
+  connector: { position: 'absolute' as const, top: 27.5, left: 28, right: 'calc(25% - 28px)', height: 1, background: 'var(--border-soft)', zIndex: 0 },
+  step: { position: 'relative' as const, zIndex: 1, padding: '0 18px 0 0', display: 'flex', flexDirection: 'column' as const, gap: 18 },
+  numWrap: { width: 56, height: 56, borderRadius: 999, background: 'var(--paper-200)', border: '1px solid var(--border-soft)', color: 'var(--pine-700)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontStyle: 'italic' as const, fontWeight: 500, fontSize: 22 },
+  numLast: { background: 'var(--amber-500)', color: '#fff', border: '1px solid var(--amber-500)' },
   title: { fontFamily: 'var(--font-serif)', fontWeight: 500, fontSize: 22, lineHeight: 1.18, letterSpacing: '-0.018em', color: 'var(--ink-900)', margin: '4px 0 0' },
   desc: { fontSize: 15, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0 },
 }
@@ -36,17 +35,15 @@ export default function HowItWorks() {
             box-sizing: border-box;
             max-width: 100% !important;
           }
-          .how-it-works .hiw-track {
+          .how-it-works .hiw-row {
             grid-template-columns: 1fr !important;
-            border-bottom: none !important;
+            gap: 32px !important;
           }
-          .how-it-works .hiw-track > div {
-            border-right: none !important;
-            border-bottom: 1px solid var(--border-soft);
-            padding: 28px 0 !important;
+          .how-it-works .hiw-connector {
+            display: none !important;
           }
-          .how-it-works .hiw-track > div:last-child {
-            border-bottom: none !important;
+          .how-it-works .hiw-row > div {
+            padding: 0 !important;
           }
           .how-it-works .hiw-eyebrow {
             font-size: 9px !important;
@@ -60,13 +57,13 @@ export default function HowItWorks() {
           <h2 style={howStyles.h2}>Simples, humano e sem burocracia.</h2>
           <p style={howStyles.sub}>Do formulário ao tatame em poucos passos.</p>
         </div>
-        <div style={howStyles.track} className="hiw-track">
+        <div style={howStyles.row} className="hiw-row">
+          <span style={howStyles.connector} className="hiw-connector"></span>
           {STEPS.map((s, i) => (
-            <div key={s.n} style={{ ...howStyles.step, ...(i === STEPS.length - 1 ? howStyles.stepLast : {}) }}>
-              <div style={howStyles.numRow}>
-                <span style={howStyles.num}>{s.n}</span>
-                <span style={howStyles.dot}></span>
-              </div>
+            <div key={s.n} style={howStyles.step}>
+              <span style={{ ...howStyles.numWrap, ...(i === STEPS.length - 1 ? howStyles.numLast : {}) }}>
+                {s.n}
+              </span>
               <h3 style={howStyles.title}>{s.t}</h3>
               <p style={howStyles.desc}>{s.d}</p>
             </div>

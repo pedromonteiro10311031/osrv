@@ -10,6 +10,7 @@ export default function Blog() {
         eyebrow="BLOG · OSRV CUIABÁ"
         title="Histórias que transformam."
         subtitle="Acompanhe o dia a dia do Jardim Renascer."
+        bgImage="/images/hero-blog.jpg"
       />
       <BlogFeed />
       <FinalCTA />
