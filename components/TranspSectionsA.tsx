@@ -104,7 +104,7 @@ function TranspIdentificacao() {
         }
       `}</style>
       <div style={s.section} className="tid-inner">
-        <div style={{ borderTop: '1px solid var(--border-soft)' }}>
+        <div>
           <div style={s.eyebrow}>Quem somos, oficialmente</div>
           <h2 style={s.h2}>Dados institucionais.</h2>
           <p style={s.sub}>Tudo registrado, tudo verificável.</p>

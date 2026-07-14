@@ -152,7 +152,7 @@ export function TranspRecursos() {
         }
       `}</style>
       <div style={s.section} className="tr-inner">
-        <div style={{ borderTop: '1px solid var(--border-soft)' }}>
+        <div>
           <div style={s.eyebrow}>Aplicação de recursos</div>
           <h2 style={s.h2}>Cada doação tem destino claro.</h2>
           <span style={s.sub}>Veja como dividimos o que recebemos.</span>
@@ -240,7 +240,7 @@ export function TranspGovernanca() {
         }
       `}</style>
       <div style={s.section} className="tg-inner">
-        <div style={{ borderTop: '1px solid var(--border-soft)' }}>
+        <div>
           <div style={s.eyebrow}>Quem toma as decisões</div>
           <h2 style={s.h2}>Estrutura de governança.</h2>
           <span style={s.sub}>Conselho ativo, decisões coletivas.</span>
@@ -281,7 +281,7 @@ export function TranspParceiros() {
         }
       `}</style>
       <div style={s.section} className="tp-inner">
-        <div style={{ borderTop: '1px solid var(--border-soft)' }}>
+        <div>
           <div style={s.eyebrow}>Quem caminha conosco</div>
           <h2 style={s.h2}>Empresas e instituições que apoiam.</h2>
           <span style={s.sub}>Cada apoio aqui está documentado.</span>
@@ -392,7 +392,7 @@ export function TranspOuvidoria() {
         }
       `}</style>
       <div style={s.section} className="to-inner">
-        <div style={{ borderTop: '1px solid var(--border-soft)' }}>
+        <div>
           <div style={s.eyebrow}>Dúvidas, sugestões ou denúncias</div>
           <h2 style={s.h2}>Fale conosco.</h2>
           <span style={s.sub}>Toda manifestação recebida é respondida em até 7 dias úteis.</span>
@@ -437,7 +437,7 @@ export function TranspCTA({ onDonate }: { onDonate?: () => void }) {
         }
       `}</style>
       <div style={s.section}>
-        <div style={{ borderTop: '1px solid var(--border-soft)', textAlign: 'center' }}>
+        <div style={{ textAlign: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 22 }}>
             <span style={{ width: 48, height: 1, background: 'var(--border-hard)', display: 'block' }} />
             <span style={{ fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--pine-700)' }}>Apoie a OSRV</span>
