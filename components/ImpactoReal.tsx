@@ -33,7 +33,8 @@ const impStyles = {
     borderBottom: '1px solid rgba(255,255,255,0.16)',
   },
   stat: { padding: '40px 28px', borderLeft: '1px solid rgba(255,255,255,0.16)' },
-  statFirst: { padding: '40px 28px 40px 0' },
+  statFirst: { padding: '40px 28px', borderLeft: 'none' },
+  statLast: { padding: '40px 0 40px 28px', borderLeft: '1px solid rgba(255,255,255,0.16)' },
   n: {
     fontFamily: 'var(--font-serif)',
     fontWeight: 500,
@@ -46,13 +47,7 @@ const impStyles = {
   sup: { fontSize: '0.42em', color: 'var(--amber-300)', verticalAlign: 'top' as const, marginLeft: 4, fontWeight: 400 },
   lbl: { fontSize: 14, lineHeight: 1.55, color: 'rgba(250,248,244,0.78)', marginTop: 18, maxWidth: 220 },
   lblBold: { color: 'var(--paper-100)', fontWeight: 600 },
-  foot: {
-    marginTop: 28,
-    fontSize: 13,
-    color: 'rgba(250,248,244,0.55)',
-    letterSpacing: '0.04em',
-    display: 'inline-flex', alignItems: 'center', gap: 8,
-  },
+
 }
 
 const stats = [
@@ -85,7 +80,6 @@ export default function ImpactoReal() {
           }
           .impacto-real .ir-grid > div:nth-child(odd) {
             border-left: none !important;
-            padding-left: 0 !important;
           }
         }
       `}</style>
@@ -95,13 +89,13 @@ export default function ImpactoReal() {
         <p style={impStyles.sub}>Cada número é uma história.</p>
         <div style={impStyles.grid} className="ir-grid">
           {stats.map(([n, sup, bold, rest], i) => (
-            <div key={n + bold} style={i === 0 ? { ...impStyles.stat, ...impStyles.statFirst } : impStyles.stat}>
+            <div key={n + bold} style={i === 0 ? impStyles.statFirst : i === stats.length - 1 ? impStyles.statLast : impStyles.stat}>
               <p style={impStyles.n}>{n}{sup && <span style={impStyles.sup}>{sup}</span>}</p>
               <div style={impStyles.lbl}><b style={impStyles.lblBold}>{bold}</b> {rest}</div>
             </div>
           ))}
         </div>
-        <div style={impStyles.foot}>📍 DADOS · MARÇO 2026</div>
+
       </div>
     </section>
   )
