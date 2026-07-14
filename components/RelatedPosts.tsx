@@ -8,7 +8,6 @@ const s = {
   section: {
     marginTop: 96,
     paddingTop: 64,
-    borderTop: '1px solid rgba(30,66,24,0.15)',
   },
   heading: {
     fontFamily: 'var(--font-serif)',

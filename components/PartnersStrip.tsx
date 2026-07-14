@@ -4,7 +4,6 @@ const partStyles = {
   wrap: {
     background: 'var(--paper-100)',
     padding: '120px 0',
-    borderTop: '1px solid var(--border-soft)',
   },
   inner: {
     maxWidth: 'var(--container)',

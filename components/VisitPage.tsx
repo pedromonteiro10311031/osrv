@@ -166,7 +166,7 @@ function InfoBlock({ icon, label, children }: InfoBlockProps) {
 
 function AddressMap() {
   return (
-    <section id="endereco" style={{ background: 'var(--paper-100)', padding: pad, borderTop: '1px solid var(--border-soft)' }}>
+    <section id="endereco" style={{ background: 'var(--paper-100)', padding: pad }}>
       <div style={wrap}>
         <SectionHead tight eyebrow="ONDE ESTAMOS" title="Fácil de encontrar." subtitle="No coração do Jardim Renascer." />
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'center' }} className="vp-address-grid">
@@ -264,7 +264,7 @@ function Schedule() {
 
 function WhatToFind() {
   return (
-    <section style={{ background: 'var(--paper-100)', padding: pad, borderTop: '1px solid var(--border-soft)' }}>
+    <section style={{ background: 'var(--paper-100)', padding: pad }}>
       <div style={wrap}>
         <SectionHead eyebrow="O QUE ESPERAR" title="Um pouco do que você vai ver por aqui." subtitle="Cada espaço com uma história." />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }} className="vp-finds-grid">
