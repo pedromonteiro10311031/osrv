@@ -44,11 +44,10 @@ export type BlogPost = {
 
 export async function getBlogPosts(page: number = 1, perPage: number = 6, categoryId?: number | null) {
   try {
-    // TODO: trocar para `next: { revalidate: 3600 }` antes de produção
     const categoryParam = categoryId ? `&categories=${categoryId}` : ''
     const res = await fetch(
       `${WP_API}/wp-json/wp/v2/posts?page=${page}&per_page=${perPage}&_embed${categoryParam}`,
-      { cache: 'no-store' }
+      { next: { revalidate: 3600 } }
     )
     if (!res.ok) throw new Error(`WordPress API error: ${res.status}`)
     const posts: BlogPost[] = await res.json()
@@ -61,12 +60,11 @@ export async function getBlogPosts(page: number = 1, perPage: number = 6, catego
   }
 }
 
-// TODO: trocar para `next: { revalidate: 3600 }` antes de produção (cache: 'no-store' é só pra fase de testes)
 export async function getPostsByCategory(categoryId: number, excludePostId: number, limit = 3): Promise<BlogPost[]> {
   try {
     const res = await fetch(
       `${WP_API}/wp-json/wp/v2/posts?categories=${categoryId}&exclude=${excludePostId}&per_page=${limit}&_embed`,
-      { cache: 'no-store' }
+      { next: { revalidate: 3600 } }
     )
     if (!res.ok) throw new Error('Failed to fetch posts by category')
     return res.json()
@@ -80,8 +78,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
   try {
     const res = await fetch(
       `${WP_API}/wp-json/wp/v2/posts?slug=${slug}&_embed`,
-      // TODO: trocar para `next: { revalidate: 3600 }` antes de produção (cache: 'no-store' é só pra fase de testes)
-      { cache: 'no-store' }
+      { next: { revalidate: 3600 } }
     )
 
     if (!res.ok) throw new Error('Failed to fetch post')
