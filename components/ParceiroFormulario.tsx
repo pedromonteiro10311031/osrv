@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { sharedFormStyles, formMobileCSS } from '@/lib/formStyles'
+import { maskPhone, maskEmail, isValidEmail, isValidPhone } from '@/lib/masks'
 
 const s = {
   wrap: { background: 'var(--paper-100)', padding: '120px 0' },
@@ -27,10 +28,12 @@ export default function ParceiroFormulario() {
   const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setForm({ ...form, [k]: e.target.value })
 
   const handleTelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, tel: e.target.value.replace(/[^\d\s()\-+]/g, '') })
+    setForm({ ...form, tel: maskPhone(e.target.value) })
   }
 
-  const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, email: maskEmail(e.target.value) })
+  }
 
   const handleSubmit = async () => {
     setFormError(null)
@@ -42,8 +45,8 @@ export default function ParceiroFormulario() {
       setFormError('Informe um e-mail válido (ex: voce@empresa.com.br).')
       return
     }
-    if (!form.tel.trim()) {
-      setFormError('Informe seu telefone.')
+    if (!isValidPhone(form.tel)) {
+      setFormError('Informe um telefone válido com DDD (ex: (65) 99999-9999).')
       return
     }
     if (!form.empresa.trim()) {
@@ -130,7 +133,9 @@ export default function ParceiroFormulario() {
               type="email"
               required
               value={form.email}
-              onChange={set('email')}
+              onChange={handleEmailChange}
+              autoComplete="email"
+              inputMode="email"
               placeholder="voce@empresa.com.br"
             />
           </div>
@@ -143,7 +148,10 @@ export default function ParceiroFormulario() {
               required
               value={form.tel}
               onChange={handleTelChange}
-              placeholder="(65) 9 0000-0000"
+              autoComplete="tel-national"
+              inputMode="numeric"
+              maxLength={15}
+              placeholder="(65) 99999-9999"
             />
           </div>
 
