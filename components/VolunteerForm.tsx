@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { sharedFormStyles, formMobileCSS } from '@/lib/formStyles'
+import { maskPhone, maskEmail, isValidEmail, isValidPhone } from '@/lib/masks'
 
 const s = {
   wrap: { background: 'var(--paper-100)', padding: '120px 0' },
@@ -36,10 +37,12 @@ export default function VolunteerForm() {
   const toggleDay = (d: string) => setDays((prev) => prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d])
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPhone(e.target.value.replace(/[^\d\s()\-+]/g, ''))
+    setPhone(maskPhone(e.target.value))
   }
 
-  const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(maskEmail(e.target.value))
+  }
 
   const handleSubmit = async () => {
     setFormError(null)
@@ -51,8 +54,8 @@ export default function VolunteerForm() {
       setFormError('Informe um e-mail válido (ex: voce@exemplo.com).')
       return
     }
-    if (!phone.trim()) {
-      setFormError('Informe seu telefone.')
+    if (!isValidPhone(phone)) {
+      setFormError('Informe um telefone válido com DDD (ex: (65) 99999-9999).')
       return
     }
     if (!area) {
@@ -119,11 +122,11 @@ export default function VolunteerForm() {
             </div>
             <div style={sharedFormStyles.field}>
               <label style={sharedFormStyles.label}>E-mail</label>
-              <input style={sharedFormStyles.input} type="email" placeholder="voce@exemplo.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              <input style={sharedFormStyles.input} type="email" placeholder="voce@exemplo.com" value={email} onChange={handleEmailChange} autoComplete="email" inputMode="email" required />
             </div>
             <div style={sharedFormStyles.field}>
               <label style={sharedFormStyles.label}>Telefone / WhatsApp</label>
-              <input style={sharedFormStyles.input} type="tel" placeholder="(65) 9 0000-0000" value={phone} onChange={handlePhoneChange} required />
+              <input style={sharedFormStyles.input} type="tel" placeholder="(65) 99999-9999" value={phone} onChange={handlePhoneChange} autoComplete="tel-national" inputMode="numeric" maxLength={15} required />
             </div>
             <div style={sharedFormStyles.field}>
               <label style={sharedFormStyles.label}>Área de interesse</label>
