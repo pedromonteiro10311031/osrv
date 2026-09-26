@@ -98,9 +98,18 @@ export default function Footer() {
               atendendo crianças e adolescentes em situação de vulnerabilidade social.
             </p>
             <div style={footStyles.social}>
-              <a href="#" style={footStyles.socialBtn} className="footer-social-btn" aria-label="Instagram">IG</a>
-              <a href="#" style={footStyles.socialBtn} className="footer-social-btn" aria-label="YouTube">YT</a>
-              <a href="#" style={footStyles.socialBtn} className="footer-social-btn" aria-label="Email">@</a>
+              <a href="https://www.instagram.com/osrafaelverlangieri" target="_blank" rel="noopener noreferrer" style={footStyles.socialBtn} className="footer-social-btn" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/osrafaelverlangieri" target="_blank" rel="noopener noreferrer" style={footStyles.socialBtn} className="footer-social-btn" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8s-1.4-.3-2.8-.3c-2.9 0-4.6 1.7-4.6 4.7v2.3H6.7v3.3h2.8V22h4z" />
+                </svg>
+              </a>
             </div>
           </div>
           <div>
